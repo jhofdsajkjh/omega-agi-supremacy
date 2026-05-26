@@ -1,0 +1,1 @@
+node_modules/\ntarget/\n__pycache__/\n*.pyc\n.env\n.DS_Store\n*.log\ndata/\narchive/\nagi_backup/\nprojects/\nuploads/

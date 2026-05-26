@@ -1,0 +1,41 @@
+[package]
+name = "omega-runtime"
+version = "0.1.0"
+edition = "2021"
+authors = ["OMEGA AGI <Omega@agi.system>"]
+description = "OMEGA Runtime - Layer 1 execution engine with actor system, WASM sandbox, effect system, and ML inference"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+omega-hypercore = { path = "../hypercore" }
+
+# Async runtime
+tokio = { version = "1", features = ["full", "parking_lot", "sync"] }
+futures = "0.3"
+async-trait = "0.1"
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Utilities
+anyhow = "1"
+thiserror = "1"
+tracing = "0.1"
+uuid = { version = "1", features = ["v4"] }
+dashmap = "5"
+parking_lot = "0.12"
+chrono = { version = "0.4", features = ["serde"] }
+
+# Graph
+petgraph = "0.6"
+
+[dev-dependencies]
+tokio-test = "0.4"
+tempfile = "3"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
