@@ -75,6 +75,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "concat"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "863fc56ae68a19d9f8e600a8a1f343123c76b152bd5da3ba38f88dc679960662"
+
+[[package]]
 name = "core-foundation-sys"
 version = "0.8.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -277,6 +283,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "chrono",
+ "concat",
  "regex",
  "serde",
  "serde_json",

@@ -38,7 +38,7 @@ impl Severity {
 // Finding
 // ---------------------------------------------------------------------------
 
-/// A single issue found during review.
+/// A single issue emitted by a rule.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Finding {
     /// Rule identifier, e.g. "SECRET_HARDCODED".
@@ -60,20 +60,19 @@ pub struct ReviewRule {
     pub id: String,
     pub name: String,
     pub severity: Severity,
+    /// What the rule detects.
     pub description: String,
     patterns: Vec<Regex>,
+    /// File extensions the rule applies to (empty = all).
     pub extensions: Vec<String>,
 }
 
 impl ReviewRule {
     /// Build a rule from regex pattern strings.
     ///
-    /// Patterns use plain raw string `r"..."` syntax.
-    /// - **No unescaped quote characters** inside the pattern string.
-    /// - Curly braces `{` and `}` in patterns must be balanced.
-    /// - The Rust 2021 string prefix rule: immediately after a closing `"`
-    ///   the next identifier is checked as a potential raw-string prefix.
-    ///   Avoid patterns that end with a lowercase identifier-like sequence.
+    /// All patterns are passed through `concat!` first so that hex escape
+    /// sequences like `\x{22}` and `\x{27}` can be used for characters
+    /// that are problematic in raw strings.
     pub fn new(
         id: &str,
         name: &str,
@@ -142,6 +141,7 @@ pub struct FileReview {
 }
 
 impl FileReview {
+    /// True when no issues were found.
     pub fn is_clean(&self) -> bool {
         self.findings.is_empty()
     }
@@ -157,6 +157,7 @@ pub struct ReviewSummary {
     pub error_count: usize,
     pub warning_count: usize,
     pub info_count: usize,
+    /// Fraction of files with no issues (0.0–1.0).
     pub resolution_rate: f64,
 }
 
@@ -191,6 +192,7 @@ impl ReviewSummary {
         }
     }
 
+    /// Compact one-line summary.
     pub fn brief(&self) -> String {
         format!(
             "reviewed {} files · {} issues (C:{} E:{} W:{} I:{}) · {:.1}% clean",
@@ -212,10 +214,10 @@ impl ReviewSummary {
 #[derive(thiserror::Error, Debug)]
 pub enum ReviewError {
     #[error("IO error: {0}")]
-    IoError(#[from] std::io::Error),
+    IoError(String),
 
     #[error("regex error: {0}")]
-    RegexError(#[from] regex::Error),
+    RegexError(String),
 
     #[error("path not found: {0}")]
     NotFound(String),
@@ -237,14 +239,17 @@ impl Default for Reviewer {
 }
 
 impl Reviewer {
+    /// Create with the built-in rule set.
     pub fn new() -> Self {
         Self { rules: Self::builtin_rules(), extensions: Vec::new() }
     }
 
+    /// Add a custom rule.
     pub fn add_rule(&mut self, rule: ReviewRule) {
         self.rules.push(rule);
     }
 
+    /// Restrict review to specific file extensions (without leading dot).
     pub fn set_extensions(&mut self, exts: Vec<&str>) {
         self.extensions = exts.into_iter().map(String::from).collect();
     }
@@ -289,7 +294,8 @@ impl Reviewer {
             });
         }
 
-        let source = fs::read_to_string(path)?;
+        let source =
+            fs::read_to_string(path).map_err(|e| ReviewError::IoError(e.to_string()))?;
         let total_lines = source.lines().count();
         let language = Self::language_for(ext);
 
@@ -353,10 +359,7 @@ impl Reviewer {
             for finding in &review.findings {
                 let sev = finding.severity.label();
                 let col = finding.column.map_or(String::new(), |c| format!(":{c}"));
-                println!(
-                    "  {}{col} {sev} [{}] {}",
-                    finding.line, finding.rule, finding.message
-                );
+                println!("  {}{col} {sev} [{}] {}", finding.line, finding.rule, finding.message);
                 if let Some(ref snippet) = finding.code_snippet {
                     println!("        {snippet}");
                 }
@@ -379,19 +382,15 @@ impl Reviewer {
     // ------------------------------------------------------------------
     // Built-in rules
     //
-    // Rust 2021 string prefix rule — the parser checks if an identifier
-    // immediately follows the closing quote. These rules were chosen to avoid
-    // that problem:
+    // All patterns use `concat!` so that hex escape sequences can represent
+    // characters that are difficult or impossible to put in raw strings:
+    //   \x{22} = "  \x{27} = '  \x{28} = (  \x{29} = )
+    //   \x{2e} = .  \x{21} = !  \x{3a} = :  \x{7b} = {
+    //   \x{7d} = }  \x{3b} = ;  \x{3f} = ?  \x{2c} = ,
+    //   \x{3d} = =  \x{3a}\x{3a} = ::  \x{2f} = /
     //
-    // 1. Rule NAMES do NOT end with a lowercase word like "Found", "Remaining".
-    // 2. Pattern strings use ONLY characters valid in raw strings:
-    //    - ASCII letters, digits, spaces
-    //    - ASCII punctuation: . , : ; ! ? + - * / \ _ | ~ $ % @ # ^ ` [ ] { }
-    //    - Backslash sequences ARE parsed in raw strings: \s, \d, \w, \n, etc.
-    //    - Curly braces {} ARE allowed if balanced; the Rust parser checks
-    //      mismatched delimiters separately.
-    //    - No unescaped quote characters ('  ") inside patterns.
-    //    - No \xNN hex escapes (not parsed as escapes in raw strings).
+    // Rule descriptions avoid ending with a lowercase word followed by ",
+    // which the Rust 2021 string prefix rule would misparse.
     // ------------------------------------------------------------------
 
     fn builtin_rules() -> Vec<ReviewRule> {
@@ -404,17 +403,19 @@ impl Reviewer {
                 Severity::Critical,
                 "A plaintext API key, password, or token was found in source code.",
                 vec![
-                    // Key=VALUE or "key: value" patterns — no quotes in the pattern
-                    r"(?i)api[-_]?key\s*[=:]\s*\S+",
-                    r"(?i)apikey\s*[=:]\s*\S+",
-                    r"(?i)password\s*[=:]\s*\S+",
-                    r"(?i)secret[-_]?key\s*[=:]\s*\S+",
-                    r"(?i)bearer\s+[A-Za-z0-9_.-]+",
-                    r"(?i)token\s*[=:]\s*[A-Za-z0-9_.-]{10,}",
-                    r"(?i)aws[-_]?(access[-_]?key|secret)[-_]?id\s*[=:]\s*[A-Z0-9]{16,}",
-                    r"sk-[A-Za-z0-9]{20,}",
-                    // Matches BEGIN PRIVATE KEY without needing quotes
-                    r"-----BEGIN PRIVATE KEY-----",
+                    // Key=VALUE patterns — no quotes in the pattern
+                    concat!(r"(?i)api[-_]?key\s*[=:]\s*\S+"),
+                    concat!(r"(?i)apikey\s*[=:]\s*\S+"),
+                    concat!(r"(?i)password\s*[=:]\s*\S+"),
+                    concat!(r"(?i)secret[-_]?key\s*[=:]\s*\S+"),
+                    concat!(r"(?i)bearer\s+[A-Za-z0-9_.-]+"),
+                    concat!(r"(?i)token\s*[=:]\s*[A-Za-z0-9_.-]{10,}"),
+                    concat!(r"(?i)aws[-_]?(access[-_]?key|secret)[-_]?id\s*[=:]\s*[A-Z0-9]{16,}"),
+                    concat!(r"sk-[A-Za-z0-9]{20,}"),
+                    // BEGIN PRIVATE KEY — no quotes needed
+                    concat!(r"-----BEGIN PRIVATE KEY-----"),
+                    // Quoted string value: use character class for quotes
+                    concat!(r#"(?i)(api[-_]?key|password|secret)\s*[=:]\s*[\x{22}\x{27}][^"\x{27}]{8,}[\x{22}\x{27}]"#),
                 ],
                 vec!["rs", "py", "js", "ts", "go", "java"],
             ),
@@ -425,9 +426,9 @@ impl Reviewer {
                 Severity::Critical,
                 "A .unwrap() or .expect() call was found; prefer Result or Option handling.",
                 vec![
-                    // Match ".unwrap" and ".expect" literally — dot is literal in raw
-                    r"\x2eunwrap\x28",
-                    r"\x2eexpect\x28",
+                    // Match ".unwrap" and ".expect" — \x{2e} for dot, \x{28} for (
+                    concat!(r"\x{2e}unwrap\x{28}"),
+                    concat!(r"\x{2e}expect\x{28}"),
                 ],
                 vec!["rs"],
             ),
@@ -440,23 +441,25 @@ impl Reviewer {
                 Severity::Error,
                 "TODO/FIXME comment does not tag an owner; add @user to assign it.",
                 vec![
-                    r"(?i)TODO(?!.*@[a-zA-Z0-9_])",
-                    r"(?i)FIXME(?!.*@[a-zA-Z0-9_])",
+                    concat!(r"(?i)TODO(?!.*@[a-zA-Z0-9_])"),
+                    concat!(r"(?i)FIXME(?!.*@[a-zA-Z0-9_])"),
                 ],
                 vec!["rs", "py", "js", "ts", "go", "java"],
             ),
 
             ReviewRule::new(
                 "DEBUG_PRINT",
-                "Debug Print Found",
+                "Debug Print Detected",
                 Severity::Error,
                 "A debug print or console.log call was found in production code.",
                 vec![
-                    r"println\x21\x28",
-                    r"eprintln\x21\x28",
-                    r"print\x21\x28",
-                    r"console\x2e\x6c\x6f\x67\x28",
-                    r"printStackTrace\x28",
+                    // println!, eprintln!, print! — \x{21} for !
+                    concat!(r"println!\x{28}"),
+                    concat!(r"eprintln!\x{28}"),
+                    concat!(r"print!\x{28}"),
+                    // console.log — \x{2e} for dot
+                    concat!(r"console\x{2e}log\x{28}"),
+                    concat!(r"printStackTrace\x{28}"),
                 ],
                 vec!["rs", "py", "js", "ts", "go", "java"],
             ),
@@ -466,7 +469,10 @@ impl Reviewer {
                 "Missing Mutex Unlock",
                 Severity::Error,
                 "A Mutex guard is dropped immediately; prefer explicit drop.",
-                vec![r"let\s+mut\s+\w+\s*=\s*\w+\x2elock\x28\x29\x3f\x3b"],
+                vec![
+                    // let mut X = mutex.lock()?; — hex-encode special chars
+                    concat!(r"let\s+mut\s+\w+\s*=\s*\w+\x{2e}lock\x{28}\x{29}\x{3f}\x{3b}"),
+                ],
                 vec!["rs"],
             ),
 
@@ -476,8 +482,8 @@ impl Reviewer {
                 Severity::Error,
                 "A .clone() call appears inside a loop; move clones outside when safe.",
                 vec![
-                    r"for\s*\{[^}]*\x2eclone\x28",
-                    r"while\s*\{[^}]*\x2eclone\x28",
+                    concat!(r"for\s*\{[^}]*\x{2e}clone\x{28}"),
+                    concat!(r"while\s*\{[^}]*\x{2e}clone\x{28}"),
                 ],
                 vec!["rs"],
             ),
@@ -487,7 +493,9 @@ impl Reviewer {
                 "Unwrap in Result Function",
                 Severity::Error,
                 "unwrap() called in a function returning Result; use the ? operator.",
-                vec![r"fn\s+\w+\s*\x28[^)]*\x29\s*->\s*Result<[^>]>\s*\{[^}]*\x2eunwrap\x28"],
+                vec![
+                    concat!(r"fn\s+\w+\s*\x{28}[^)]*\x{29}\s*->\s*Result<[^>]>\s*\{[^}]*\x{2e}unwrap\x{28}"),
+                ],
                 vec!["rs"],
             ),
 
@@ -496,7 +504,9 @@ impl Reviewer {
                 "Ignored Error Value",
                 Severity::Error,
                 "A Result/Option value is silently discarded; use let () = or if let Some.",
-                vec![r"^\s*_\s*=\s*[^;]+;\s*$"],
+                vec![
+                    concat!(r"^\s*_\s*=\s*[^;]+;\s*$"),
+                ],
                 vec!["rs", "py"],
             ),
 
@@ -506,8 +516,8 @@ impl Reviewer {
                 Severity::Error,
                 "An absolute filesystem path is hardcoded; use env vars or config instead.",
                 vec![
-                    // Path like /home/... or /usr/... — no quotes needed
-                    r#"["'/](/[\w.-]+){2,}['"/]"#
+                    // Match "path" or 'path' — \x{22}=double-quote, \x{27}=single-quote
+                    concat!(r"[\x{22}\x{27}][/][\w.-]+[/][\w.-]+[/][\w./-]+[\x{22}\x{27}]"),
                 ],
                 vec!["rs", "py", "js", "sh"],
             ),
@@ -518,11 +528,11 @@ impl Reviewer {
                 Severity::Error,
                 "String concatenation used to build a SQL query; use parameterized queries.",
                 vec![
-                    // format! with SELECT/INSERT/exec — no problematic chars
-                    r"format\x21\x28.*SELECT",
-                    r"format\x21\x28.*INSERT",
-                    r"format\x21\x28.*exec",
-                    r"\x2eexecute\x28\s*format\x21\x28",
+                    // format! with SELECT/INSERT/exec — \x{21}=!
+                    concat!(r"format!\x{28}.*SELECT"),
+                    concat!(r"format!\x{28}.*INSERT"),
+                    concat!(r"format!\x{28}.*exec"),
+                    concat!(r"\x{2e}execute\x{28}\s*format!\x{28}"),
                 ],
                 vec!["rs", "py", "js", "java", "go"],
             ),
@@ -535,8 +545,8 @@ impl Reviewer {
                 Severity::Warning,
                 "A function or block is never used; consider removing it.",
                 vec![
-                    r"fn\s+\w+\s*\([^)]*\)\s*\{[^}]*never\s+returns",
-                    r"^\s*fn\s+_\w+\s*\x28",
+                    concat!(r"fn\s+\w+\s*\([^)]*\)\s*\{[^}]*never\s+returns"),
+                    concat!(r"^\s*fn\s+_\w+\s*\x{28}"),
                 ],
                 vec!["rs"],
             ),
@@ -547,8 +557,9 @@ impl Reviewer {
                 Severity::Warning,
                 "A large allocation occurs inside a loop; move it outside when safe.",
                 vec![
-                    r"for\s*\{[^}]*vec\x21\s*\[[^]]\{50,\}\]",
-                    r"for\s*\{[^}]*String\x3a\x3afrom",
+                    // vec![...] — \x{21}=!  \x{7b}={  \x{7d}=}
+                    concat!(r"for\s*\{[^}]*vec!\x{21}\s*\{[^]]\{50,\}\}[^}]*\x{7d}"),
+                    concat!(r"for\s*\{[^}]*String\x{3a}\x{3a}from"),
                 ],
                 vec!["rs", "py"],
             ),
@@ -558,7 +569,9 @@ impl Reviewer {
                 "Unowned TODO",
                 Severity::Warning,
                 "A TODO or FIXME comment exists but has no owner tag.",
-                vec![r"(?i)(TODO|FIXME|HACK|XXX)"],
+                vec![
+                    concat!(r"(?i)(TODO|FIXME|HACK|XXX)"),
+                ],
                 vec!["rs", "py", "js", "ts"],
             ),
 
@@ -567,7 +580,10 @@ impl Reviewer {
                 "Slow Iterator Pattern",
                 Severity::Warning,
                 "An iterator collects results then loops; iterate directly instead.",
-                vec![r"\.collect\x3a\x3a<Vec<[^>]>>\x28\x29.*\.iter\x28"],
+                vec![
+                    // \x{3a}\x{3a} = ::
+                    concat!(r"\.collect\x{3a}\x{3a}<Vec<[^>]>>\x{28}\x{29}.*\.iter\x{28}"),
+                ],
                 vec!["rs"],
             ),
 
@@ -576,7 +592,9 @@ impl Reviewer {
                 "Unsafe Code Block",
                 Severity::Warning,
                 "An unsafe block was found; confirm safety invariants are documented.",
-                vec![r"unsafe\s*\{"],
+                vec![
+                    concat!(r"unsafe\s*\{"),
+                ],
                 vec!["rs"],
             ),
 
@@ -588,8 +606,8 @@ impl Reviewer {
                 Severity::Info,
                 "An empty catch/except block silently swallows errors.",
                 vec![
-                    r"catch\s*\([^)]*\)\s*\{\s*\}",
-                    r"except[^:]*:\s*pass",
+                    concat!(r"catch\s*\([^)]*\)\s*\{\s*\}"),
+                    concat!(r"except[^:]*:\s*pass"),
                 ],
                 vec!["java", "py", "js"],
             ),
@@ -599,7 +617,9 @@ impl Reviewer {
                 "Overly Complex Expression",
                 Severity::Info,
                 "A single expression exceeds 120 characters; consider extracting a helper.",
-                vec![r"^.{121,}$"],
+                vec![
+                    concat!(r"^.{121,}$"),
+                ],
                 vec!["rs", "py", "js", "ts", "go"],
             ),
         ]

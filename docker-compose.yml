@@ -1,0 +1,126 @@
+version: '3.8'
+
+services:
+  omega-core:
+    build:
+      context: ./omega-agi
+      dockerfile: Dockerfile
+    image: omega-agi/core:latest
+    container_name: omega-core
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+      - OMEGA_MODE=${OMEGA_MODE:-production}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - RUST_LOG=${RUST_LOG:-info}
+      - HOST=0.0.0.0
+      - PORT=8080
+      - METRICS_PORT=9090
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config:ro
+    networks:
+      - omega-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  omega-swarm:
+    build:
+      context: ./omega-agi/runtime
+      dockerfile: Dockerfile
+    image: omega-agi/swarm:latest
+    container_name: omega-swarm
+    depends_on:
+      omega-core:
+        condition: service_healthy
+    environment:
+      - OMEGA_CORE_URL=http://omega-core:8080
+      - OMEGA_MODE=${OMEGA_MODE:-production}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - RUST_LOG=${RUST_LOG:-info}
+      - ENABLE_SWARM=${ENABLE_SWARM:-true}
+    volumes:
+      - ./data/swarm:/app/data
+    networks:
+      - omega-net
+    restart: unless-stopped
+    deploy:
+      replicas: 1
+
+  omega-evolution:
+    build:
+      context: ./omega-agi/optimization
+      dockerfile: Dockerfile
+    image: omega-agi/evolution:latest
+    container_name: omega-evolution
+    depends_on:
+      omega-core:
+        condition: service_healthy
+    environment:
+      - OMEGA_CORE_URL=http://omega-core:8080
+      - OMEGA_MODE=${OMEGA_MODE:-production}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - RUST_LOG=${RUST_LOG:-info}
+      - ENABLE_EVOLUTION=${ENABLE_EVOLUTION:-true}
+    volumes:
+      - ./data/evolution:/app/data
+      - ./models:/app/models:ro
+    networks:
+      - omega-net
+    restart: unless-stopped
+
+  # Optional: Prometheus monitoring
+  omega-monitor:
+    image: prom/prometheus:latest
+    container_name: omega-monitor
+    ports:
+      - "9091:9090"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - omega-net
+    restart: unless-stopped
+    profiles:
+      - monitoring
+
+  # Optional: Grafana dashboard
+  omega-grafana:
+    image: grafana/grafana:latest
+    container_name: omega-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./config/grafana/provisioning:/etc/grafana/provisioning:ro
+    networks:
+      - omega-net
+    restart: unless-stopped
+    profiles:
+      - monitoring
+    depends_on:
+      - omega-monitor
+
+networks:
+  omega-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+volumes:
+  prometheus-data:
+  grafana-data:
