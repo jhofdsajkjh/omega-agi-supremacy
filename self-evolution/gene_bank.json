@@ -1,1963 +1,287 @@
 [
   {
     "type": "function",
-    "content": "def detect_source_type(url: str) -> str | None:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637332"
+    "content": "def detect_source_type(url: str) -> str | None:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def extract_github_repo(url: str) -> str | None:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637372"
+    "content": "def extract_github_repo(url: str) -> str | None:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def load_stars(path: Path) -> dict[str, dict]:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637386"
+    "content": "def load_stars(path: Path) -> dict[str, dict]:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def sort_entries(entries: Sequence[TemplateEntry]) -> list[TemplateEntry]:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637397"
+    "content": "def sort_entries(entries: Sequence[TemplateEntry]) -> list[TemplateEntry]:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def sort_key(entry: TemplateEntry) -> tuple[int, int, int, str]:",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637405"
+    "content": "def sort_key(entry: TemplateEntry) -> tuple[int, int, int, str]:"
   },
   {
     "type": "function",
-    "content": "def build_robots_txt() -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637414"
+    "content": "def build_robots_txt() -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def _website_node() -> dict:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637423"
+    "content": "def _website_node() -> dict:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def _item_list_payload(entries: Sequence[TemplateEntry]) -> dict:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637432"
+    "content": "def _item_list_payload(entries: Sequence[TemplateEntry]) -> dict:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def build_homepage_json_ld(entries: Sequence[TemplateEntry], total_categories: int) -> dict:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637442"
+    "content": "def build_homepage_json_ld(entries: Sequence[TemplateEntry], total_categories: int) -> dict:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def category_meta_description(name: str, entry_count: int, description: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637452"
+    "content": "def category_meta_description(name: str, entry_count: int, description: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def build_category_json_ld(name: str, url: str, description: str, entries: Sequence[TemplateEntry]) -> dict:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637462"
+    "content": "def build_category_json_ld(name: str, url: str, description: str, entries: Sequence[TemplateEntry]) -> dict:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def category_path(category: ParsedSection) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637472"
+    "content": "def category_path(category: ParsedSection) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def category_public_url(category: ParsedSection) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637481"
+    "content": "def category_public_url(category: ParsedSection) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def group_path(group_slug: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637491"
+    "content": "def group_path(group_slug: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def group_public_url(group_slug: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637500"
+    "content": "def group_public_url(group_slug: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def subcategory_path(category_slug: str, subcategory_slug: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637510"
+    "content": "def subcategory_path(category_slug: str, subcategory_slug: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def subcategory_public_url(category_slug: str, subcategory_slug: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637519"
+    "content": "def subcategory_public_url(category_slug: str, subcategory_slug: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def synthetic_category(name: str, slug: str) -> SyntheticCategory:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637528"
+    "content": "def synthetic_category(name: str, slug: str) -> SyntheticCategory:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def write_sitemap_xml(path: Path, urls: Sequence[tuple[str, str]]) -> None:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637537"
+    "content": "def write_sitemap_xml(path: Path, urls: Sequence[tuple[str, str]]) -> None:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def top_level_heading_text(line: str) -> str | None:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637546"
+    "content": "def top_level_heading_text(line: str) -> str | None:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def extract_categories_body(markdown: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637555"
+    "content": "def extract_categories_body(markdown: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def github_markdown_anchor(text: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637564"
+    "content": "def github_markdown_anchor(text: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def link_llms_category_index_to_canonical_pages(markdown: str, categories: Sequence[ParsedSection]) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637573"
+    "content": "def link_llms_category_index_to_canonical_pages(markdown: str, categories: Sequence[ParsedSection]) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def replace_link(match: re.Match[str]) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637582"
+    "content": "def replace_link(match: re.Match[str]) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def build_llms_txt(",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637590"
+    "content": "def build_llms_txt("
   },
   {
     "type": "function",
-    "content": "def annotate_entries_with_stars(",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637598"
+    "content": "def annotate_entries_with_stars("
   },
   {
     "type": "function",
-    "content": "def remove_sponsors_section(markdown: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637608"
+    "content": "def remove_sponsors_section(markdown: str) -> str:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def extract_entries(",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637615"
+    "content": "def extract_entries("
   },
   {
     "type": "function",
-    "content": "def build(repo_root: Path) -> None:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 1.0,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637624"
+    "content": "def build(repo_root: Path) -> None:\n    try:\n    except Exception as e:\n        print(f'Robustness_Trigger: {e}')\n        raise"
   },
   {
     "type": "function",
-    "content": "def render_category(",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637631"
+    "content": "def render_category("
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef detect_source_type(url: str) -> str | None:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637640"
+    "content": "# [Harness-Robustness] Enhanced\ndef detect_source_type(url: str) -> str | None:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef extract_github_repo(url: str) -> str | None:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637649"
+    "content": "# [Harness-Robustness] Enhanced\ndef extract_github_repo(url: str) -> str | None:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef load_stars(path: Path) -> dict[str, dict]:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637657"
+    "content": "# [Harness-Robustness] Enhanced\ndef load_stars(path: Path) -> dict[str, dict]:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef build_robots_txt() -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637666"
+    "content": "# [Harness-Robustness] Enhanced\ndef build_robots_txt() -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef _website_node() -> dict:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637674"
+    "content": "# [Harness-Robustness] Enhanced\ndef _website_node() -> dict:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef category_path(category: ParsedSection) -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637683"
+    "content": "# [Harness-Robustness] Enhanced\ndef category_path(category: ParsedSection) -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef category_public_url(category: ParsedSection) -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637692"
+    "content": "# [Harness-Robustness] Enhanced\ndef category_public_url(category: ParsedSection) -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef group_path(group_slug: str) -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637700"
+    "content": "# [Harness-Robustness] Enhanced\ndef group_path(group_slug: str) -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef group_public_url(group_slug: str) -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637708"
+    "content": "# [Harness-Robustness] Enhanced\ndef group_public_url(group_slug: str) -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef subcategory_path(category_slug: str, subcategory_slug: str) -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637718"
+    "content": "# [Harness-Robustness] Enhanced\ndef subcategory_path(category_slug: str, subcategory_slug: str) -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef subcategory_public_url(category_slug: str, subcategory_slug: str) -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637726"
+    "content": "# [Harness-Robustness] Enhanced\ndef subcategory_public_url(category_slug: str, subcategory_slug: str) -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef synthetic_category(name: str, slug: str) -> SyntheticCategory:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637735"
+    "content": "# [Harness-Robustness] Enhanced\ndef synthetic_category(name: str, slug: str) -> SyntheticCategory:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef write_sitemap_xml(path: Path, urls: Sequence[tuple[str, str]]) -> None:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637743"
+    "content": "# [Harness-Robustness] Enhanced\ndef write_sitemap_xml(path: Path, urls: Sequence[tuple[str, str]]) -> None:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef top_level_heading_text(line: str) -> str | None:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637751"
+    "content": "# [Harness-Robustness] Enhanced\ndef top_level_heading_text(line: str) -> str | None:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef extract_categories_body(markdown: str) -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637760"
+    "content": "# [Harness-Robustness] Enhanced\ndef extract_categories_body(markdown: str) -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef github_markdown_anchor(text: str) -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637769"
+    "content": "# [Harness-Robustness] Enhanced\ndef github_markdown_anchor(text: str) -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef link_llms_category_index_to_canonical_pages(markdown: str, categories: Sequence[ParsedSection]) -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637779"
+    "content": "# [Harness-Robustness] Enhanced\ndef link_llms_category_index_to_canonical_pages(markdown: str, categories: Sequence[ParsedSection]) -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef replace_link(match: re.Match[str]) -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637788"
+    "content": "# [Harness-Robustness] Enhanced\ndef replace_link(match: re.Match[str]) -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef remove_sponsors_section(markdown: str) -> str:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637796"
+    "content": "# [Harness-Robustness] Enhanced\ndef remove_sponsors_section(markdown: str) -> str:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "function",
-    "content": "# [Harness-Robustness] Enhanced\ndef build(repo_root: Path) -> None:\n\n# [TODO] Add try-except wrapper for production use",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.5,
-          "passed": true
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637804"
+    "content": "# [Harness-Robustness] Enhanced\ndef build(repo_root: Path) -> None:\n\n# [TODO] Add try-except wrapper for production use"
   },
   {
     "type": "class",
-    "content": "class TemplateSubcategory(TypedDict):",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637811"
+    "content": "class TemplateSubcategory(TypedDict):"
   },
   {
     "type": "class",
-    "content": "class TemplateEntry(TypedDict):",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637819"
+    "content": "class TemplateEntry(TypedDict):"
   },
   {
     "type": "class",
-    "content": "class SyntheticCategory(TypedDict):",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.25,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637827"
+    "content": "class SyntheticCategory(TypedDict):"
   },
   {
     "type": "import",
-    "content": "\"\"\"Build a single-page HTML site from README.md for the awesome-python website.\"\"\"",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637834"
+    "content": "\"\"\"Build a single-page HTML site from README.md for the awesome-python website.\"\"\""
   },
   {
     "type": "import",
-    "content": "import json",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637841"
+    "content": "import json"
   },
   {
     "type": "import",
-    "content": "import re",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637848"
+    "content": "import re"
   },
   {
     "type": "import",
-    "content": "import shutil",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637856"
+    "content": "import shutil"
   },
   {
     "type": "import",
-    "content": "import xml.etree.ElementTree as ET",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637863"
+    "content": "import xml.etree.ElementTree as ET"
   },
   {
     "type": "import",
-    "content": "from collections import Counter",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637871"
+    "content": "from collections import Counter"
   },
   {
     "type": "import",
-    "content": "from collections.abc import Sequence",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637879"
+    "content": "from collections.abc import Sequence"
   },
   {
     "type": "import",
-    "content": "from datetime import UTC, datetime",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637886"
+    "content": "from datetime import UTC, datetime"
   },
   {
     "type": "import",
-    "content": "from pathlib import Path",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637893"
+    "content": "from pathlib import Path"
   },
   {
     "type": "import",
-    "content": "from typing import TypedDict",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637899"
+    "content": "from typing import TypedDict"
   },
   {
     "type": "import",
-    "content": "from jinja2 import Environment, FileSystemLoader",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637908"
+    "content": "from jinja2 import Environment, FileSystemLoader"
   },
   {
     "type": "import",
-    "content": "from readme_parser import AlsoSee, ParsedGroup, ParsedSection, parse_readme, parse_sponsors, slugify",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637916"
+    "content": "from readme_parser import AlsoSee, ParsedGroup, ParsedSection, parse_readme, parse_sponsors, slugify"
   },
   {
     "type": "import",
-    "content": "\"\"\"Detect source type from URL domain. Returns None for GitHub URLs.\"\"\"",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637925"
+    "content": "\"\"\"Detect source type from URL domain. Returns None for GitHub URLs.\"\"\""
   },
   {
     "type": "import",
-    "content": "\"\"\"Extract owner/repo from a GitHub repo URL. Returns None for non-GitHub URLs.\"\"\"",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637932"
+    "content": "\"\"\"Extract owner/repo from a GitHub repo URL. Returns None for non-GitHub URLs.\"\"\""
   },
   {
     "type": "import",
-    "content": "\"\"\"Load star data from JSON. Returns empty dict if file doesn't exist or is corrupt.\"\"\"",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637939"
+    "content": "\"\"\"Load star data from JSON. Returns empty dict if file doesn't exist or is corrupt.\"\"\""
   },
   {
     "type": "import",
-    "content": "\"from AI and agents to data science and web development.\"",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637946"
+    "content": "\"from AI and agents to data science and web development.\""
   },
   {
     "type": "import",
-    "content": "\"\"\"Return content from `Categories` through `Projects`, excluding later sections.\"\"\"",
-    "source": "back-patch-flatten",
-    "harness_audit": {
-      "layers": {
-        "security": {
-          "score": 1.0,
-          "passed": true
-        },
-        "robustness": {
-          "score": 0.0,
-          "passed": false
-        },
-        "architecture": {
-          "score": 0.0,
-          "passed": false
-        },
-        "performance": {
-          "score": 0.0,
-          "passed": false
-        }
-      },
-      "overall_passed": false
-    },
-    "apex_score": 0.0336,
-    "timestamp": "2026-05-27T10:04:35.637954"
+    "content": "\"\"\"Return content from `Categories` through `Projects`, excluding later sections.\"\"\""
+  },
+  {
+    "type": "formula",
+    "content": "def sigma_calc(m):\n    try: return sum(m)/len(m)\n    except: return 0"
   },
   {
     "type": "formula",
@@ -1984,6 +308,1167 @@
       },
       "overall_passed": false
     },
-    "timestamp": "2026-05-27T10:49:28.270698"
+    "timestamp": "2026-05-27T12:22:25.894679"
+  },
+  {
+    "type": "formula",
+    "content": "def sigma_calc(m):\n    try: return sum(m)/len(m)\n    except: return 0",
+    "source": "omega-supremacy",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 1.0,
+          "passed": true
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T13:40:32.471655"
+  },
+  {
+    "type": "code_snippet",
+    "content": "class CoherenceBus",
+    "source": "agi-system\\core\\agi_engine.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433228"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def __init__(self)",
+    "source": "agi-system\\core\\agi_engine.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433259"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def subscribe(self, event_type",
+    "source": "agi-system\\core\\agi_engine.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433266"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def emit(self, event_type",
+    "source": "agi-system\\core\\agi_engine.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433272"
+  },
+  {
+    "type": "code_snippet",
+    "content": "class AGIEngine",
+    "source": "agi-system\\core\\agi_engine.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433281"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def calc_energy_delta(gene)",
+    "source": "agi-system\\evolution\\evolution_engine.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433286"
+  },
+  {
+    "type": "code_snippet",
+    "content": "class EvolutionEngine",
+    "source": "agi-system\\evolution\\evolution_engine.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433290"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def __init__(self, gene_bank_path, github_token, evo_repo)",
+    "source": "agi-system\\evolution\\evolution_engine.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433295"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def era_search(self, gene_pool, target_score=0.8)",
+    "source": "agi-system\\evolution\\evolution_engine.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433299"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def co_rank(self, candidates)",
+    "source": "agi-system\\evolution\\evolution_engine.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433306"
+  },
+  {
+    "type": "code_snippet",
+    "content": "class GeneStorage",
+    "source": "agi-system\\genes\\gene_storage.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433310"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def __init__(self, gene_bank_path)",
+    "source": "agi-system\\genes\\gene_storage.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433315"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def load(self)",
+    "source": "agi-system\\genes\\gene_storage.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433320"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def _build_indexes(self)",
+    "source": "agi-system\\genes\\gene_storage.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433324"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def search(self, query, top_k=10)",
+    "source": "agi-system\\genes\\gene_storage.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433329"
+  },
+  {
+    "type": "code_snippet",
+    "content": "class ExperienceRAG",
+    "source": "agi-system\\memory\\memory_system.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433334"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def __init__(self, memory_path)",
+    "source": "agi-system\\memory\\memory_system.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433338"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def store(self, experience)",
+    "source": "agi-system\\memory\\memory_system.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433343"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def _update_vectors(self, entry)",
+    "source": "agi-system\\memory\\memory_system.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433347"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def retrieve(self, query, top_k=5)",
+    "source": "agi-system\\memory\\memory_system.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433351"
+  },
+  {
+    "type": "code_snippet",
+    "content": "class ToolRegistry",
+    "source": "agi-system\\tools\\tool_registry.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433357"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def __init__(self, catalog=TOOL_CATALOG)",
+    "source": "agi-system\\tools\\tool_registry.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433362"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def register(self, tool_name, instance_id)",
+    "source": "agi-system\\tools\\tool_registry.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433367"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def dispatch(self, tool_name, command, params=None)",
+    "source": "agi-system\\tools\\tool_registry.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433372"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def get_status(self)",
+    "source": "agi-system\\tools\\tool_registry.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433376"
+  },
+  {
+    "type": "code_snippet",
+    "content": "class CodeAnalyzer",
+    "source": "self-evolution\\analyzer.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433381"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def __init__(self)",
+    "source": "self-evolution\\analyzer.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433386"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def analyze_file(self, code)",
+    "source": "self-evolution\\analyzer.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433390"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def compare(self, original, generated)",
+    "source": "self-evolution\\analyzer.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433394"
+  },
+  {
+    "type": "code_snippet",
+    "content": "class CodeFetcher",
+    "source": "self-evolution\\fetcher.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433399"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def __init__(self, token)",
+    "source": "self-evolution\\fetcher.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433404"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def get_trending(self, lang='python', limit=10)",
+    "source": "self-evolution\\fetcher.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433408"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def get_repo_contents(self, owner, repo, path='')",
+    "source": "self-evolution\\fetcher.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433414"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def get_file_content(self, url)",
+    "source": "self-evolution\\fetcher.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433419"
+  },
+  {
+    "type": "code_snippet",
+    "content": "class EvolutionRunner",
+    "source": "self-evolution\\runner.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433423"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def __init__(self, token, output_dir)",
+    "source": "self-evolution\\runner.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433442"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def run(self)",
+    "source": "self-evolution\\runner.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433448"
+  },
+  {
+    "type": "code_snippet",
+    "content": "class GeneStorage",
+    "source": "self-evolution\\storage.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433453"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def __init__(self, base_dir)",
+    "source": "self-evolution\\storage.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433457"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def load(self)",
+    "source": "self-evolution\\storage.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433461"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def save(self)",
+    "source": "self-evolution\\storage.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433466"
+  },
+  {
+    "type": "code_snippet",
+    "content": "def add_gene(self, gene_type, pattern, source)",
+    "source": "self-evolution\\storage.py",
+    "harness_audit": {
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.25,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      },
+      "overall_passed": false
+    },
+    "timestamp": "2026-05-27T14:13:42.433471"
   }
 ]
