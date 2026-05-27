@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMEGA AGI - LLM配置</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%); color: #e0e0e0; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px; }
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .logo h1 { font-size: 28px; font-weight: 700; background: linear-gradient(90deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav { display: flex; gap: 10px; }
+        .nav a { padding: 10px 20px; background: rgba(255,255,255,0.05); border-radius: 8px; color: #fff; text-decoration: none; transition: all 0.3s; }
+        .nav a:hover, .nav a.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 25px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 20px; }
+        .card-title { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 20px; }
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-size: 14px; color: #888; margin-bottom: 8px; }
+        .form-input { width: 100%; padding: 12px 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-size: 14px; transition: border-color 0.3s; }
+        .form-input:focus { outline: none; border-color: #667eea; }
+        .form-input::placeholder { color: #555; }
+        .form-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .form-select { width: 100%; padding: 12px 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-size: 14px; cursor: pointer; }
+        .form-select option { background: #1a1a3a; }
+        .provider-card { background: rgba(255,255,255,0.02); border-radius: 12px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s; }
+        .provider-card:hover { border-color: rgba(102,126,234,0.5); }
+        .provider-card.active { border-color: #667eea; background: rgba(102,126,234,0.05); }
+        .provider-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .provider-name { font-size: 16px; font-weight: 600; color: #fff; }
+        .provider-toggle { position: relative; width: 50px; height: 26px; }
+        .provider-toggle input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.1); border-radius: 26px; transition: 0.3s; }
+        .toggle-slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: 0.3s; }
+        input:checked + .toggle-slider { background: #667eea; }
+        input:checked + .toggle-slider:before { transform: translateX(24px); }
+        .provider-fields { display: grid; gap: 15px; }
+        .btn { padding: 12px 25px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(102,126,234,0.4); }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+        .btn-success { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: #000; }
+        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
+        .test-result { margin-top: 15px; padding: 15px; border-radius: 8px; font-size: 14px; display: none; }
+        .test-success { background: rgba(72,199,142,0.1); border: 1px solid rgba(72,199,142,0.3); color: #48c78e; }
+        .test-error { background: rgba(255,71,87,0.1); border: 1px solid rgba(255,71,87,0.3); color: #ff4757; }
+        .active-indicator { display: inline-block; width: 8px; height: 8px; background: #48c78e; border-radius: 50%; margin-right: 8px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .toast { position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; border-radius: 10px; font-size: 14px; z-index: 1000; transform: translateY(100px); opacity: 0; transition: all 0.3s; }
+        .toast-success { background: #48c78e; color: #000; }
+        .toast-error { background: #ff4757; color: #fff; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">Ω</div>
+                <h1>OMEGA AGI</h1>
+            </div>
+            <nav class="nav">
+                <a href="/">仪表盘</a>
+                <a href="/config" class="active">配置</a>
+                <a href="/status">状态</a>
+                <a href="/diagnostics">诊断</a>
+            </nav>
+        </header>
+
+        <!-- 活跃提供商 -->
+        <div class="card" id="providers">
+            <div class="card-title">
+                <span class="active-indicator"></span>LLM提供商配置
+            </div>
+            <div id="provider-list">
+                <!-- 动态加载 -->
+            </div>
+        </div>
+
+        <!-- Layer偏好设置 -->
+        <div class="card">
+            <div class="card-title">Layer 模型偏好</div>
+            <div id="layer-prefs">
+                <div style="color:#888;">加载中...</div>
+            </div>
+        </div>
+
+        <!-- 批量操作 -->
+        <div class="card">
+            <div class="card-title">批量操作</div>
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="loadConfig()">重置配置</button>
+                <button class="btn btn-primary" onclick="saveConfig()">保存配置</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast toast-success">保存成功</div>
+
+    <script>
+        let currentConfig = null;
+
+        async function loadConfig() {
+            try {
+                const res = await fetch('/api/config/llm');
+                const data = await res.json();
+                if (data.success) {
+                    currentConfig = data.data;
+                    renderProviders(data.data.providers, data.data.active);
+                    renderLayerPrefs(data.data.layer_preferences);
+                }
+            } catch (e) {
+                showToast('加载失败', 'error');
+            }
+        }
+
+        function renderProviders(providers, active) {
+            const list = document.getElementById('provider-list');
+            let html = '';
+            for (const [name, config] of Object.entries(providers)) {
+                const isActive = name === active;
+                html += `
+                    <div class="provider-card ${isActive ? 'active' : ''}" id="provider-${name}">
+                        <div class="provider-header">
+                            <div class="provider-name">
+                                ${isActive ? '<span class="active-indicator"></span>' : ''}
+                                ${config.name} ${isActive ? '<span style="font-size:12px;color:#667eea;">(活跃)</span>' : ''}
+                            </div>
+                            <label class="provider-toggle">
+                                <input type="checkbox" ${config.enabled ? 'checked' : ''} onchange="toggleProvider('${name}', this.checked)">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="provider-fields">
+                            <div class="form-group">
+                                <label class="form-label">API Base URL</label>
+                                <input type="text" class="form-input" id="base_url-${name}" value="${config.base_url}" placeholder="https://api.openai.com/v1">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">API Key</label>
+                                <input type="password" class="form-input" id="api_key-${name}" value="${config.api_key || ''}" placeholder="sk-...">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">默认模型</label>
+                                    <select class="form-select" id="model-${name}">
+                                        ${config.models.map(m => `<option value="${m}" ${m === config.default_model ? 'selected' : ''}>${m}</option>`).join('')}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Temperature</label>
+                                    <input type="number" class="form-input" id="temp-${name}" value="${config.temperature}" min="0" max="2" step="0.1">
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary" onclick="testConnection('${name}')" style="width:fit-content;">测试连接</button>
+                            <div class="test-result" id="test-result-${name}"></div>
+                        </div>
+                    </div>
+                `;
+            }
+            list.innerHTML = html;
+        }
+
+        function renderLayerPrefs(prefs) {
+            const container = document.getElementById('layer-prefs');
+            const layers = ['C_e', 'E_s', 'B_h', 'S_d', 'Q_c', 'V_e'];
+            const layerNames = {
+                'C_e': 'Cognition Engine',
+                'E_s': 'Executive Suite',
+                'B_h': 'Behavioral Hub',
+                'S_d': 'Self Dynamics',
+                'Q_c': 'Quantum Coherence',
+                'V_e': 'Value Engine'
+            };
+            const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#43e97b'];
+
+            let html = '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:15px;">';
+            layers.forEach((key, idx) => {
+                const p = prefs[key] || {};
+                html += `
+                    <div style="background:rgba(255,255,255,0.02);padding:15px;border-radius:10px;border-left:3px solid ${colors[idx]};">
+                        <div style="font-size:14px;font-weight:600;margin-bottom:10px;">${key} - ${layerNames[key]}</div>
+                        <div class="form-group">
+                            <label class="form-label">模型</label>
+                            <select class="form-select" id="layer-model-${key}">
+                                <option value="auto" ${p.model === 'auto' ? 'selected' : ''}>Auto</option>
+                                <option value="gpt-4" ${p.model === 'gpt-4' ? 'selected' : ''}>GPT-4</option>
+                                <option value="claude-3" ${p.model === 'claude-3' ? 'selected' : ''}>Claude-3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Temperature</label>
+                            <input type="number" class="form-input" id="layer-temp-${key}" value="${p.temperature || 0.7}" min="0" max="2" step="0.1">
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        async function toggleProvider(name, enabled) {
+            if (!currentConfig) return;
+            currentConfig.providers[name].enabled = enabled;
+            if (enabled) {
+                currentConfig.active = name;
+                renderProviders(currentConfig.providers, name);
+            }
+        }
+
+        async function testConnection(name) {
+            const resultEl = document.getElementById(`test-result-${name}`);
+            resultEl.style.display = 'block';
+            resultEl.className = 'test-result test-info';
+            resultEl.textContent = '测试中...';
+
+            try {
+                const apiKey = document.getElementById(`api_key-${name}`).value;
+                if (!apiKey) {
+                    resultEl.textContent = '请先输入 API Key';
+                    resultEl.className = 'test-result test-error';
+                    return;
+                }
+
+                const res = await fetch('/api/config/test', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({provider: name})
+                });
+                const data = await res.json();
+                if (data.success && data.data.status === 'success') {
+                    resultEl.textContent = `✓ 连接成功 (延迟: ${data.data.latency_ms}ms)`;
+                    resultEl.className = 'test-result test-success';
+                } else {
+                    resultEl.textContent = `✗ ${data.data.message}`;
+                    resultEl.className = 'test-result test-error';
+                }
+            } catch (e) {
+                resultEl.textContent = `✗ ${e.message}`;
+                resultEl.className = 'test-result test-error';
+            }
+        }
+
+        async function saveConfig() {
+            if (!currentConfig) return;
+
+            // 更新配置值
+            for (const [name, config] of Object.entries(currentConfig.providers)) {
+                config.base_url = document.getElementById(`base_url-${name}`)?.value || config.base_url;
+                const apiKey = document.getElementById(`api_key-${name}`)?.value;
+                if (apiKey && !apiKey.startsWith('***')) {
+                    config.api_key = apiKey;
+                }
+                config.default_model = document.getElementById(`model-${name}`)?.value || config.default_model;
+                config.temperature = parseFloat(document.getElementById(`temp-${name}`)?.value || 0.7);
+            }
+
+            // Layer偏好
+            ['C_e', 'E_s', 'B_h', 'S_d', 'Q_c', 'V_e'].forEach(key => {
+                if (currentConfig.layer_preferences[key]) {
+                    currentConfig.layer_preferences[key].model = document.getElementById(`layer-model-${key}`)?.value || 'auto';
+                    currentConfig.layer_preferences[key].temperature = parseFloat(document.getElementById(`layer-temp-${key}`)?.value || 0.7);
+                }
+            });
+
+            try {
+                const res = await fetch('/api/config/llm', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(currentConfig)
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast('配置已保存', 'success');
+                } else {
+                    showToast('保存失败: ' + data.error, 'error');
+                }
+            } catch (e) {
+                showToast('保存失败', 'error');
+            }
+        }
+
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast toast-${type} show`;
+            setTimeout(() => { toast.className = 'toast'; }, 3000);
+        }
+
+        loadConfig();
+    </script>
+</body>
+</html>

@@ -1,1 +1,8 @@
 node_modules/\ntarget/\n__pycache__/\n*.pyc\n.env\n.DS_Store\n*.log\ndata/\narchive/\nagi_backup/\nprojects/\nuploads/
+*.pyc
+__pycache__/
+venv/
+web_ui/__pycache__/
+web_ui/venv/
+scripts/__pycache__/
+*.egg-info/

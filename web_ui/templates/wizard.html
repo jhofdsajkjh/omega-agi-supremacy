@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMEGA AGI - 首次配置向导</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wizard-container {
+            width: 100%;
+            max-width: 680px;
+            padding: 20px;
+        }
+        .wizard-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+        }
+        .wizard-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        .wizard-logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 20px;
+        }
+        .wizard-header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .wizard-header p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Step indicators */
+        .steps-bar {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 35px;
+        }
+        .step-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+        .step-dot.active {
+            background: #667eea;
+            box-shadow: 0 0 10px rgba(102,126,234,0.5);
+        }
+        .step-dot.done {
+            background: #48c78e;
+        }
+
+        /* Step content */
+        .step-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .step-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .step-subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 25px;
+        }
+
+        /* Form elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-input {
+            width: 100%;
+            padding: 13px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+        .form-input::placeholder {
+            color: #555;
+        }
+        .form-hint {
+            font-size: 12px;
+            color: #666;
+            margin-top: 6px;
+        }
+        .form-hint a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        .form-hint a:hover {
+            text-decoration: underline;
+        }
+
+        /* Provider grid */
+        .provider-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .provider-option {
+            padding: 15px;
+            background: rgba(255,255,255,0.03);
+            border: 2px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .provider-option:hover {
+            border-color: rgba(102,126,234,0.5);
+            background: rgba(102,126,234,0.05);
+        }
+        .provider-option.selected {
+            border-color: #667eea;
+            background: rgba(102,126,234,0.1);
+        }
+        .provider-option .p-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .provider-option .p-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .provider-option .p-model {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+        }
+        .provider-option .p-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #43e97b;
+            color: #000;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        /* Model selector */
+        .model-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        .model-item {
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .model-item:last-child {
+            border-bottom: none;
+        }
+        .model-item:hover {
+            background: rgba(255,255,255,0.03);
+        }
+        .model-item.selected {
+            background: rgba(102,126,234,0.1);
+        }
+        .model-item .m-name {
+            font-size: 14px;
+        }
+        .model-item .m-badge {
+            padding: 2px 8px;
+            background: rgba(102,126,234,0.2);
+            color: #667eea;
+            border-radius: 6px;
+            font-size: 11px;
+        }
+
+        /* Mode selector */
+        .mode-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .mode-option {
+            padding: 18px 12px;
+            background: rgba(255,255,255,0.03);
+            border: 2px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .mode-option:hover {
+            border-color: rgba(102,126,234,0.5);
+        }
+        .mode-option.selected {
+            border-color: #667eea;
+            background: rgba(102,126,234,0.1);
+        }
+        .mode-option .m-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .mode-option .m-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .mode-option .m-desc {
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* Confirm summary */
+        .summary-table {
+            width: 100%;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+        .summary-key {
+            color: #888;
+            font-size: 14px;
+        }
+        .summary-val {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .summary-val.masked {
+            color: #667eea;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 12px;
+        }
+        .btn {
+            padding: 13px 28px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.12);
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: #000;
+        }
+        .btn-success:hover {
+            box-shadow: 0 5px 20px rgba(67,233,123,0.4);
+        }
+        .btn-full {
+            width: 100%;
+        }
+
+        /* Loading state */
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10,10,26,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            display: none;
+        }
+        .loading-overlay.show {
+            display: flex;
+        }
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success screen */
+        .success-screen {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 25px;
+            animation: bounceIn 0.6s ease;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .success-screen h2 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .success-screen p {
+            color: #888;
+            margin-bottom: 25px;
+        }
+        .success-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .success-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .success-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .provider-grid { grid-template-columns: repeat(2, 1fr); }
+            .mode-grid { grid-template-columns: 1fr; }
+            .wizard-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wizard-container">
+        <div class="wizard-card">
+            <!-- Header -->
+            <div class="wizard-header">
+                <div class="wizard-logo">Ω</div>
+                <h1>OMEGA AGI</h1>
+                <p>Supremacy Agent Framework · 首次配置向导</p>
+            </div>
+
+            <!-- Step indicators -->
+            <div class="steps-bar" id="steps-bar">
+                <div class="step-dot active" data-step="1"></div>
+                <div class="step-dot" data-step="2"></div>
+                <div class="step-dot" data-step="3"></div>
+                <div class="step-dot" data-step="4"></div>
+            </div>
+
+            <!-- Step 1: Welcome -->
+            <div class="step-content active" id="step-1">
+                <div class="step-title">欢迎使用 OMEGA AGI Supremacy</div>
+                <div class="step-subtitle">这个向导将帮助你在几分钟内完成配置</div>
+
+                <div style="color:#aaa;font-size:14px;line-height:1.8;margin-bottom:20px;">
+                    <p>🤖 配置 LLM 连接，让 AI Agents 拥有超强大脑</p>
+                    <p>🔧 设置服务参数，优化性能和稳定性</p>
+                    <p>🚀 一键启动，进入 AGI 时代</p>
+                </div>
+
+                <div class="btn-group" style="justify-content:center;">
+                    <button class="btn btn-primary" onclick="nextStep(1)">
+                        开始配置 →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: LLM Config -->
+            <div class="step-content" id="step-2">
+                <div class="step-title">第一步：选择 LLM 提供商</div>
+                <div class="step-subtitle">选择一个 AI 模型服务提供商</div>
+
+                <div class="provider-grid" id="provider-grid">
+                    <div class="provider-option" data-provider="openai" onclick="selectProvider(this, 'openai')">
+                        <div class="p-icon">🤖</div>
+                        <div class="p-name">OpenAI</div>
+                        <div class="p-model">GPT-4 / GPT-3.5</div>
+                    </div>
+                    <div class="provider-option" data-provider="groq" onclick="selectProvider(this, 'groq')">
+                        <div class="p-icon">⚡</div>
+                        <div class="p-name">Groq</div>
+                        <div class="p-model">Llama-3.3-70B</div>
+                        <div class="p-badge">免费高速</div>
+                    </div>
+                    <div class="provider-option" data-provider="anthropic" onclick="selectProvider(this, 'anthropic')">
+                        <div class="p-icon">🧠</div>
+                        <div class="p-name">Anthropic</div>
+                        <div class="p-model">Claude 3 Sonnet</div>
+                    </div>
+                    <div class="provider-option" data-provider="deepseek" onclick="selectProvider(this, 'deepseek')">
+                        <div class="p-icon">🔮</div>
+                        <div class="p-name">DeepSeek</div>
+                        <div class="p-model">DeepSeek Chat</div>
+                    </div>
+                    <div class="provider-option" data-provider="ollama" onclick="selectProvider(this, 'ollama')">
+                        <div class="p-icon">💻</div>
+                        <div class="p-name">Ollama</div>
+                        <div class="p-model">本地模型</div>
+                    </div>
+                    <div class="provider-option" data-provider="siliconflow" onclick="selectProvider(this, 'siliconflow')">
+                        <div class="p-icon">🌊</div>
+                        <div class="p-name">硅基流动</div>
+                        <div class="p-model">Qwen2.5-72B</div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="api-key-group" style="display:none;">
+                    <label class="form-label" id="api-key-label">API Key</label>
+                    <input type="password" class="form-input" id="api-key-input" placeholder="sk-...">
+                    <div class="form-hint" id="api-key-hint">
+                        获取地址: <a href="#" target="_blank">点击获取</a>
+                    </div>
+                </div>
+
+                <div class="form-group" id="model-group" style="display:none;">
+                    <label class="form-label">选择模型</label>
+                    <div class="model-list" id="model-list"></div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="prevStep(2)">← 上一步</button>
+                    <button class="btn btn-primary" onclick="nextStep(2)" id="step2-next">下一步 →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Service Config -->
+            <div class="step-content" id="step-3">
+                <div class="step-title">第二步：服务配置</div>
+                <div class="step-subtitle">选择启动模式和端口</div>
+
+                <div class="mode-grid">
+                    <div class="mode-option selected" data-mode="development" onclick="selectMode(this, 'development')">
+                        <div class="m-icon">🛠️</div>
+                        <div class="m-title">开发模式</div>
+                        <div class="m-desc">Web UI + 热重载</div>
+                    </div>
+                    <div class="mode-option" data-mode="production" onclick="selectMode(this, 'production')">
+                        <div class="m-icon">🚀</div>
+                        <div class="m-title">生产模式</div>
+                        <div class="m-desc">高性能部署</div>
+                    </div>
+                    <div class="mode-option" data-mode="api_only" onclick="selectMode(this, 'api_only')">
+                        <div class="m-icon">⚙️</div>
+                        <div class="m-title">仅 API</div>
+                        <div class="m-desc">无 Web UI</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Web UI 端口</label>
+                    <input type="number" class="form-input" id="web-port" value="5000" min="1024" max="65535">
+                    <div class="form-hint">访问地址: http://localhost:<span id="port-preview">5000</span></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">GitHub Token <span style="color:#666;">(可选)</span></label>
+                    <input type="password" class="form-input" id="github-token" placeholder="ghp_...">
+                    <div class="form-hint">
+                        用于访问私有仓库和更高的 API 速率限制 ·
+                        <a href="https://github.com/settings/tokens" target="_blank">获取 Token</a>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="prevStep(3)">← 上一步</button>
+                    <button class="btn btn-primary" onclick="nextStep(3)">下一步 →</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Confirm & Launch -->
+            <div class="step-content" id="step-4">
+                <div class="step-title">第三步：确认配置</div>
+                <div class="step-subtitle">请确认以下配置，然后启动服务</div>
+
+                <div class="summary-table" id="summary-table">
+                    <div class="summary-row">
+                        <span class="summary-key">LLM 提供商</span>
+                        <span class="summary-val" id="summary-provider">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-key">API 模型</span>
+                        <span class="summary-val" id="summary-model">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-key">API Key</span>
+                        <span class="summary-val masked" id="summary-key">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-key">启动模式</span>
+                        <span class="summary-val" id="summary-mode">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-key">Web 端口</span>
+                        <span class="summary-val" id="summary-port">—</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-key">GitHub Token</span>
+                        <span class="summary-val masked" id="summary-gh">未配置</span>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="prevStep(4)">← 上一步</button>
+                    <button class="btn btn-success" onclick="launchServices()">
+                        🚀 启动 OMEGA AGI
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 5: Success -->
+            <div class="step-content" id="step-5">
+                <div class="success-screen">
+                    <div class="success-icon">✅</div>
+                    <h2>配置完成！</h2>
+                    <p>OMEGA AGI Supremacy 已成功启动</p>
+
+                    <div class="success-links">
+                        <a href="/" class="success-link">
+                            🌐 访问控制台 · http://localhost:<span id="launch-port">5000</span>
+                        </a>
+                        <a href="/config" class="success-link">
+                            ⚙️ LLM 配置管理
+                        </a>
+                        <a href="/status" class="success-link">
+                            📊 系统状态监控
+                        </a>
+                        <a href="/diagnostics" class="success-link">
+                            🔍 自诊断工具
+                        </a>
+                    </div>
+
+                    <div class="btn-group" style="justify-content:center;margin-top:20px;">
+                        <button class="btn btn-secondary" onclick="skipWizard()">跳过向导</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <script>
+        // State
+        let currentStep = 1;
+        let wizardState = {
+            provider: null,
+            apiKey: '',
+            model: '',
+            mode: 'development',
+            port: 5000,
+            githubToken: '',
+        };
+
+        const PROVIDER_CONFIG = {
+            openai: {
+                name: 'OpenAI',
+                url: 'https://api.openai.com/v1/chat/completions',
+                models: ['gpt-4o', 'gpt-4o-mini', 'gpt-4-turbo', 'gpt-3.5-turbo'],
+                docs: 'https://platform.openai.com/api-keys',
+                defaultModel: 'gpt-4o',
+            },
+            groq: {
+                name: 'Groq',
+                url: 'https://api.groq.com/openai/v1/chat/completions',
+                models: ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant', 'mixtral-8x7b-32768'],
+                docs: 'https://console.groq.com/api-keys',
+                defaultModel: 'llama-3.3-70b-versatile',
+            },
+            anthropic: {
+                name: 'Anthropic',
+                url: 'https://api.anthropic.com/v1/messages',
+                models: ['claude-sonnet-4-20250514', 'claude-3-5-sonnet-latest', 'claude-3-opus-latest'],
+                docs: 'https://console.anthropic.com/api-keys',
+                defaultModel: 'claude-sonnet-4-20250514',
+            },
+            deepseek: {
+                name: 'DeepSeek',
+                url: 'https://api.deepseek.com/v1/chat/completions',
+                models: ['deepseek-chat', 'deepseek-coder'],
+                docs: 'https://platform.deepseek.com/api_keys',
+                defaultModel: 'deepseek-chat',
+            },
+            ollama: {
+                name: 'Ollama (本地)',
+                url: 'http://localhost:11434/v1/chat/completions',
+                models: ['llama3', 'llama3.1', 'mistral', 'codellama'],
+                docs: 'https://github.com/ollama/ollama',
+                defaultModel: 'llama3',
+            },
+            siliconflow: {
+                name: '硅基流动',
+                url: 'https://api.siliconflow.cn/v1/chat/completions',
+                models: ['Qwen/Qwen2.5-72B-Instruct', 'deepseek-ai/DeepSeek-V3'],
+                docs: 'https://www.siliconflow.cn',
+                defaultModel: 'Qwen/Qwen2.5-72B-Instruct',
+            },
+        };
+
+        function updateStepDots() {
+            document.querySelectorAll('.step-dot').forEach(dot => {
+                const step = parseInt(dot.dataset.step);
+                dot.className = 'step-dot';
+                if (step === currentStep) dot.classList.add('active');
+                else if (step < currentStep) dot.classList.add('done');
+            });
+        }
+
+        function showStep(step) {
+            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(`step-${step}`).classList.add('active');
+            currentStep = step;
+            updateStepDots();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextStep(from) {
+            if (from === 1) {
+                showStep(2);
+            } else if (from === 2) {
+                if (!wizardState.provider) {
+                    alert('请先选择一个 LLM 提供商');
+                    return;
+                }
+                wizardState.apiKey = document.getElementById('api-key-input').value;
+                wizardState.model = document.querySelector('.model-item.selected')?.dataset.model
+                    || PROVIDER_CONFIG[wizardState.provider].defaultModel;
+                showStep(3);
+                populateSummary();
+            } else if (from === 3) {
+                wizardState.mode = document.querySelector('.mode-option.selected')?.dataset.mode || 'development';
+                wizardState.port = parseInt(document.getElementById('web-port').value) || 5000;
+                wizardState.githubToken = document.getElementById('github-token').value;
+                showStep(4);
+            }
+        }
+
+        function prevStep(from) {
+            if (from === 2) showStep(1);
+            else if (from === 3) showStep(2);
+            else if (from === 4) showStep(3);
+        }
+
+        function selectProvider(el, provider) {
+            document.querySelectorAll('.provider-option').forEach(p => p.classList.remove('selected'));
+            el.classList.add('selected');
+            wizardState.provider = provider;
+
+            const config = PROVIDER_CONFIG[provider];
+            const keyGroup = document.getElementById('api-key-group');
+            const keyLabel = document.getElementById('api-key-label');
+            const keyHint = document.getElementById('api-key-hint');
+            const keyInput = document.getElementById('api-key-input');
+            const modelGroup = document.getElementById('model-group');
+            const modelList = document.getElementById('model-list');
+
+            keyGroup.style.display = provider === 'ollama' ? 'none' : 'block';
+            keyLabel.textContent = config.name + ' API Key';
+            keyInput.placeholder = provider === 'groq' ? 'gsk_...' : 'sk-...';
+            keyHint.innerHTML = `获取地址: <a href="${config.docs}" target="_blank">${config.docs}</a>`;
+
+            // Show model list
+            modelGroup.style.display = 'block';
+            modelList.innerHTML = config.models.map(m => `
+                <div class="model-item${m === config.defaultModel ? ' selected' : ''}"
+                     data-model="${m}" onclick="selectModel(this)">
+                    <span class="m-name">${m}</span>
+                    ${m === config.defaultModel ? '<span class="m-badge">推荐</span>' : ''}
+                </div>
+            `).join('');
+
+            document.getElementById('step2-next').style.display = 'inline-block';
+        }
+
+        function selectModel(el) {
+            document.querySelectorAll('.model-item').forEach(m => m.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        function selectMode(el, mode) {
+            document.querySelectorAll('.mode-option').forEach(m => m.classList.remove('selected'));
+            el.classList.add('selected');
+            wizardState.mode = mode;
+        }
+
+        // Port preview
+        document.getElementById('web-port')?.addEventListener('input', function () {
+            document.getElementById('port-preview').textContent = this.value;
+        });
+
+        function populateSummary() {
+            const config = PROVIDER_CONFIG[wizardState.provider];
+            document.getElementById('summary-provider').textContent = config?.name || '—';
+            document.getElementById('summary-model').textContent = wizardState.model || '—';
+            document.getElementById('summary-key').textContent =
+                wizardState.apiKey ? wizardState.apiKey.substring(0, 4) + '****' : '—';
+            document.getElementById('summary-mode').textContent =
+                {development: '开发模式', production: '生产模式', api_only: '仅 API'}[wizardState.mode] || '—';
+            document.getElementById('summary-port').textContent = wizardState.port;
+            document.getElementById('summary-gh').textContent =
+                wizardState.githubToken ? wizardState.githubToken.substring(0, 4) + '****' : '未配置';
+            document.getElementById('launch-port').textContent = wizardState.port;
+        }
+
+        async function launchServices() {
+            const loading = document.getElementById('loading');
+            loading.classList.add('show');
+
+            try {
+                // Save config via API
+                const res = await fetch('/api/wizard/save', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(wizardState),
+                });
+
+                // Mark wizard as completed
+                localStorage.setItem('omega_wizard_completed', 'true');
+
+                loading.classList.remove('show');
+                showStep(5);
+            } catch (e) {
+                loading.classList.remove('show');
+                alert('保存配置失败: ' + e.message);
+            }
+        }
+
+        function skipWizard() {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

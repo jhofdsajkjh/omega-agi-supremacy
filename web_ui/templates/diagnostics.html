@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMEGA AGI - 自诊断面板</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%); color: #e0e0e0; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px; }
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .logo h1 { font-size: 28px; font-weight: 700; background: linear-gradient(90deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav { display: flex; gap: 10px; }
+        .nav a { padding: 10px 20px; background: rgba(255,255,255,0.05); border-radius: 8px; color: #fff; text-decoration: none; transition: all 0.3s; }
+        .nav a:hover, .nav a.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 25px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 20px; }
+        .card-title { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .health-score { display: flex; align-items: center; gap: 30px; margin-bottom: 25px; }
+        .health-circle { width: 100px; height: 100px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; }
+        .health-good { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: #000; }
+        .health-warning { background: linear-gradient(135deg, #ff9f43 0%, #feca57 100%); color: #000; }
+        .health-bad { background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%); color: #fff; }
+        .health-label { font-size: 12px; margin-top: 5px; }
+        .health-details { flex: 1; }
+        .health-overall { font-size: 14px; color: #888; margin-top: 5px; }
+        .issues-list { display: flex; flex-direction: column; gap: 10px; }
+        .issue-item { display: flex; gap: 12px; padding: 12px 15px; background: rgba(255,255,255,0.02); border-radius: 10px; border-left: 3px solid; }
+        .issue-item.critical { border-color: #ff4757; background: rgba(255,71,87,0.05); }
+        .issue-item.warning { border-color: #ff9f43; background: rgba(255,159,67,0.05); }
+        .issue-item.success { border-color: #48c78e; background: rgba(72,199,142,0.05); }
+        .issue-icon { font-size: 20px; }
+        .issue-text { font-size: 14px; flex: 1; }
+        .issue-action { font-size: 12px; color: #888; }
+        .fix-button { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; border: none; transition: all 0.3s; }
+        .fix-button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; }
+        .btn-primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(102,126,234,0.4); }
+        .btn-success { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: #000; }
+        .btn-success:hover:not(:disabled) { box-shadow: 0 5px 20px rgba(67,233,123,0.4); }
+        .btn-danger { background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%); color: #fff; }
+        .btn-danger:hover:not(:disabled) { box-shadow: 0 5px 20px rgba(255,71,87,0.4); }
+        .suggestions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .suggestion-item { display: flex; gap: 12px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 10px; }
+        .suggestion-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(102,126,234,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .suggestion-text { flex: 1; }
+        .suggestion-title { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+        .suggestion-desc { font-size: 12px; color: #888; }
+        .layer-health-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .layer-health-item { background: rgba(255,255,255,0.02); border-radius: 10px; padding: 15px; text-align: center; }
+        .layer-health-name { font-size: 12px; color: #888; margin-bottom: 8px; }
+        .layer-health-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-bottom: 8px; }
+        .layer-health-fill { height: 100%; border-radius: 3px; transition: width 0.5s; }
+        .layer-health-value { font-size: 18px; font-weight: 700; }
+        .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .action-item { text-align: center; padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; transition: all 0.3s; }
+        .action-item:hover { background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+        .action-icon { font-size: 32px; margin-bottom: 10px; }
+        .action-title { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+        .action-desc { font-size: 12px; color: #888; }
+        .timestamp { font-size: 12px; color: #666; margin-top: 10px; }
+        .toast { position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; border-radius: 10px; font-size: 14px; z-index: 1000; transform: translateY(100px); opacity: 0; transition: all 0.3s; }
+        .toast-success { background: #48c78e; color: #000; }
+        .toast-error { background: #ff4757; color: #fff; }
+        .toast-info { background: #4facfe; color: #000; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">Ω</div>
+                <h1>OMEGA AGI</h1>
+            </div>
+            <nav class="nav">
+                <a href="/">仪表盘</a>
+                <a href="/config">配置</a>
+                <a href="/status">状态</a>
+                <a href="/diagnostics" class="active">诊断</a>
+            </nav>
+        </header>
+
+        <!-- 健康得分 -->
+        <div class="card">
+            <div class="card-title">系统健康报告</div>
+            <div class="health-score">
+                <div class="health-circle health-good" id="health-circle">
+                    <span id="health-score">--</span>
+                    <span class="health-label">健康得分</span>
+                </div>
+                <div class="health-details">
+                    <div id="health-status" style="font-size:18px;font-weight:600;">加载中...</div>
+                    <div class="health-overall" id="health-summary">正在分析系统状态...</div>
+                </div>
+                <button class="btn btn-primary" onclick="runDiagnostics()" style="margin-left:auto;">
+                    🔄 重新诊断
+                </button>
+            </div>
+            <div class="timestamp" id="timestamp">最后诊断: --</div>
+        </div>
+
+        <!-- 发现的问题 -->
+        <div class="card">
+            <div class="card-title">发现问题</div>
+            <div class="issues-list" id="issues-list">
+                <div style="color:#888;">加载中...</div>
+            </div>
+        </div>
+
+        <!-- 修复建议 -->
+        <div class="card">
+            <div class="card-title">修复建议</div>
+            <div class="suggestions" id="suggestions-list">
+                <!-- 动态加载 -->
+            </div>
+        </div>
+
+        <!-- Layer健康详情 -->
+        <div class="card">
+            <div class="card-title">Layer 健康状态</div>
+            <div class="layer-health-grid" id="layer-health-grid">
+                <!-- 动态加载 -->
+            </div>
+        </div>
+
+        <!-- 一键修复 -->
+        <div class="card">
+            <div class="card-title">一键修复</div>
+            <div class="action-grid">
+                <div class="action-item">
+                    <div class="action-icon">🧹</div>
+                    <div class="action-title">清理缓存</div>
+                    <div class="action-desc">清理临时文件和缓存</div>
+                    <button class="fix-button btn-success" onclick="applyFix('clear_cache')" style="margin-top:12px;">执行</button>
+                </div>
+                <div class="action-item">
+                    <div class="action-icon">🔄</div>
+                    <div class="action-title">重启服务</div>
+                    <div class="action-desc">重启系统服务</div>
+                    <button class="fix-button btn-primary" onclick="applyFix('restart_services')" style="margin-top:12px;">执行</button>
+                </div>
+                <div class="action-item">
+                    <div class="action-icon">📋</div>
+                    <div class="action-title">重置配置</div>
+                    <div class="action-desc">恢复默认配置</div>
+                    <button class="fix-button btn-danger" onclick="applyFix('reset_config')" style="margin-top:12px;">执行</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast toast-info">正在处理...</div>
+
+    <script>
+        const layerColors = {
+            'C_e': '#667eea', 'E_s': '#764ba2', 'B_h': '#f093fb',
+            'S_d': '#f5576c', 'Q_c': '#4facfe', 'V_e': '#43e97b'
+        };
+
+        async function runDiagnostics() {
+            try {
+                const res = await fetch('/api/diagnostics');
+                const data = await res.json();
+                if (data.success) {
+                    updateDiagnostics(data.data);
+                }
+            } catch (e) {
+                showToast('诊断失败', 'error');
+            }
+        }
+
+        function updateDiagnostics(result) {
+            // 更新健康得分
+            const score = result.overall_health || 0;
+            const circle = document.getElementById('health-circle');
+            const scoreEl = document.getElementById('health-score');
+            scoreEl.textContent = score;
+
+            if (score >= 80) {
+                circle.className = 'health-circle health-good';
+                document.getElementById('health-status').textContent = '✓ 系统状态良好';
+                document.getElementById('health-status').style.color = '#48c78e';
+            } else if (score >= 60) {
+                circle.className = 'health-circle health-warning';
+                document.getElementById('health-status').textContent = '⚠ 系统状态一般';
+                document.getElementById('health-status').style.color = '#ff9f43';
+            } else {
+                circle.className = 'health-circle health-bad';
+                document.getElementById('health-status').textContent = '✗ 系统状态异常';
+                document.getElementById('health-status').style.color = '#ff4757';
+            }
+
+            const issueCount = result.issues ? result.issues.length : 0;
+            document.getElementById('health-summary').textContent =
+                issueCount > 0 ? `发现 ${issueCount} 个问题需要处理` : '所有系统组件运行正常';
+
+            // 更新时间戳
+            const date = new Date(result.timestamp * 1000);
+            document.getElementById('timestamp').textContent = `最后诊断: ${date.toLocaleString()}`;
+
+            // 更新问题列表
+            const issuesList = document.getElementById('issues-list');
+            if (result.issues && result.issues.length > 0) {
+                let issuesHtml = '';
+                result.issues.forEach(issue => {
+                    issuesHtml += `
+                        <div class="issue-item warning">
+                            <span class="issue-icon">⚠️</span>
+                            <span class="issue-text">${issue}</span>
+                        </div>
+                    `;
+                });
+                issuesList.innerHTML = issuesHtml;
+            } else {
+                issuesList.innerHTML = `
+                    <div class="issue-item success">
+                        <span class="issue-icon">✓</span>
+                        <span class="issue-text">没有发现问题</span>
+                    </div>
+                `;
+            }
+
+            // 更新修复建议
+            const suggestionsList = document.getElementById('suggestions-list');
+            if (result.suggestions && result.suggestions.length > 0) {
+                let sugHtml = '';
+                result.suggestions.forEach(sug => {
+                    sugHtml += `
+                        <div class="suggestion-item">
+                            <div class="suggestion-icon">💡</div>
+                            <div class="suggestion-text">
+                                <div class="suggestion-title">修复建议</div>
+                                <div class="suggestion-desc">${sug}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                suggestionsList.innerHTML = sugHtml;
+            } else {
+                suggestionsList.innerHTML = `
+                    <div class="suggestion-item" style="grid-column:span 2;">
+                        <div class="suggestion-icon">✨</div>
+                        <div class="suggestion-text">
+                            <div class="suggestion-title">系统正常</div>
+                            <div class="suggestion-desc">无需任何修复操作</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 更新Layer健康状态
+            const layerGrid = document.getElementById('layer-health-grid');
+            let layerHtml = '';
+            const layers = result.layers || {};
+            for (const [key, layer] of Object.entries(layers)) {
+                const color = layerColors[key] || '#667eea';
+                const health = layer.health || 0;
+                const healthColor = health > 80 ? '#48c78e' : health > 60 ? '#ff9f43' : '#ff4757';
+                layerHtml += `
+                    <div class="layer-health-item">
+                        <div class="layer-health-name">${key} - ${layer.name}</div>
+                        <div class="layer-health-bar">
+                            <div class="layer-health-fill" style="width:${health}%;background:${color};"></div>
+                        </div>
+                        <div class="layer-health-value" style="color:${healthColor};">${health}%</div>
+                    </div>
+                `;
+            }
+            layerGrid.innerHTML = layerHtml;
+        }
+
+        async function applyFix(fixType) {
+            const btn = event.target;
+            btn.disabled = true;
+            btn.textContent = '处理中...';
+
+            try {
+                const res = await fetch('/api/diagnostics/fix', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({type: fixType})
+                });
+                const data = await res.json();
+                if (data.success) {
+                    const results = data.data.results;
+                    if (results[0].status === 'success') {
+                        showToast('修复成功', 'success');
+                    } else {
+                        showToast(results[0].message || '操作完成', 'info');
+                    }
+                }
+            } catch (e) {
+                showToast('修复失败', 'error');
+            }
+
+            btn.disabled = false;
+            btn.textContent = '执行';
+        }
+
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast toast-${type} show`;
+            setTimeout(() => { toast.className = 'toast'; }, 3000);
+        }
+
+        // 初始化
+        runDiagnostics();
+    </script>
+</body>
+</html>
