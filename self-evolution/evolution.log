@@ -1,0 +1,1796 @@
+
+=== Evolution Run 2026-05-19T21:31:14.493157 ===
+[2026-05-19T21:31:14.694883] 开始演进
+Step1: 获取 GitHub Trending
+  找到: public-apis/public-apis ⭐435839
+  找到: EbookFoundation/free-programming-books ⭐388549
+  找到: donnemartin/system-design-primer ⭐349250
+  找到: vinta/awesome-python ⭐298496
+  找到: TheAlgorithms/Python ⭐221185
+演进完成: 0 个练习
+
+✓ 演进完成
+[2026-05-19T21:31:46.774565] 开始演进
+获取 GitHub Trending Python...
+  仓库: public-apis/public-apis ⭐435839
+  仓库: EbookFoundation/free-programming-books ⭐388549
+  仓库: donnemartin/system-design-primer ⭐349251
+  仓库: vinta/awesome-python ⭐298496
+  仓库: TheAlgorithms/Python ⭐221185
+
+✓ 演进完成: 新增 0 个基因[2026-05-19T21:33:13.314598] === 开始自我进化 ===
+[2026-05-19T21:33:13.315105] Phase 1: 基因觉醒
+[2026-05-19T21:33:14.601619] 处理: public-apis/public-apis
+[2026-05-19T21:33:17.487400] 处理: EbookFoundation/free-programming-books
+[2026-05-19T21:33:19.731868] 处理: donnemartin/system-design-primer
+[2026-05-19T21:33:22.308739] 处理: vinta/awesome-python
+[2026-05-19T21:33:24.899267] 处理: TheAlgorithms/Python
+[2026-05-19T21:33:27.609061] 基因库: 0 个
+[2026-05-19T21:33:27.609356] === 进化完成 ===
+[2026-05-20T07:18:02.891427] === 开始自我进化 ===
+[2026-05-20T07:18:02.891947] Phase 1: 基因觉醒
+[2026-05-20T07:18:03.907556] 处理: public-apis/public-apis
+[2026-05-20T07:18:05.504301] 处理: EbookFoundation/free-programming-books
+[2026-05-20T07:18:07.107021] 处理: donnemartin/system-design-primer
+[2026-05-20T07:18:08.888358] 处理: vinta/awesome-python
+[2026-05-20T07:18:10.802642] 处理: TheAlgorithms/Python
+[2026-05-20T07:18:26.874754] === 开始自我进化 ===
+[2026-05-20T07:18:26.875175] Phase 1: 基因觉醒
+[2026-05-20T07:18:27.812376] 处理: public-apis/public-apis
+[2026-05-20T07:18:29.344976] 处理: EbookFoundation/free-programming-books
+[2026-05-20T07:18:30.738906] 处理: donnemartin/system-design-primer
+[2026-05-20T07:18:48.545841] === 开始自我进化 ===
+[2026-05-20T07:18:48.546257] Phase 1: 基因觉醒
+[2026-05-20T07:18:49.390963] 处理: public-apis/public-apis
+[2026-05-20T07:18:51.045667] 处理: EbookFoundation/free-programming-books
+[2026-05-20T07:18:52.835845] 处理: donnemartin/system-design-primer
+[2026-05-20T07:18:54.427206] 处理: vinta/awesome-python
+[2026-05-20T07:18:55.780584] 处理: TheAlgorithms/Python
+[2026-05-20T07:18:57.220669] 基因库: 0 个
+[2026-05-20T07:18:57.221086] === 进化完成 ===
+[2026-05-20T07:19:42.455713] === 开始自我进化 ===
+[2026-05-20T07:19:42.456132] Phase 1: 基因觉醒
+[2026-05-20T07:19:43.432861] 处理: public-apis/public-apis
+[2026-05-20T07:19:45.001669] 处理: EbookFoundation/free-programming-books
+[2026-05-20T07:19:46.538129] 处理: donnemartin/system-design-primer
+[2026-05-20T07:19:48.627298] 处理: vinta/awesome-python
+[2026-05-20T07:19:50.173071] 处理: TheAlgorithms/Python
+[2026-05-20T07:19:51.808570] 基因库: 0 个
+[2026-05-20T07:19:51.808969] === 进化完成 ===
+[2026-05-20T07:21:33.763454] === 开始自我进化 ===
+[2026-05-20T07:21:33.763886] Phase 1: 基因觉醒
+[2026-05-20T07:21:34.697594] 处理: public-apis/public-apis
+[2026-05-20T07:21:35.679791] 处理: EbookFoundation/free-programming-books
+[2026-05-20T07:21:37.703143] 处理: donnemartin/system-design-primer
+[2026-05-20T07:21:39.644873] 处理: vinta/awesome-python
+[2026-05-20T07:21:41.126546]   build.py: 50 基因
+[2026-05-20T07:21:41.126935] 处理: TheAlgorithms/Python
+[2026-05-20T07:21:44.667017] 基因库: 50 个
+[2026-05-20T07:21:44.667315] === 进化完成 ===
+[2026-05-20T13:27:01.095324] === 开始自我进化 ===
+[2026-05-20T13:27:01.095921] Phase 1: 基因觉醒
+[2026-05-20T13:27:06.405025] === 开始自我进化 ===
+[2026-05-20T13:27:06.405632] Phase 1: 基因觉醒
+[2026-05-20T13:27:20.263218] === 开始自我进化 ===
+[2026-05-20T13:27:20.264214] Phase 1: 基因觉醒
+[2026-05-20T13:27:21.390209] 处理: public-apis/public-apis
+[2026-05-20T13:27:22.433202] 处理: EbookFoundation/free-programming-books
+[2026-05-20T13:27:24.658484] 处理: donnemartin/system-design-primer
+[2026-05-20T13:27:26.793879] 处理: vinta/awesome-python
+[2026-05-20T13:27:28.636141]   build.py: 50 基因
+[2026-05-20T13:27:28.636826] 处理: TheAlgorithms/Python
+[2026-05-20T13:27:32.608414] 基因库: 50 个
+[2026-05-20T13:27:32.608821] === 进化完成 ===
+[2026-05-20T13:27:38.895373] === 开始自我进化 ===
+[2026-05-20T13:27:38.895879] Phase 1: 基因觉醒
+[2026-05-20T13:27:39.796640] 处理: public-apis/public-apis
+[2026-05-20T13:27:40.790894] 处理: EbookFoundation/free-programming-books
+[2026-05-20T13:27:43.558156] 处理: donnemartin/system-design-primer
+[2026-05-20T13:27:45.669792] 处理: vinta/awesome-python
+[2026-05-20T13:27:48.056451]   build.py: 50 基因
+[2026-05-20T13:27:48.057489] 处理: TheAlgorithms/Python
+[2026-05-20T13:27:51.517997] 基因库: 50 个
+[2026-05-20T13:27:51.518575] === 进化完成 ===
+[2026-05-20T14:00:38.945703] === 开始自我进化 ===
+[2026-05-20T14:00:38.946372] Phase 1: 基因觉醒
+[2026-05-20T14:00:41.234792] 处理: public-apis/public-apis
+[2026-05-20T14:00:42.940777] 处理: EbookFoundation/free-programming-books
+[2026-05-20T14:00:45.233256] 处理: donnemartin/system-design-primer
+[2026-05-20T14:00:48.046245] 处理: vinta/awesome-python
+[2026-05-20T14:00:49.537922]   build.py: 50 基因
+[2026-05-20T14:00:49.538531] 处理: TheAlgorithms/Python
+[2026-05-20T14:00:54.603112] 基因库: 50 个
+[2026-05-20T14:00:54.603537] === 进化完成 ===
+[2026-05-20T15:00:56.067406] === 开始自我进化 ===
+[2026-05-20T15:00:56.068013] Phase 1: 基因觉醒
+[2026-05-20T15:00:57.373863] 处理: public-apis/public-apis
+[2026-05-20T15:00:58.438740] 处理: EbookFoundation/free-programming-books
+[2026-05-20T15:01:01.794488] 处理: donnemartin/system-design-primer
+[2026-05-20T15:01:04.185148] 处理: vinta/awesome-python
+[2026-05-20T15:01:05.947549]   build.py: 50 基因
+[2026-05-20T15:01:05.948116] 处理: TheAlgorithms/Python
+[2026-05-20T15:01:10.172064] 基因库: 50 个
+[2026-05-20T15:01:10.172499] === 进化完成 ===
+[2026-05-20T16:00:11.744128] === 开始自我进化 ===
+[2026-05-20T16:00:11.744612] Phase 1: 基因觉醒
+[2026-05-20T16:00:13.468688] 处理: public-apis/public-apis
+[2026-05-20T16:00:15.694451] 处理: EbookFoundation/free-programming-books
+[2026-05-20T16:00:18.206448] 处理: donnemartin/system-design-primer
+[2026-05-20T16:00:20.695857] 处理: vinta/awesome-python
+[2026-05-20T16:00:23.771115]   build.py: 50 基因
+[2026-05-20T16:00:23.771956] 处理: TheAlgorithms/Python
+[2026-05-20T16:00:30.071489] 基因库: 50 个
+[2026-05-20T16:00:30.071919] === 进化完成 ===
+[2026-05-20T17:00:31.685318] === 开始自我进化 ===
+[2026-05-20T17:00:31.685937] Phase 1: 基因觉醒
+[2026-05-20T17:00:33.201228] 处理: public-apis/public-apis
+[2026-05-20T17:00:37.910508] 处理: EbookFoundation/free-programming-books
+[2026-05-20T17:00:42.225892] 处理: donnemartin/system-design-primer
+[2026-05-20T17:00:44.279886] 处理: vinta/awesome-python
+[2026-05-20T17:00:45.942148]   build.py: 50 基因
+[2026-05-20T17:00:45.942765] 处理: TheAlgorithms/Python
+[2026-05-20T17:00:49.780767] 基因库: 50 个
+[2026-05-20T17:00:49.781245] === 进化完成 ===
+[2026-05-20T18:00:51.266169] === 开始自我进化 ===
+[2026-05-20T18:00:51.266720] Phase 1: 基因觉醒
+[2026-05-20T18:00:52.512830] 处理: public-apis/public-apis
+[2026-05-20T18:00:53.532798] 处理: EbookFoundation/free-programming-books
+[2026-05-20T18:00:55.705943] 处理: donnemartin/system-design-primer
+[2026-05-20T18:00:58.095218] 处理: vinta/awesome-python
+[2026-05-20T18:00:59.983720]   build.py: 50 基因
+[2026-05-20T18:00:59.984415] 处理: TheAlgorithms/Python
+[2026-05-20T18:01:03.529172] 基因库: 50 个
+[2026-05-20T18:01:03.529876] === 进化完成 ===
+[2026-05-20T19:00:05.083957] === 开始自我进化 ===
+[2026-05-20T19:00:05.084486] Phase 1: 基因觉醒
+[2026-05-20T19:00:06.410866] 处理: public-apis/public-apis
+[2026-05-20T19:00:07.871836] 处理: EbookFoundation/free-programming-books
+[2026-05-20T19:00:10.013429] 处理: donnemartin/system-design-primer
+[2026-05-20T19:00:12.317572] 处理: vinta/awesome-python
+[2026-05-20T19:00:14.011876]   build.py: 50 基因
+[2026-05-20T19:00:14.012472] 处理: TheAlgorithms/Python
+[2026-05-20T19:00:17.661149] 基因库: 50 个
+[2026-05-20T19:00:17.661652] === 进化完成 ===
+[2026-05-20T20:00:27.365009] === 开始自我进化 ===
+[2026-05-20T20:00:27.365467] Phase 1: 基因觉醒
+[2026-05-20T20:00:28.646014] 处理: public-apis/public-apis
+[2026-05-20T20:00:29.707874] 处理: EbookFoundation/free-programming-books
+[2026-05-20T20:00:32.895690] 处理: donnemartin/system-design-primer
+[2026-05-20T20:00:35.258267] 处理: vinta/awesome-python
+[2026-05-20T20:00:37.065106]   build.py: 50 基因
+[2026-05-20T20:00:37.065987] 处理: TheAlgorithms/Python
+[2026-05-20T20:00:42.020590] 基因库: 50 个
+[2026-05-20T20:00:42.020992] === 进化完成 ===
+[2026-05-20T21:00:46.420297] === 开始自我进化 ===
+[2026-05-20T21:00:46.420785] Phase 1: 基因觉醒
+[2026-05-20T21:00:47.765575] 处理: public-apis/public-apis
+[2026-05-20T21:00:48.882334] 处理: EbookFoundation/free-programming-books
+[2026-05-20T21:00:51.243919] 处理: donnemartin/system-design-primer
+[2026-05-20T21:00:53.603843] 处理: vinta/awesome-python
+[2026-05-20T21:00:55.436351]   build.py: 50 基因
+[2026-05-20T21:00:55.436909] 处理: TheAlgorithms/Python
+[2026-05-20T21:00:59.560286] 基因库: 50 个
+[2026-05-20T21:00:59.560654] === 进化完成 ===
+[2026-05-20T22:00:00.973068] === 开始自我进化 ===
+[2026-05-20T22:00:00.973566] Phase 1: 基因觉醒
+[2026-05-20T22:00:02.337735] 处理: public-apis/public-apis
+[2026-05-20T22:00:04.509307] 处理: EbookFoundation/free-programming-books
+[2026-05-20T22:00:05.630084]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-20T22:00:05.630881] 处理: donnemartin/system-design-primer
+[2026-05-20T22:00:09.520177] 处理: vinta/awesome-python
+[2026-05-20T22:00:11.419297]   build.py: 50 基因
+[2026-05-20T22:00:11.419941] 处理: TheAlgorithms/Python
+[2026-05-20T22:00:16.219834] 基因库: 50 个
+[2026-05-20T22:00:16.220337] === 进化完成 ===
+[2026-05-20T23:00:18.909642] === 开始自我进化 ===
+[2026-05-20T23:00:18.910249] Phase 1: 基因觉醒
+[2026-05-20T23:00:20.889247] 处理: public-apis/public-apis
+[2026-05-20T23:00:22.121865] 处理: EbookFoundation/free-programming-books
+[2026-05-20T23:00:27.293582] 处理: donnemartin/system-design-primer
+[2026-05-20T23:00:30.699544] 处理: vinta/awesome-python
+[2026-05-20T23:00:32.494456]   build.py: 50 基因
+[2026-05-20T23:00:32.495036] 处理: TheAlgorithms/Python
+[2026-05-20T23:00:38.449843] 基因库: 50 个
+[2026-05-20T23:00:38.450246] === 进化完成 ===
+[2026-05-21T00:00:12.340677] === 开始自我进化 ===
+[2026-05-21T00:00:12.341474] Phase 1: 基因觉醒
+[2026-05-21T00:00:15.104286] 处理: public-apis/public-apis
+[2026-05-21T00:00:17.029383]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T00:00:17.030131] 处理: EbookFoundation/free-programming-books
+[2026-05-21T00:00:19.939988]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T00:00:19.942292] 处理: donnemartin/system-design-primer
+[2026-05-21T00:00:23.695482]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T00:00:23.696159] 处理: vinta/awesome-python
+[2026-05-21T00:00:24.714629]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T00:00:24.715412] 处理: TheAlgorithms/Python
+[2026-05-21T00:00:25.643661]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T00:00:25.649028] 基因库: 50 个
+[2026-05-21T00:00:25.649619] === 进化完成 ===
+[2026-05-21T01:00:11.679598] === 开始自我进化 ===
+[2026-05-21T01:00:11.680121] Phase 1: 基因觉醒
+[2026-05-21T01:00:13.099093] 处理: public-apis/public-apis
+[2026-05-21T01:00:13.399216]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T01:00:13.399942] 处理: EbookFoundation/free-programming-books
+[2026-05-21T01:00:13.700488]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T01:00:13.701218] 处理: donnemartin/system-design-primer
+[2026-05-21T01:00:13.981364]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T01:00:13.982122] 处理: vinta/awesome-python
+[2026-05-21T01:00:14.280439]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T01:00:14.281331] 处理: TheAlgorithms/Python
+[2026-05-21T01:00:14.565832]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T01:00:14.568406] 基因库: 50 个
+[2026-05-21T01:00:14.568916] === 进化完成 ===
+[2026-05-21T02:00:16.118926] === 开始自我进化 ===
+[2026-05-21T02:00:16.119525] Phase 1: 基因觉醒
+[2026-05-21T02:00:17.452909] 处理: public-apis/public-apis
+[2026-05-21T02:00:17.752648]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T02:00:17.753652] 处理: EbookFoundation/free-programming-books
+[2026-05-21T02:00:18.077052]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T02:00:18.077783] 处理: donnemartin/system-design-primer
+[2026-05-21T02:00:18.351288]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T02:00:18.351967] 处理: vinta/awesome-python
+[2026-05-21T02:00:18.624279]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T02:00:18.625055] 处理: TheAlgorithms/Python
+[2026-05-21T02:00:18.901707]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T02:00:18.905967] 基因库: 50 个
+[2026-05-21T02:00:18.906349] === 进化完成 ===
+[2026-05-21T03:00:20.368210] === 开始自我进化 ===
+[2026-05-21T03:00:20.368662] Phase 1: 基因觉醒
+[2026-05-21T03:00:21.701996] 处理: public-apis/public-apis
+[2026-05-21T03:00:21.990678]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T03:00:21.991447] 处理: EbookFoundation/free-programming-books
+[2026-05-21T03:00:22.267774]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T03:00:22.268826] 处理: donnemartin/system-design-primer
+[2026-05-21T03:00:22.539938]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T03:00:22.541091] 处理: vinta/awesome-python
+[2026-05-21T03:00:22.858264]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T03:00:22.858898] 处理: TheAlgorithms/Python
+[2026-05-21T03:00:23.127860]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T03:00:23.130180] 基因库: 50 个
+[2026-05-21T03:00:23.130572] === 进化完成 ===
+[2026-05-21T04:00:24.650235] === 开始自我进化 ===
+[2026-05-21T04:00:24.650822] Phase 1: 基因觉醒
+[2026-05-21T04:00:26.065214] 处理: public-apis/public-apis
+[2026-05-21T04:00:26.363425]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T04:00:26.364255] 处理: EbookFoundation/free-programming-books
+[2026-05-21T04:00:26.650907]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T04:00:26.651682] 处理: donnemartin/system-design-primer
+[2026-05-21T04:00:26.929532]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T04:00:26.930269] 处理: vinta/awesome-python
+[2026-05-21T04:00:27.216342]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T04:00:27.217335] 处理: TheAlgorithms/Python
+[2026-05-21T04:00:27.503249]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T04:00:27.507827] 基因库: 50 个
+[2026-05-21T04:00:27.508377] === 进化完成 ===
+[2026-05-21T05:00:29.037517] === 开始自我进化 ===
+[2026-05-21T05:00:29.038586] Phase 1: 基因觉醒
+[2026-05-21T05:00:30.347968] 处理: public-apis/public-apis
+[2026-05-21T05:00:30.628182]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T05:00:30.629068] 处理: EbookFoundation/free-programming-books
+[2026-05-21T05:00:30.921584]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T05:00:30.922649] 处理: donnemartin/system-design-primer
+[2026-05-21T05:00:31.201982]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T05:00:31.202719] 处理: vinta/awesome-python
+[2026-05-21T05:00:31.473519]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T05:00:31.474671] 处理: TheAlgorithms/Python
+[2026-05-21T05:00:31.762369]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T05:00:31.767523] 基因库: 50 个
+[2026-05-21T05:00:31.767908] === 进化完成 ===
+[2026-05-21T06:00:33.342698] === 开始自我进化 ===
+[2026-05-21T06:00:33.343215] Phase 1: 基因觉醒
+[2026-05-21T06:00:34.630220] 处理: public-apis/public-apis
+[2026-05-21T06:00:34.936725]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T06:00:34.937500] 处理: EbookFoundation/free-programming-books
+[2026-05-21T06:00:35.226083]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T06:00:35.227172] 处理: donnemartin/system-design-primer
+[2026-05-21T06:00:35.502124]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T06:00:35.502919] 处理: vinta/awesome-python
+[2026-05-21T06:00:35.776314]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T06:00:35.777208] 处理: TheAlgorithms/Python
+[2026-05-21T06:00:36.053545]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T06:00:36.057945] 基因库: 50 个
+[2026-05-21T06:00:36.058402] === 进化完成 ===
+[2026-05-21T07:00:38.162008] === 开始自我进化 ===
+[2026-05-21T07:00:38.162459] Phase 1: 基因觉醒
+[2026-05-21T07:00:39.512372] 处理: public-apis/public-apis
+[2026-05-21T07:00:39.793338]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T07:00:39.794369] 处理: EbookFoundation/free-programming-books
+[2026-05-21T07:00:39.953511]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T07:00:39.954369] 处理: donnemartin/system-design-primer
+[2026-05-21T07:00:40.104555]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T07:00:40.105238] 处理: vinta/awesome-python
+[2026-05-21T07:00:40.262091]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T07:00:40.262848] 处理: TheAlgorithms/Python
+[2026-05-21T07:00:40.409053]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T07:00:40.413948] 基因库: 50 个
+[2026-05-21T07:00:40.414374] === 进化完成 ===
+[2026-05-21T08:00:41.908201] === 开始自我进化 ===
+[2026-05-21T08:00:41.908749] Phase 1: 基因觉醒
+[2026-05-21T08:00:43.055098] 处理: public-apis/public-apis
+[2026-05-21T08:00:43.328898]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T08:00:43.329867] 处理: EbookFoundation/free-programming-books
+[2026-05-21T08:00:43.910119]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T08:00:43.910956] 处理: donnemartin/system-design-primer
+[2026-05-21T08:00:44.181254]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T08:00:44.182195] 处理: vinta/awesome-python
+[2026-05-21T08:00:44.460134]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T08:00:44.461043] 处理: TheAlgorithms/Python
+[2026-05-21T08:00:44.739717]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T08:00:44.749073] 基因库: 50 个
+[2026-05-21T08:00:44.749663] === 进化完成 ===
+[2026-05-21T09:00:46.334327] === 开始自我进化 ===
+[2026-05-21T09:00:46.334851] Phase 1: 基因觉醒
+[2026-05-21T09:00:47.644620] 处理: public-apis/public-apis
+[2026-05-21T09:00:47.909736]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T09:00:47.910469] 处理: EbookFoundation/free-programming-books
+[2026-05-21T09:00:48.196583]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T09:00:48.197374] 处理: donnemartin/system-design-primer
+[2026-05-21T09:00:48.476326]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T09:00:48.477108] 处理: vinta/awesome-python
+[2026-05-21T09:00:48.781565]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T09:00:48.782563] 处理: TheAlgorithms/Python
+[2026-05-21T09:00:49.062293]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T09:00:49.066288] 基因库: 50 个
+[2026-05-21T09:00:49.066651] === 进化完成 ===
+[2026-05-21T10:00:50.586116] === 开始自我进化 ===
+[2026-05-21T10:00:50.586713] Phase 1: 基因觉醒
+[2026-05-21T10:00:52.050969] 处理: public-apis/public-apis
+[2026-05-21T10:00:52.381380]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T10:00:52.382026] 处理: EbookFoundation/free-programming-books
+[2026-05-21T10:00:52.656229]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T10:00:52.657071] 处理: donnemartin/system-design-primer
+[2026-05-21T10:00:52.930003]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T10:00:52.930824] 处理: vinta/awesome-python
+[2026-05-21T10:00:53.198977]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T10:00:53.199830] 处理: TheAlgorithms/Python
+[2026-05-21T10:00:53.497224]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T10:00:53.500436] 基因库: 50 个
+[2026-05-21T10:00:53.500880] === 进化完成 ===
+[2026-05-21T11:00:55.230630] === 开始自我进化 ===
+[2026-05-21T11:00:55.231349] Phase 1: 基因觉醒
+[2026-05-21T11:00:58.469531] 处理: public-apis/public-apis
+[2026-05-21T11:01:00.289260]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T11:01:00.290188] 处理: EbookFoundation/free-programming-books
+[2026-05-21T11:01:02.159086]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T11:01:02.160212] 处理: donnemartin/system-design-primer
+[2026-05-21T11:01:06.742358]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T11:01:06.743156] 处理: vinta/awesome-python
+[2026-05-21T11:01:08.380580]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T11:01:08.381258] 处理: TheAlgorithms/Python
+[2026-05-21T11:01:09.740344]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T11:01:09.744357] 基因库: 50 个
+[2026-05-21T11:01:09.744766] === 进化完成 ===
+[2026-05-21T12:00:11.195893] === 开始自我进化 ===
+[2026-05-21T12:00:11.196391] Phase 1: 基因觉醒
+[2026-05-21T12:00:12.482428] 处理: public-apis/public-apis
+[2026-05-21T12:00:12.759954]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T12:00:12.760828] 处理: EbookFoundation/free-programming-books
+[2026-05-21T12:00:13.045197]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T12:00:13.046047] 处理: donnemartin/system-design-primer
+[2026-05-21T12:00:13.814950]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T12:00:13.815692] 处理: vinta/awesome-python
+[2026-05-21T12:00:14.246156]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T12:00:14.247240] 处理: TheAlgorithms/Python
+[2026-05-21T12:00:15.105718]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T12:00:15.110336] 基因库: 50 个
+[2026-05-21T12:00:15.111053] === 进化完成 ===
+[2026-05-21T13:00:16.959647] === 开始自我进化 ===
+[2026-05-21T13:00:16.960317] Phase 1: 基因觉醒
+[2026-05-21T13:00:18.280797] 处理: public-apis/public-apis
+[2026-05-21T13:00:18.566241]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T13:00:18.566867] 处理: EbookFoundation/free-programming-books
+[2026-05-21T13:00:18.852194]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T13:00:18.852839] 处理: donnemartin/system-design-primer
+[2026-05-21T13:00:19.143383]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T13:00:19.144063] 处理: vinta/awesome-python
+[2026-05-21T13:00:19.428766]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T13:00:19.429494] 处理: TheAlgorithms/Python
+[2026-05-21T13:00:19.707796]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T13:00:19.712125] 基因库: 50 个
+[2026-05-21T13:00:19.712618] === 进化完成 ===
+[2026-05-21T14:00:35.536172] === 开始自我进化 ===
+[2026-05-21T14:00:35.536673] Phase 1: 基因觉醒
+[2026-05-21T14:00:37.316622] 处理: public-apis/public-apis
+[2026-05-21T14:00:38.011326]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T14:00:38.012088] 处理: EbookFoundation/free-programming-books
+[2026-05-21T14:00:39.082305]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T14:00:39.082944] 处理: donnemartin/system-design-primer
+[2026-05-21T14:00:39.966703]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T14:00:39.967448] 处理: vinta/awesome-python
+[2026-05-21T14:00:40.634626]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T14:00:40.635373] 处理: TheAlgorithms/Python
+[2026-05-21T14:00:41.081680]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T14:00:41.085940] 基因库: 50 个
+[2026-05-21T14:00:41.086406] === 进化完成 ===
+[2026-05-21T15:00:42.571400] === 开始自我进化 ===
+[2026-05-21T15:00:42.571963] Phase 1: 基因觉醒
+[2026-05-21T15:05:39.750323] === 开始自我进化 ===
+[2026-05-21T15:05:39.750800] Phase 1: 基因觉醒
+[2026-05-21T15:06:01.692094] 处理: public-apis/public-apis
+[2026-05-21T15:06:14.012062]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T15:06:14.012680] 处理: EbookFoundation/free-programming-books
+[2026-05-21T15:06:29.664562]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-21T15:06:29.665137] 处理: donnemartin/system-design-primer
+[2026-05-21T15:06:58.485328]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T15:06:58.485918] 处理: vinta/awesome-python
+[2026-05-21T15:07:22.935575]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T15:07:22.936392] 处理: TheAlgorithms/Python
+[2026-05-21T15:07:33.684140]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T15:07:33.685727] 基因库: 50 个
+[2026-05-21T15:07:33.686025] === 进化完成 ===
+[2026-05-21T16:00:56.307011] === 开始自我进化 ===
+[2026-05-21T16:00:56.307764] Phase 1: 基因觉醒
+[2026-05-21T16:01:06.313680] 处理: public-apis/public-apis
+[2026-05-21T16:01:14.390897]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T16:01:14.391634] 处理: EbookFoundation/free-programming-books
+[2026-05-21T16:01:24.604020]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T16:01:24.604648] 处理: donnemartin/system-design-primer
+[2026-05-21T16:01:37.702459]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T16:01:37.703244] 处理: vinta/awesome-python
+[2026-05-21T16:01:43.497142]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T16:01:43.497843] 处理: TheAlgorithms/Python
+[2026-05-21T16:01:51.881692]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-21T16:01:51.885474] 基因库: 50 个
+[2026-05-21T16:01:51.885961] === 进化完成 ===
+[2026-05-21T17:00:53.396263] === 开始自我进化 ===
+[2026-05-21T17:00:53.396717] Phase 1: 基因觉醒
+[2026-05-21T17:00:55.552172] 处理: public-apis/public-apis
+[2026-05-21T17:00:57.922430] 处理: EbookFoundation/free-programming-books
+[2026-05-21T17:01:02.886887] 处理: donnemartin/system-design-primer
+[2026-05-21T17:01:06.503084] 处理: vinta/awesome-python
+[2026-05-21T17:01:09.400708]   build.py: 50 基因
+[2026-05-21T17:01:09.401268] 处理: TheAlgorithms/Python
+[2026-05-21T17:01:17.984769] 基因库: 50 个
+[2026-05-21T17:01:17.985347] === 进化完成 ===
+[2026-05-21T18:00:17.657304] === 开始自我进化 ===
+[2026-05-21T18:00:17.657779] Phase 1: 基因觉醒
+[2026-05-21T18:00:19.290391] 处理: public-apis/public-apis
+[2026-05-21T18:00:21.189120] 处理: EbookFoundation/free-programming-books
+[2026-05-21T18:00:24.891740] 处理: donnemartin/system-design-primer
+[2026-05-21T18:00:30.424451] 处理: vinta/awesome-python
+[2026-05-21T18:00:33.042530]   build.py: 50 基因
+[2026-05-21T18:00:33.043428] 处理: TheAlgorithms/Python
+[2026-05-21T18:00:39.709091] 基因库: 50 个
+[2026-05-21T18:00:39.709556] === 进化完成 ===
+[2026-05-21T19:00:41.189103] === 开始自我进化 ===
+[2026-05-21T19:00:41.189638] Phase 1: 基因觉醒
+[2026-05-21T19:00:42.338200] 处理: public-apis/public-apis
+[2026-05-21T19:00:43.217340] 处理: EbookFoundation/free-programming-books
+[2026-05-21T19:00:45.150856] 处理: donnemartin/system-design-primer
+[2026-05-21T19:00:47.684273] 处理: vinta/awesome-python
+[2026-05-21T19:00:49.452093]   build.py: 50 基因
+[2026-05-21T19:00:49.452717] 处理: TheAlgorithms/Python
+[2026-05-21T19:00:52.997313] 基因库: 50 个
+[2026-05-21T19:00:52.997718] === 进化完成 ===
+[2026-05-21T20:00:54.395238] === 开始自我进化 ===
+[2026-05-21T20:00:54.395757] Phase 1: 基因觉醒
+[2026-05-21T20:00:56.009243] 处理: public-apis/public-apis
+[2026-05-21T20:00:57.645206] 处理: EbookFoundation/free-programming-books
+[2026-05-21T20:01:01.105944] 处理: donnemartin/system-design-primer
+[2026-05-21T20:01:04.988171] 处理: vinta/awesome-python
+[2026-05-21T20:01:07.484437]   build.py: 50 基因
+[2026-05-21T20:01:07.485007] 处理: TheAlgorithms/Python
+[2026-05-21T20:01:13.524537] 基因库: 50 个
+[2026-05-21T20:01:13.524976] === 进化完成 ===
+[2026-05-21T21:00:14.920881] === 开始自我进化 ===
+[2026-05-21T21:00:14.921413] Phase 1: 基因觉醒
+[2026-05-21T21:00:16.282385] 处理: public-apis/public-apis
+[2026-05-21T21:00:17.761479] 处理: EbookFoundation/free-programming-books
+[2026-05-21T21:00:20.889728] 处理: donnemartin/system-design-primer
+[2026-05-21T21:00:24.532317] 处理: vinta/awesome-python
+[2026-05-21T21:00:27.085165]   build.py: 50 基因
+[2026-05-21T21:00:27.085669] 处理: TheAlgorithms/Python
+[2026-05-21T21:00:33.571510] 基因库: 50 个
+[2026-05-21T21:00:33.571939] === 进化完成 ===
+[2026-05-21T22:00:34.951304] === 开始自我进化 ===
+[2026-05-21T22:00:34.951840] Phase 1: 基因觉醒
+[2026-05-21T22:00:36.701055] 处理: public-apis/public-apis
+[2026-05-21T22:00:38.374810] 处理: EbookFoundation/free-programming-books
+[2026-05-21T22:00:41.955452] 处理: donnemartin/system-design-primer
+[2026-05-21T22:00:46.095058] 处理: vinta/awesome-python
+[2026-05-21T22:00:48.853231]   build.py: 50 基因
+[2026-05-21T22:00:48.853794] 处理: TheAlgorithms/Python
+[2026-05-21T22:00:54.733879] 基因库: 50 个
+[2026-05-21T22:00:54.734323] === 进化完成 ===
+[2026-05-21T23:00:56.137269] === 开始自我进化 ===
+[2026-05-21T23:00:56.137788] Phase 1: 基因觉醒
+[2026-05-21T23:00:57.614282] 处理: public-apis/public-apis
+[2026-05-21T23:00:59.658399] 处理: EbookFoundation/free-programming-books
+[2026-05-21T23:01:03.874829] 处理: donnemartin/system-design-primer
+[2026-05-21T23:01:07.098371] 处理: vinta/awesome-python
+[2026-05-21T23:01:09.287494]   build.py: 50 基因
+[2026-05-21T23:01:09.288078] 处理: TheAlgorithms/Python
+[2026-05-21T23:01:20.700595] 基因库: 50 个
+[2026-05-21T23:01:20.700952] === 进化完成 ===
+[2026-05-22T00:00:22.200784] === 开始自我进化 ===
+[2026-05-22T00:00:22.201651] Phase 1: 基因觉醒
+[2026-05-22T00:00:24.422093] 处理: public-apis/public-apis
+[2026-05-22T00:00:27.511643] 处理: EbookFoundation/free-programming-books
+[2026-05-22T00:00:31.344892] 处理: donnemartin/system-design-primer
+[2026-05-22T00:00:35.199519] 处理: vinta/awesome-python
+[2026-05-22T00:00:38.036112]   build.py: 50 基因
+[2026-05-22T00:00:38.036681] 处理: TheAlgorithms/Python
+[2026-05-22T00:00:47.205795] 基因库: 50 个
+[2026-05-22T00:00:47.206188] === 进化完成 ===
+[2026-05-22T01:00:48.653037] === 开始自我进化 ===
+[2026-05-22T01:00:48.653548] Phase 1: 基因觉醒
+[2026-05-22T01:00:49.888023] 处理: public-apis/public-apis
+[2026-05-22T01:00:50.956203] 处理: EbookFoundation/free-programming-books
+[2026-05-22T01:00:53.650695] 处理: donnemartin/system-design-primer
+[2026-05-22T01:01:01.130683] 处理: vinta/awesome-python
+[2026-05-22T01:01:02.926500]   build.py: 50 基因
+[2026-05-22T01:01:02.927063] 处理: TheAlgorithms/Python
+[2026-05-22T01:01:07.785175] 基因库: 50 个
+[2026-05-22T01:01:07.785715] === 进化完成 ===
+[2026-05-22T02:00:09.776996] === 开始自我进化 ===
+[2026-05-22T02:00:09.777535] Phase 1: 基因觉醒
+[2026-05-22T02:00:11.093517] 处理: public-apis/public-apis
+[2026-05-22T02:00:12.212296] 处理: EbookFoundation/free-programming-books
+[2026-05-22T02:00:14.931745] 处理: donnemartin/system-design-primer
+[2026-05-22T02:00:17.458690] 处理: vinta/awesome-python
+[2026-05-22T02:00:19.491340]   build.py: 50 基因
+[2026-05-22T02:00:19.491890] 处理: TheAlgorithms/Python
+[2026-05-22T02:00:24.764012] 基因库: 50 个
+[2026-05-22T02:00:24.764355] === 进化完成 ===
+[2026-05-22T03:00:26.198428] === 开始自我进化 ===
+[2026-05-22T03:00:26.198962] Phase 1: 基因觉醒
+[2026-05-22T03:00:27.520489] 处理: public-apis/public-apis
+[2026-05-22T03:00:28.591942] 处理: EbookFoundation/free-programming-books
+[2026-05-22T03:00:30.929321] 处理: donnemartin/system-design-primer
+[2026-05-22T03:00:33.122479] 处理: vinta/awesome-python
+[2026-05-22T03:00:34.835876]   build.py: 50 基因
+[2026-05-22T03:00:34.836438] 处理: TheAlgorithms/Python
+[2026-05-22T03:00:38.717159] 基因库: 50 个
+[2026-05-22T03:00:38.717468] === 进化完成 ===
+[2026-05-22T04:00:40.138402] === 开始自我进化 ===
+[2026-05-22T04:00:40.138897] Phase 1: 基因觉醒
+[2026-05-22T04:00:41.254412] 处理: public-apis/public-apis
+[2026-05-22T04:00:42.203919] 处理: EbookFoundation/free-programming-books
+[2026-05-22T04:00:44.529541] 处理: donnemartin/system-design-primer
+[2026-05-22T04:00:46.773229] 处理: vinta/awesome-python
+[2026-05-22T04:00:48.376040]   build.py: 50 基因
+[2026-05-22T04:00:48.376590] 处理: TheAlgorithms/Python
+[2026-05-22T04:00:52.349651] 基因库: 50 个
+[2026-05-22T04:00:52.350074] === 进化完成 ===
+[2026-05-22T05:00:53.853737] === 开始自我进化 ===
+[2026-05-22T05:00:53.854710] Phase 1: 基因觉醒
+[2026-05-22T05:00:55.338862] 处理: public-apis/public-apis
+[2026-05-22T05:00:56.351254] 处理: EbookFoundation/free-programming-books
+[2026-05-22T05:00:58.970355] 处理: donnemartin/system-design-primer
+[2026-05-22T05:01:01.409520] 处理: vinta/awesome-python
+[2026-05-22T05:01:03.059005]   build.py: 50 基因
+[2026-05-22T05:01:03.059594] 处理: TheAlgorithms/Python
+[2026-05-22T05:01:07.449594] 基因库: 50 个
+[2026-05-22T05:01:07.449957] === 进化完成 ===
+[2026-05-22T06:00:08.845532] === 开始自我进化 ===
+[2026-05-22T06:00:08.846299] Phase 1: 基因觉醒
+[2026-05-22T06:00:10.089555] 处理: public-apis/public-apis
+[2026-05-22T06:00:11.126539] 处理: EbookFoundation/free-programming-books
+[2026-05-22T06:00:13.045755] 处理: donnemartin/system-design-primer
+[2026-05-22T06:00:15.096144] 处理: vinta/awesome-python
+[2026-05-22T06:00:16.728741]   build.py: 50 基因
+[2026-05-22T06:00:16.729226] 处理: TheAlgorithms/Python
+[2026-05-22T06:00:20.907163] 基因库: 50 个
+[2026-05-22T06:00:20.907523] === 进化完成 ===
+[2026-05-22T07:00:22.358383] === 开始自我进化 ===
+[2026-05-22T07:00:22.358984] Phase 1: 基因觉醒
+[2026-05-22T07:00:23.547508] 处理: public-apis/public-apis
+[2026-05-22T07:00:24.589902] 处理: EbookFoundation/free-programming-books
+[2026-05-22T07:00:26.857338] 处理: donnemartin/system-design-primer
+[2026-05-22T07:00:29.016462] 处理: vinta/awesome-python
+[2026-05-22T07:00:30.652074]   build.py: 50 基因
+[2026-05-22T07:00:30.652926] 处理: TheAlgorithms/Python
+[2026-05-22T07:00:34.500010] 基因库: 50 个
+[2026-05-22T07:00:34.500454] === 进化完成 ===
+[2026-05-22T08:00:02.100699] === 开始自我进化 ===
+[2026-05-22T08:00:02.101190] Phase 1: 基因觉醒
+[2026-05-22T08:00:03.481156] 处理: public-apis/public-apis
+[2026-05-22T08:00:04.492607] 处理: EbookFoundation/free-programming-books
+[2026-05-22T08:00:06.837063] 处理: donnemartin/system-design-primer
+[2026-05-22T08:00:09.092098] 处理: vinta/awesome-python
+[2026-05-22T08:00:10.859055]   build.py: 50 基因
+[2026-05-22T08:00:10.859691] 处理: TheAlgorithms/Python
+[2026-05-22T08:00:15.087282] 基因库: 50 个
+[2026-05-22T08:00:15.087752] === 进化完成 ===
+[2026-05-22T09:00:48.084135] === 开始自我进化 ===
+[2026-05-22T09:00:48.084711] Phase 1: 基因觉醒
+[2026-05-22T09:00:49.394591] 处理: public-apis/public-apis
+[2026-05-22T09:00:50.469638] 处理: EbookFoundation/free-programming-books
+[2026-05-22T09:00:52.741360] 处理: donnemartin/system-design-primer
+[2026-05-22T09:00:54.891979] 处理: vinta/awesome-python
+[2026-05-22T09:00:56.560840]   build.py: 50 基因
+[2026-05-22T09:00:56.561318] 处理: TheAlgorithms/Python
+[2026-05-22T09:01:00.646516] 基因库: 50 个
+[2026-05-22T09:01:00.646866] === 进化完成 ===
+[2026-05-22T10:00:28.298203] === 开始自我进化 ===
+[2026-05-22T10:00:28.298686] Phase 1: 基因觉醒
+[2026-05-22T11:00:27.368241] === 开始自我进化 ===
+[2026-05-22T11:00:27.368721] Phase 1: 基因觉醒
+[2026-05-22T11:00:28.720652] 处理: public-apis/public-apis
+[2026-05-22T11:00:29.669801] 处理: EbookFoundation/free-programming-books
+[2026-05-22T11:00:33.262739] 处理: donnemartin/system-design-primer
+[2026-05-22T11:00:35.076999] 处理: vinta/awesome-python
+[2026-05-22T11:00:36.749474]   build.py: 50 基因
+[2026-05-22T11:00:36.749968] 处理: TheAlgorithms/Python
+[2026-05-22T11:00:39.894599] 基因库: 50 个
+[2026-05-22T11:00:39.894990] === 进化完成 ===
+[2026-05-22T12:00:48.701956] === 开始自我进化 ===
+[2026-05-22T12:00:48.702328] Phase 1: 基因觉醒
+[2026-05-22T12:00:49.963233] 处理: public-apis/public-apis
+[2026-05-22T12:00:51.009258] 处理: EbookFoundation/free-programming-books
+[2026-05-22T12:00:53.368529] 处理: donnemartin/system-design-primer
+[2026-05-22T12:00:55.531961] 处理: vinta/awesome-python
+[2026-05-22T12:00:57.227786]   build.py: 50 基因
+[2026-05-22T12:00:57.228252] 处理: TheAlgorithms/Python
+[2026-05-22T12:01:01.364127] 基因库: 50 个
+[2026-05-22T12:01:01.364574] === 进化完成 ===
+[2026-05-22T13:00:53.121651] === 开始自我进化 ===
+[2026-05-22T13:00:53.122193] Phase 1: 基因觉醒
+[2026-05-22T13:00:54.472421] 处理: public-apis/public-apis
+[2026-05-22T13:00:55.406672] 处理: EbookFoundation/free-programming-books
+[2026-05-22T13:00:57.655766] 处理: donnemartin/system-design-primer
+[2026-05-22T13:00:59.943714] 处理: vinta/awesome-python
+[2026-05-22T13:01:01.589581]   build.py: 50 基因
+[2026-05-22T13:01:01.590100] 处理: TheAlgorithms/Python
+[2026-05-22T13:01:05.505623] 基因库: 50 个
+[2026-05-22T13:01:05.505955] === 进化完成 ===
+[2026-05-22T14:00:44.789124] === 开始自我进化 ===
+[2026-05-22T14:00:44.789610] Phase 1: 基因觉醒
+[2026-05-22T14:00:46.226323] 处理: public-apis/public-apis
+[2026-05-22T14:00:47.899275] 处理: EbookFoundation/free-programming-books
+[2026-05-22T14:00:52.609201] 处理: donnemartin/system-design-primer
+[2026-05-22T14:00:57.997161] 处理: vinta/awesome-python
+[2026-05-22T14:01:01.530337]   build.py: 50 基因
+[2026-05-22T14:01:01.530873] 处理: TheAlgorithms/Python
+[2026-05-22T14:01:08.289029] 基因库: 50 个
+[2026-05-22T14:01:08.289484] === 进化完成 ===
+[2026-05-22T15:00:53.349879] === 开始自我进化 ===
+[2026-05-22T15:00:53.350365] Phase 1: 基因觉醒
+[2026-05-22T15:00:55.315438] 处理: public-apis/public-apis
+[2026-05-22T15:00:57.010900] 处理: EbookFoundation/free-programming-books
+[2026-05-22T15:01:00.016020] 处理: donnemartin/system-design-primer
+[2026-05-22T15:01:03.313742] 处理: vinta/awesome-python
+[2026-05-22T15:01:05.044952]   build.py: 50 基因
+[2026-05-22T15:01:05.045361] 处理: TheAlgorithms/Python
+[2026-05-22T15:01:08.974756] 基因库: 50 个
+[2026-05-22T15:01:08.975125] === 进化完成 ===
+[2026-05-22T16:00:10.326053] === 开始自我进化 ===
+[2026-05-22T16:00:10.326554] Phase 1: 基因觉醒
+[2026-05-22T16:00:13.515795] 处理: public-apis/public-apis
+[2026-05-22T16:00:15.247688] 处理: EbookFoundation/free-programming-books
+[2026-05-22T16:00:18.194824] 处理: donnemartin/system-design-primer
+[2026-05-22T16:00:20.779260] 处理: vinta/awesome-python
+[2026-05-22T16:00:26.082692]   build.py: 50 基因
+[2026-05-22T16:00:26.083131] 处理: TheAlgorithms/Python
+[2026-05-22T16:00:31.889474] 基因库: 50 个
+[2026-05-22T16:00:31.889856] === 进化完成 ===
+[2026-05-22T17:00:33.988000] === 开始自我进化 ===
+[2026-05-22T17:00:33.988390] Phase 1: 基因觉醒
+[2026-05-22T17:00:35.408814] 处理: public-apis/public-apis
+[2026-05-22T17:00:37.853217] 处理: EbookFoundation/free-programming-books
+[2026-05-22T17:00:41.009777] 处理: donnemartin/system-design-primer
+[2026-05-22T17:00:45.361643] 处理: vinta/awesome-python
+[2026-05-22T17:00:46.627661]   错误: HTTP Error 403: rate limit exceeded
+[2026-05-22T17:00:46.628348] 处理: TheAlgorithms/Python
+[2026-05-22T17:00:53.327927] 基因库: 50 个
+[2026-05-22T17:00:53.328190] === 进化完成 ===
+[2026-05-22T18:00:54.725726] === 开始自我进化 ===
+[2026-05-22T18:00:54.726180] Phase 1: 基因觉醒
+[2026-05-22T18:00:55.979270] 处理: public-apis/public-apis
+[2026-05-22T18:00:57.512535] 处理: EbookFoundation/free-programming-books
+[2026-05-22T18:01:00.079997] 处理: donnemartin/system-design-primer
+[2026-05-22T18:01:02.623566] 处理: vinta/awesome-python
+[2026-05-22T18:01:04.452349]   build.py: 50 基因
+[2026-05-22T18:01:04.453106] 处理: TheAlgorithms/Python
+[2026-05-22T18:01:08.639889] 基因库: 50 个
+[2026-05-22T18:01:08.640149] === 进化完成 ===
+[2026-05-22T19:00:10.073123] === 开始自我进化 ===
+[2026-05-22T19:00:10.073618] Phase 1: 基因觉醒
+[2026-05-22T19:00:12.567387] 处理: public-apis/public-apis
+[2026-05-22T19:00:14.161488] 处理: EbookFoundation/free-programming-books
+[2026-05-22T19:00:16.808967] 处理: donnemartin/system-design-primer
+[2026-05-22T19:00:19.192929] 处理: vinta/awesome-python
+[2026-05-22T19:00:20.978130]   build.py: 50 基因
+[2026-05-22T19:00:20.978725] 处理: TheAlgorithms/Python
+[2026-05-22T19:00:25.220893] 基因库: 50 个
+[2026-05-22T19:00:25.221322] === 进化完成 ===
+[2026-05-22T20:00:26.548197] === 开始自我进化 ===
+[2026-05-22T20:00:26.548583] Phase 1: 基因觉醒
+[2026-05-22T20:00:27.855114] 处理: public-apis/public-apis
+[2026-05-22T20:00:29.211047] 处理: EbookFoundation/free-programming-books
+[2026-05-22T20:00:31.827937] 处理: donnemartin/system-design-primer
+[2026-05-22T20:00:34.466343] 处理: vinta/awesome-python
+[2026-05-22T20:00:36.197577]   build.py: 50 基因
+[2026-05-22T20:00:36.198022] 处理: TheAlgorithms/Python
+[2026-05-22T20:00:40.489814] 基因库: 50 个
+[2026-05-22T20:00:40.490389] === 进化完成 ===
+[2026-05-22T21:00:41.068398] === 开始自我进化 ===
+[2026-05-22T21:00:41.069204] Phase 1: 基因觉醒
+[2026-05-22T21:00:42.277788] 处理: public-apis/public-apis
+[2026-05-22T21:00:43.448649] 处理: EbookFoundation/free-programming-books
+[2026-05-22T21:00:45.918439] 处理: donnemartin/system-design-primer
+[2026-05-22T21:00:48.164924] 处理: vinta/awesome-python
+[2026-05-22T21:00:51.132378]   build.py: 50 基因
+[2026-05-22T21:00:51.132804] 处理: TheAlgorithms/Python
+[2026-05-22T21:00:55.360913] 基因库: 50 个
+[2026-05-22T21:00:55.361562] === 进化完成 ===
+[2026-05-22T22:00:51.622537] === 开始自我进化 ===
+[2026-05-22T22:00:51.623134] Phase 1: 基因觉醒
+[2026-05-22T22:00:53.375515] 处理: public-apis/public-apis
+[2026-05-22T22:00:54.575270] 处理: EbookFoundation/free-programming-books
+[2026-05-22T22:00:57.029112] 处理: donnemartin/system-design-primer
+[2026-05-22T22:00:59.611698] 处理: vinta/awesome-python
+[2026-05-22T22:01:01.364083]   build.py: 50 基因
+[2026-05-22T22:01:01.364582] 处理: TheAlgorithms/Python
+[2026-05-22T22:01:05.944633] 基因库: 50 个
+[2026-05-22T22:01:05.945018] === 进化完成 ===
+[2026-05-22T23:00:13.229063] === 开始自我进化 ===
+[2026-05-22T23:00:13.229555] Phase 1: 基因觉醒
+[2026-05-22T23:00:14.844462] 处理: public-apis/public-apis
+[2026-05-22T23:00:17.777763] 处理: EbookFoundation/free-programming-books
+[2026-05-22T23:00:20.456106] 处理: donnemartin/system-design-primer
+[2026-05-22T23:00:22.873707] 处理: vinta/awesome-python
+[2026-05-22T23:00:26.194275]   build.py: 50 基因
+[2026-05-22T23:00:26.194678] 处理: TheAlgorithms/Python
+[2026-05-22T23:00:30.529902] 基因库: 50 个
+[2026-05-22T23:00:30.530277] === 进化完成 ===
+[2026-05-23T00:00:16.501153] === 开始自我进化 ===
+[2026-05-23T00:00:16.501792] Phase 1: 基因觉醒
+[2026-05-23T00:00:17.963861] 处理: public-apis/public-apis
+[2026-05-23T00:00:19.572422] 处理: EbookFoundation/free-programming-books
+[2026-05-23T00:00:23.615596] 处理: donnemartin/system-design-primer
+[2026-05-23T00:00:27.034126] 处理: vinta/awesome-python
+[2026-05-23T00:00:28.863479]   build.py: 50 基因
+[2026-05-23T00:00:28.863964] 处理: TheAlgorithms/Python
+[2026-05-23T00:00:35.180411] 基因库: 50 个
+[2026-05-23T00:00:35.180776] === 进化完成 ===
+[2026-05-23T01:00:20.483870] === 开始自我进化 ===
+[2026-05-23T01:00:20.484256] Phase 1: 基因觉醒
+[2026-05-23T01:00:21.878150] 处理: public-apis/public-apis
+[2026-05-23T01:00:22.991776] 处理: EbookFoundation/free-programming-books
+[2026-05-23T01:00:25.820614] 处理: donnemartin/system-design-primer
+[2026-05-23T01:00:28.240897] 处理: vinta/awesome-python
+[2026-05-23T01:00:30.657004]   build.py: 50 基因
+[2026-05-23T01:00:30.657484] 处理: TheAlgorithms/Python
+[2026-05-23T01:00:37.156863] 基因库: 50 个
+[2026-05-23T01:00:37.157188] === 进化完成 ===
+[2026-05-23T02:00:26.514430] === 开始自我进化 ===
+[2026-05-23T02:00:26.514780] Phase 1: 基因觉醒
+[2026-05-23T02:00:27.854721] 处理: public-apis/public-apis
+[2026-05-23T02:00:28.936744] 处理: EbookFoundation/free-programming-books
+[2026-05-23T02:00:31.642480] 处理: donnemartin/system-design-primer
+[2026-05-23T02:00:33.909363] 处理: vinta/awesome-python
+[2026-05-23T02:00:35.640594]   build.py: 50 基因
+[2026-05-23T02:00:35.641138] 处理: TheAlgorithms/Python
+[2026-05-23T02:00:40.139679] 基因库: 50 个
+[2026-05-23T02:00:40.140071] === 进化完成 ===
+[2026-05-23T03:00:06.833529] === 开始自我进化 ===
+[2026-05-23T03:00:06.834054] Phase 1: 基因觉醒
+[2026-05-23T04:00:20.226377] === 开始自我进化 ===
+[2026-05-23T04:00:20.226870] Phase 1: 基因觉醒
+[2026-05-23T04:00:21.494581] 处理: public-apis/public-apis
+[2026-05-23T04:00:22.525807] 处理: EbookFoundation/free-programming-books
+[2026-05-23T04:00:24.922792] 处理: donnemartin/system-design-primer
+[2026-05-23T04:00:27.114882] 处理: vinta/awesome-python
+[2026-05-23T04:00:28.877737]   build.py: 50 基因
+[2026-05-23T04:00:28.878277] 处理: TheAlgorithms/Python
+[2026-05-23T04:00:32.827551] 基因库: 50 个
+[2026-05-23T04:00:32.827816] === 进化完成 ===
+[2026-05-23T05:00:44.275312] === 开始自我进化 ===
+[2026-05-23T05:00:44.275803] Phase 1: 基因觉醒
+[2026-05-23T05:00:45.444684] 处理: public-apis/public-apis
+[2026-05-23T05:00:46.464838] 处理: EbookFoundation/free-programming-books
+[2026-05-23T05:00:48.727124] 处理: donnemartin/system-design-primer
+[2026-05-23T05:00:51.016871] 处理: vinta/awesome-python
+[2026-05-23T05:00:52.840933]   build.py: 50 基因
+[2026-05-23T05:00:52.841433] 处理: TheAlgorithms/Python
+[2026-05-23T05:00:56.894598] 基因库: 50 个
+[2026-05-23T05:00:56.895114] === 进化完成 ===
+[2026-05-23T06:00:09.069074] === 开始自我进化 ===
+[2026-05-23T06:00:09.069561] Phase 1: 基因觉醒
+[2026-05-23T06:00:10.304064] 处理: public-apis/public-apis
+[2026-05-23T06:00:11.412565] 处理: EbookFoundation/free-programming-books
+[2026-05-23T06:00:13.789781] 处理: donnemartin/system-design-primer
+[2026-05-23T06:00:15.997743] 处理: vinta/awesome-python
+[2026-05-23T06:00:17.706779]   build.py: 50 基因
+[2026-05-23T06:00:17.707200] 处理: TheAlgorithms/Python
+[2026-05-23T06:00:23.918424] 基因库: 50 个
+[2026-05-23T06:00:23.918809] === 进化完成 ===
+[2026-05-23T07:00:34.728901] === 开始自我进化 ===
+[2026-05-23T07:00:34.729456] Phase 1: 基因觉醒
+[2026-05-23T07:00:36.060393] 处理: public-apis/public-apis
+[2026-05-23T07:00:37.117606] 处理: EbookFoundation/free-programming-books
+[2026-05-23T07:00:39.340370] 处理: donnemartin/system-design-primer
+[2026-05-23T07:00:41.471283] 处理: vinta/awesome-python
+[2026-05-23T07:00:43.097110]   build.py: 50 基因
+[2026-05-23T07:00:43.097650] 处理: TheAlgorithms/Python
+[2026-05-23T07:00:46.887748] 基因库: 50 个
+[2026-05-23T07:00:46.888031] === 进化完成 ===
+[2026-05-23T08:00:57.346167] === 开始自我进化 ===
+[2026-05-23T08:00:57.346678] Phase 1: 基因觉醒
+[2026-05-23T08:00:58.568035] 处理: public-apis/public-apis
+[2026-05-23T08:00:59.621618] 处理: EbookFoundation/free-programming-books
+[2026-05-23T08:01:01.897571] 处理: donnemartin/system-design-primer
+[2026-05-23T08:01:04.045332] 处理: vinta/awesome-python
+[2026-05-23T08:01:05.727341]   build.py: 50 基因
+[2026-05-23T08:01:05.727940] 处理: TheAlgorithms/Python
+[2026-05-23T08:01:08.662624] 基因库: 50 个
+[2026-05-23T08:01:08.662980] === 进化完成 ===
+[2026-05-23T09:00:26.786263] === 开始自我进化 ===
+[2026-05-23T09:00:26.787222] Phase 1: 基因觉醒
+[2026-05-23T09:00:28.946662] 处理: public-apis/public-apis
+[2026-05-23T09:00:31.214995] 处理: EbookFoundation/free-programming-books
+[2026-05-23T09:00:36.394576] 处理: donnemartin/system-design-primer
+[2026-05-23T09:00:41.108246] 处理: vinta/awesome-python
+[2026-05-23T09:00:44.716636]   build.py: 50 基因
+[2026-05-23T09:00:44.717101] 处理: TheAlgorithms/Python
+[2026-05-23T09:00:53.397693] 基因库: 50 个
+[2026-05-23T09:00:53.397959] === 进化完成 ===
+[2026-05-23T10:00:54.756539] === 开始自我进化 ===
+[2026-05-23T10:00:54.756893] Phase 1: 基因觉醒
+[2026-05-23T10:00:56.354217] 处理: public-apis/public-apis
+[2026-05-23T10:00:57.747776] 处理: EbookFoundation/free-programming-books
+[2026-05-23T10:01:01.673570] 处理: donnemartin/system-design-primer
+[2026-05-23T10:01:04.929208] 处理: vinta/awesome-python
+[2026-05-23T10:01:06.937986]   build.py: 50 基因
+[2026-05-23T10:01:06.938553] 处理: TheAlgorithms/Python
+[2026-05-23T10:01:12.950404] 基因库: 50 个
+[2026-05-23T10:01:12.950774] === 进化完成 ===
+[2026-05-23T11:00:55.623764] === 开始自我进化 ===
+[2026-05-23T11:00:55.624195] Phase 1: 基因觉醒
+[2026-05-23T11:00:57.537830] 处理: public-apis/public-apis
+[2026-05-23T11:00:59.023899] 处理: EbookFoundation/free-programming-books
+[2026-05-23T11:01:02.388705] 处理: donnemartin/system-design-primer
+[2026-05-23T11:01:05.246574] 处理: vinta/awesome-python
+[2026-05-23T11:01:07.331841]   build.py: 50 基因
+[2026-05-23T11:01:07.332284] 处理: TheAlgorithms/Python
+[2026-05-23T11:01:12.594429] 基因库: 50 个
+[2026-05-23T11:01:12.594685] === 进化完成 ===
+[2026-05-23T12:00:13.770067] === 开始自我进化 ===
+[2026-05-23T12:00:13.770615] Phase 1: 基因觉醒
+[2026-05-23T12:00:15.683206] 处理: public-apis/public-apis
+[2026-05-23T12:00:16.906187] 处理: EbookFoundation/free-programming-books
+[2026-05-23T12:00:20.185197] 处理: donnemartin/system-design-primer
+[2026-05-23T12:00:23.845452] 处理: vinta/awesome-python
+[2026-05-23T12:00:26.782038]   build.py: 50 基因
+[2026-05-23T12:00:26.782561] 处理: TheAlgorithms/Python
+[2026-05-23T12:00:32.996092] 基因库: 50 个
+[2026-05-23T12:00:32.996329] === 进化完成 ===
+[2026-05-23T13:00:34.360001] === 开始自我进化 ===
+[2026-05-23T13:00:34.360682] Phase 1: 基因觉醒
+[2026-05-23T13:00:37.258631] 处理: public-apis/public-apis
+[2026-05-23T13:00:38.679936] 处理: EbookFoundation/free-programming-books
+[2026-05-23T13:00:43.411675] 处理: donnemartin/system-design-primer
+[2026-05-23T13:00:47.094563] 处理: vinta/awesome-python
+[2026-05-23T13:00:50.595381]   build.py: 50 基因
+[2026-05-23T13:00:50.595842] 处理: TheAlgorithms/Python
+[2026-05-23T13:00:56.489187] 基因库: 50 个
+[2026-05-23T13:00:56.489433] === 进化完成 ===
+[2026-05-23T14:00:57.830104] === 开始自我进化 ===
+[2026-05-23T14:00:57.830434] Phase 1: 基因觉醒
+[2026-05-23T14:01:00.143239] 处理: public-apis/public-apis
+[2026-05-23T14:01:01.829885] 处理: EbookFoundation/free-programming-books
+[2026-05-23T14:01:06.287615] 处理: donnemartin/system-design-primer
+[2026-05-23T14:01:11.528528] 处理: vinta/awesome-python
+[2026-05-23T14:01:15.381417]   build.py: 50 基因
+[2026-05-23T14:01:15.381733] 处理: TheAlgorithms/Python
+[2026-05-23T14:01:22.457363] 基因库: 50 个
+[2026-05-23T14:01:22.457646] === 进化完成 ===
+[2026-05-23T15:00:23.714314] === 开始自我进化 ===
+[2026-05-23T15:00:23.714751] Phase 1: 基因觉醒
+[2026-05-23T15:00:25.695734] 处理: public-apis/public-apis
+[2026-05-23T15:00:26.854584] 处理: EbookFoundation/free-programming-books
+[2026-05-23T15:00:30.725762] 处理: donnemartin/system-design-primer
+[2026-05-23T15:00:34.130635] 处理: vinta/awesome-python
+[2026-05-23T15:00:39.653672]   build.py: 50 基因
+[2026-05-23T15:00:39.654066] 处理: TheAlgorithms/Python
+[2026-05-23T15:00:46.337100] 基因库: 50 个
+[2026-05-23T15:00:46.337334] === 进化完成 ===
+[2026-05-23T16:00:48.478833] === 开始自我进化 ===
+[2026-05-23T16:00:48.479228] Phase 1: 基因觉醒
+[2026-05-23T16:00:50.002124] 处理: public-apis/public-apis
+[2026-05-23T16:00:51.714546] 处理: EbookFoundation/free-programming-books
+[2026-05-23T16:00:55.949842] 处理: donnemartin/system-design-primer
+[2026-05-23T16:00:59.355447] 处理: vinta/awesome-python
+[2026-05-23T16:01:02.441933]   build.py: 50 基因
+[2026-05-23T16:01:02.442418] 处理: TheAlgorithms/Python
+[2026-05-23T16:01:13.378816] 基因库: 50 个
+[2026-05-23T16:01:13.379175] === 进化完成 ===
+[2026-05-23T17:00:13.142360] === 开始自我进化 ===
+[2026-05-23T17:00:13.142982] Phase 1: 基因觉醒
+[2026-05-23T17:00:15.891617] 处理: public-apis/public-apis
+[2026-05-23T17:00:17.607374] 处理: EbookFoundation/free-programming-books
+[2026-05-23T17:00:22.511573] 处理: donnemartin/system-design-primer
+[2026-05-23T17:00:25.854393] 处理: vinta/awesome-python
+[2026-05-23T17:00:28.886904]   build.py: 50 基因
+[2026-05-23T17:00:28.887351] 处理: TheAlgorithms/Python
+[2026-05-23T17:00:36.550832] 基因库: 50 个
+[2026-05-23T17:00:36.551143] === 进化完成 ===
+[2026-05-23T18:00:37.818499] === 开始自我进化 ===
+[2026-05-23T18:00:37.818842] Phase 1: 基因觉醒
+[2026-05-23T18:00:39.322237] 处理: public-apis/public-apis
+[2026-05-23T18:00:41.362112] 处理: EbookFoundation/free-programming-books
+[2026-05-23T18:00:45.162821] 处理: donnemartin/system-design-primer
+[2026-05-23T18:00:49.048521] 处理: vinta/awesome-python
+[2026-05-23T18:00:51.572087]   build.py: 50 基因
+[2026-05-23T18:00:51.572399] 处理: TheAlgorithms/Python
+[2026-05-23T18:01:00.343481] 基因库: 50 个
+[2026-05-23T18:01:00.343782] === 进化完成 ===
+[2026-05-23T19:00:01.705080] === 开始自我进化 ===
+[2026-05-23T19:00:01.705533] Phase 1: 基因觉醒
+[2026-05-23T19:00:03.778590] 处理: public-apis/public-apis
+[2026-05-23T19:00:05.503003] 处理: EbookFoundation/free-programming-books
+[2026-05-23T19:00:08.860096] 处理: donnemartin/system-design-primer
+[2026-05-23T19:00:13.342458] 处理: vinta/awesome-python
+[2026-05-23T19:00:15.845893]   build.py: 50 基因
+[2026-05-23T19:00:15.846234] 处理: TheAlgorithms/Python
+[2026-05-23T19:00:21.480884] 基因库: 50 个
+[2026-05-23T19:00:21.481199] === 进化完成 ===
+[2026-05-23T20:00:22.832049] === 开始自我进化 ===
+[2026-05-23T20:00:22.832590] Phase 1: 基因觉醒
+[2026-05-23T20:00:24.829391] 处理: public-apis/public-apis
+[2026-05-23T20:00:26.048192] 处理: EbookFoundation/free-programming-books
+[2026-05-23T20:00:28.362601] 处理: donnemartin/system-design-primer
+[2026-05-23T20:00:30.570330] 处理: vinta/awesome-python
+[2026-05-23T20:00:32.809043]   build.py: 50 基因
+[2026-05-23T20:00:32.809423] 处理: TheAlgorithms/Python
+[2026-05-23T20:00:37.103114] 基因库: 50 个
+[2026-05-23T20:00:37.103512] === 进化完成 ===
+[2026-05-23T21:00:38.375389] === 开始自我进化 ===
+[2026-05-23T21:00:38.375760] Phase 1: 基因觉醒
+[2026-05-23T21:00:40.889788] 处理: public-apis/public-apis
+[2026-05-23T21:00:44.327650] 处理: EbookFoundation/free-programming-books
+[2026-05-23T21:00:50.796491] 处理: donnemartin/system-design-primer
+[2026-05-23T21:01:21.482770]   错误: The read operation timed out
+[2026-05-23T21:01:21.483262] 处理: vinta/awesome-python
+[2026-05-23T21:01:26.180095]   build.py: 50 基因
+[2026-05-23T21:01:26.180616] 处理: TheAlgorithms/Python
+[2026-05-23T21:01:38.454171] 基因库: 50 个
+[2026-05-23T21:01:38.454408] === 进化完成 ===
+[2026-05-23T22:00:39.785354] === 开始自我进化 ===
+[2026-05-23T22:00:39.785807] Phase 1: 基因觉醒
+[2026-05-23T22:00:45.999944] 处理: public-apis/public-apis
+[2026-05-23T22:00:47.376317] 处理: EbookFoundation/free-programming-books
+[2026-05-23T22:00:57.056453] 处理: donnemartin/system-design-primer
+[2026-05-23T22:01:01.253995] 处理: vinta/awesome-python
+[2026-05-23T22:01:07.496892]   build.py: 50 基因
+[2026-05-23T22:01:07.497450] 处理: TheAlgorithms/Python
+[2026-05-23T22:01:15.537959] 基因库: 50 个
+[2026-05-23T22:01:15.538411] === 进化完成 ===
+[2026-05-23T23:00:16.939493] === 开始自我进化 ===
+[2026-05-23T23:00:16.939974] Phase 1: 基因觉醒
+[2026-05-23T23:00:18.256095] 处理: public-apis/public-apis
+[2026-05-23T23:00:19.366020] 处理: EbookFoundation/free-programming-books
+[2026-05-23T23:00:22.039610] 处理: donnemartin/system-design-primer
+[2026-05-23T23:00:24.623825] 处理: vinta/awesome-python
+[2026-05-23T23:00:26.736571]   build.py: 50 基因
+[2026-05-23T23:00:26.737277] 处理: TheAlgorithms/Python
+[2026-05-23T23:00:33.664572] 基因库: 50 个
+[2026-05-23T23:00:33.664865] === 进化完成 ===
+[2026-05-24T00:00:35.017187] === 开始自我进化 ===
+[2026-05-24T00:00:35.017574] Phase 1: 基因觉醒
+[2026-05-24T00:00:37.033410] 处理: public-apis/public-apis
+[2026-05-24T00:00:39.315720] 处理: EbookFoundation/free-programming-books
+[2026-05-24T00:00:46.277888] 处理: donnemartin/system-design-primer
+[2026-05-24T00:00:54.469108] 处理: vinta/awesome-python
+[2026-05-24T00:00:57.870854]   build.py: 50 基因
+[2026-05-24T00:00:57.871256] 处理: TheAlgorithms/Python
+[2026-05-24T00:01:06.655256] 基因库: 50 个
+[2026-05-24T00:01:06.655552] === 进化完成 ===
+[2026-05-24T01:00:08.034192] === 开始自我进化 ===
+[2026-05-24T01:00:08.034740] Phase 1: 基因觉醒
+[2026-05-24T01:00:09.875903] 处理: public-apis/public-apis
+[2026-05-24T01:00:11.735421] 处理: EbookFoundation/free-programming-books
+[2026-05-24T01:00:15.694397] 处理: donnemartin/system-design-primer
+[2026-05-24T01:00:23.594746] 处理: vinta/awesome-python
+[2026-05-24T01:00:28.228061]   build.py: 50 基因
+[2026-05-24T01:00:28.228514] 处理: TheAlgorithms/Python
+[2026-05-24T01:00:34.726138] 基因库: 50 个
+[2026-05-24T01:00:34.726619] === 进化完成 ===
+[2026-05-24T02:00:36.110880] === 开始自我进化 ===
+[2026-05-24T02:00:36.111332] Phase 1: 基因觉醒
+[2026-05-24T02:00:37.440041] 处理: public-apis/public-apis
+[2026-05-24T02:00:40.036419] 处理: EbookFoundation/free-programming-books
+[2026-05-24T02:00:42.957999] 处理: donnemartin/system-design-primer
+[2026-05-24T02:00:46.206874] 处理: vinta/awesome-python
+[2026-05-24T02:00:49.017897]   build.py: 50 基因
+[2026-05-24T02:00:49.018423] 处理: TheAlgorithms/Python
+[2026-05-24T02:00:58.067243] 基因库: 50 个
+[2026-05-24T02:00:58.067533] === 进化完成 ===
+[2026-05-24T03:00:59.348013] === 开始自我进化 ===
+[2026-05-24T03:00:59.348565] Phase 1: 基因觉醒
+[2026-05-24T03:01:00.551729] 处理: public-apis/public-apis
+[2026-05-24T03:01:03.066363] 处理: EbookFoundation/free-programming-books
+[2026-05-24T03:01:06.247354] 处理: donnemartin/system-design-primer
+[2026-05-24T03:01:09.628486] 处理: vinta/awesome-python
+[2026-05-24T03:01:12.243827]   build.py: 50 基因
+[2026-05-24T03:01:12.244233] 处理: TheAlgorithms/Python
+[2026-05-24T03:01:15.399135] 基因库: 50 个
+[2026-05-24T03:01:15.399395] === 进化完成 ===
+[2026-05-24T04:00:16.677424] === 开始自我进化 ===
+[2026-05-24T04:00:16.677797] Phase 1: 基因觉醒
+[2026-05-24T04:00:17.952604] 处理: public-apis/public-apis
+[2026-05-24T04:00:18.880914] 处理: EbookFoundation/free-programming-books
+[2026-05-24T04:00:21.576384] 处理: donnemartin/system-design-primer
+[2026-05-24T04:00:23.500657] 处理: vinta/awesome-python
+[2026-05-24T04:00:25.363285]   build.py: 50 基因
+[2026-05-24T04:00:25.363753] 处理: TheAlgorithms/Python
+[2026-05-24T04:00:28.908581] 基因库: 50 个
+[2026-05-24T04:00:28.908892] === 进化完成 ===
+[2026-05-24T05:00:30.228070] === 开始自我进化 ===
+[2026-05-24T05:00:30.228435] Phase 1: 基因觉醒
+[2026-05-24T05:00:31.405190] 处理: public-apis/public-apis
+[2026-05-24T05:00:32.245045] 处理: EbookFoundation/free-programming-books
+[2026-05-24T05:00:34.248094] 处理: donnemartin/system-design-primer
+[2026-05-24T05:00:37.033886] 处理: vinta/awesome-python
+[2026-05-24T05:00:38.877887]   build.py: 50 基因
+[2026-05-24T05:00:38.878338] 处理: TheAlgorithms/Python
+[2026-05-24T05:00:43.061790] 基因库: 50 个
+[2026-05-24T05:00:43.062166] === 进化完成 ===
+[2026-05-24T06:00:44.417913] === 开始自我进化 ===
+[2026-05-24T06:00:44.418353] Phase 1: 基因觉醒
+[2026-05-24T07:00:38.860914] === 开始自我进化 ===
+[2026-05-24T07:00:38.861387] Phase 1: 基因觉醒
+[2026-05-24T07:00:40.002661] 处理: public-apis/public-apis
+[2026-05-24T07:00:41.134085] 处理: EbookFoundation/free-programming-books
+[2026-05-24T07:00:43.041128] 处理: donnemartin/system-design-primer
+[2026-05-24T07:00:58.085852]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-24T07:00:58.086469] 处理: vinta/awesome-python
+[2026-05-24T07:01:13.158289]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-24T07:01:13.158915] 处理: TheAlgorithms/Python
+[2026-05-24T07:01:30.586712]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-24T07:01:30.601634] 基因库: 50 个
+[2026-05-24T07:01:30.601993] === 进化完成 ===
+[2026-05-24T08:00:31.926102] === 开始自我进化 ===
+[2026-05-24T08:00:31.926577] Phase 1: 基因觉醒
+[2026-05-24T08:00:33.223991] 处理: public-apis/public-apis
+[2026-05-24T08:00:34.175459] 处理: EbookFoundation/free-programming-books
+[2026-05-24T08:00:36.539444] 处理: donnemartin/system-design-primer
+[2026-05-24T08:00:38.853428] 处理: vinta/awesome-python
+[2026-05-24T08:00:40.468031]   build.py: 50 基因
+[2026-05-24T08:00:40.468581] 处理: TheAlgorithms/Python
+[2026-05-24T08:00:44.391823] 基因库: 50 个
+[2026-05-24T08:00:44.392209] === 进化完成 ===
+[2026-05-24T09:00:45.767858] === 开始自我进化 ===
+[2026-05-24T09:00:45.768255] Phase 1: 基因觉醒
+[2026-05-24T09:00:46.995486] 处理: public-apis/public-apis
+[2026-05-24T09:00:47.775835] 处理: EbookFoundation/free-programming-books
+[2026-05-24T09:01:04.539408]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-24T09:01:04.540095] 处理: donnemartin/system-design-primer
+[2026-05-24T09:01:07.046796] 处理: vinta/awesome-python
+[2026-05-24T09:01:08.595393]   build.py: 50 基因
+[2026-05-24T09:01:08.595997] 处理: TheAlgorithms/Python
+[2026-05-24T09:01:12.936522] 基因库: 50 个
+[2026-05-24T09:01:12.937141] === 进化完成 ===
+[2026-05-24T10:00:14.308448] === 开始自我进化 ===
+[2026-05-24T10:00:14.308881] Phase 1: 基因觉醒
+[2026-05-24T10:00:15.570029] 处理: public-apis/public-apis
+[2026-05-24T10:00:16.538246] 处理: EbookFoundation/free-programming-books
+[2026-05-24T10:00:19.924934] 处理: donnemartin/system-design-primer
+[2026-05-24T10:00:21.831867] 处理: vinta/awesome-python
+[2026-05-24T10:00:24.374936]   build.py: 50 基因
+[2026-05-24T10:00:24.375484] 处理: TheAlgorithms/Python
+[2026-05-24T10:00:28.174611] 基因库: 50 个
+[2026-05-24T10:00:28.174942] === 进化完成 ===
+[2026-05-24T11:00:30.974259] === 开始自我进化 ===
+[2026-05-24T11:00:30.974739] Phase 1: 基因觉醒
+[2026-05-24T11:00:32.422315] 处理: public-apis/public-apis
+[2026-05-24T11:00:33.340944] 处理: EbookFoundation/free-programming-books
+[2026-05-24T11:00:36.834835] 处理: donnemartin/system-design-primer
+[2026-05-24T11:00:40.030334] 处理: vinta/awesome-python
+[2026-05-24T11:00:43.238403]   build.py: 50 基因
+[2026-05-24T11:00:43.238958] 处理: TheAlgorithms/Python
+[2026-05-24T11:00:47.549482] 基因库: 50 个
+[2026-05-24T11:00:47.549844] === 进化完成 ===
+[2026-05-24T12:00:11.537926] === 开始自我进化 ===
+[2026-05-24T12:00:11.538447] Phase 1: 基因觉醒
+[2026-05-24T12:00:12.735576] 处理: public-apis/public-apis
+[2026-05-24T12:00:14.353722] 处理: EbookFoundation/free-programming-books
+[2026-05-24T12:00:17.022682] 处理: donnemartin/system-design-primer
+[2026-05-24T12:00:19.741069] 处理: vinta/awesome-python
+[2026-05-24T12:00:22.848614]   build.py: 50 基因
+[2026-05-24T12:00:22.849099] 处理: TheAlgorithms/Python
+[2026-05-24T12:00:37.980615]   错误: Remote end closed connection without response
+[2026-05-24T12:00:37.984448] 基因库: 50 个
+[2026-05-24T12:00:37.984825] === 进化完成 ===
+[2026-05-24T13:00:39.372127] === 开始自我进化 ===
+[2026-05-24T13:00:39.372562] Phase 1: 基因觉醒
+[2026-05-24T13:00:40.663364] 处理: public-apis/public-apis
+[2026-05-24T13:00:41.653146] 处理: EbookFoundation/free-programming-books
+[2026-05-24T13:00:44.294101] 处理: donnemartin/system-design-primer
+[2026-05-24T13:00:46.491084] 处理: vinta/awesome-python
+[2026-05-24T13:00:49.300578]   build.py: 50 基因
+[2026-05-24T13:00:49.301108] 处理: TheAlgorithms/Python
+[2026-05-24T13:00:57.490569] 基因库: 50 个
+[2026-05-24T13:00:57.490886] === 进化完成 ===
+[2026-05-24T14:00:15.655896] === 开始自我进化 ===
+[2026-05-24T14:00:15.656473] Phase 1: 基因觉醒
+[2026-05-24T14:00:19.835428] 处理: public-apis/public-apis
+[2026-05-24T14:00:21.323777] 处理: EbookFoundation/free-programming-books
+[2026-05-24T14:00:25.076250] 处理: donnemartin/system-design-primer
+[2026-05-24T14:00:27.491212] 处理: vinta/awesome-python
+[2026-05-24T14:00:30.209569]   build.py: 50 基因
+[2026-05-24T14:00:30.210174] 处理: TheAlgorithms/Python
+[2026-05-24T14:00:37.194767] 基因库: 50 个
+[2026-05-24T14:00:37.195174] === 进化完成 ===
+[2026-05-24T15:00:38.606608] === 开始自我进化 ===
+[2026-05-24T15:00:38.607126] Phase 1: 基因觉醒
+[2026-05-24T15:00:40.105336] 处理: public-apis/public-apis
+[2026-05-24T15:00:41.218818] 处理: EbookFoundation/free-programming-books
+[2026-05-24T15:00:43.218659] 处理: donnemartin/system-design-primer
+[2026-05-24T15:00:45.325896] 处理: vinta/awesome-python
+[2026-05-24T15:00:46.546117]   build.py: 50 基因
+[2026-05-24T15:00:46.546604] 处理: TheAlgorithms/Python
+[2026-05-24T15:00:49.765884] 基因库: 50 个
+[2026-05-24T15:00:49.766306] === 进化完成 ===
+[2026-05-24T16:00:51.251820] === 开始自我进化 ===
+[2026-05-24T16:00:51.252241] Phase 1: 基因觉醒
+[2026-05-24T16:00:52.822383] 处理: public-apis/public-apis
+[2026-05-24T16:00:53.966041] 处理: EbookFoundation/free-programming-books
+[2026-05-24T16:00:56.855924] 处理: donnemartin/system-design-primer
+[2026-05-24T16:00:59.425452] 处理: vinta/awesome-python
+[2026-05-24T16:01:01.009044]   build.py: 50 基因
+[2026-05-24T16:01:01.009545] 处理: TheAlgorithms/Python
+[2026-05-24T16:01:06.093013] 基因库: 50 个
+[2026-05-24T16:01:06.093349] === 进化完成 ===
+[2026-05-24T17:00:07.449805] === 开始自我进化 ===
+[2026-05-24T17:00:07.450370] Phase 1: 基因觉醒
+[2026-05-24T17:00:09.350864] 处理: public-apis/public-apis
+[2026-05-24T17:00:12.215365] 处理: EbookFoundation/free-programming-books
+[2026-05-24T17:00:16.338879] 处理: donnemartin/system-design-primer
+[2026-05-24T17:00:21.125364] 处理: vinta/awesome-python
+[2026-05-24T17:00:24.804450]   build.py: 50 基因
+[2026-05-24T17:00:24.805102] 处理: TheAlgorithms/Python
+[2026-05-24T17:00:39.000074] 基因库: 50 个
+[2026-05-24T17:00:39.000581] === 进化完成 ===
+[2026-05-24T18:00:41.843295] === 开始自我进化 ===
+[2026-05-24T18:00:41.843736] Phase 1: 基因觉醒
+[2026-05-24T18:00:43.002845] 处理: public-apis/public-apis
+[2026-05-24T18:00:43.806421] 处理: EbookFoundation/free-programming-books
+[2026-05-24T18:00:45.495145] 处理: donnemartin/system-design-primer
+[2026-05-24T18:00:47.285201] 处理: vinta/awesome-python
+[2026-05-24T18:00:48.548750]   build.py: 50 基因
+[2026-05-24T18:00:48.549272] 处理: TheAlgorithms/Python
+[2026-05-24T18:00:51.616312] 基因库: 50 个
+[2026-05-24T18:00:51.616713] === 进化完成 ===
+[2026-05-24T19:00:52.966284] === 开始自我进化 ===
+[2026-05-24T19:00:52.966823] Phase 1: 基因觉醒
+[2026-05-24T19:00:54.224169] 处理: public-apis/public-apis
+[2026-05-24T19:00:55.167708] 处理: EbookFoundation/free-programming-books
+[2026-05-24T19:00:57.601705] 处理: donnemartin/system-design-primer
+[2026-05-24T19:00:59.915753] 处理: vinta/awesome-python
+[2026-05-24T19:01:03.379069]   build.py: 50 基因
+[2026-05-24T19:01:03.379639] 处理: TheAlgorithms/Python
+[2026-05-24T19:01:07.796907] 基因库: 50 个
+[2026-05-24T19:01:07.797294] === 进化完成 ===
+[2026-05-24T20:00:09.213569] === 开始自我进化 ===
+[2026-05-24T20:00:09.214038] Phase 1: 基因觉醒
+[2026-05-24T20:00:10.628669] 处理: public-apis/public-apis
+[2026-05-24T20:00:11.592799] 处理: EbookFoundation/free-programming-books
+[2026-05-24T20:00:14.146697] 处理: donnemartin/system-design-primer
+[2026-05-24T20:00:16.450170] 处理: vinta/awesome-python
+[2026-05-24T20:00:18.315233]   build.py: 50 基因
+[2026-05-24T20:00:18.316117] 处理: TheAlgorithms/Python
+[2026-05-24T20:00:24.860237] 基因库: 50 个
+[2026-05-24T20:00:24.860700] === 进化完成 ===
+[2026-05-24T21:00:26.432498] === 开始自我进化 ===
+[2026-05-24T21:00:26.433051] Phase 1: 基因觉醒
+[2026-05-24T21:00:27.762397] 处理: public-apis/public-apis
+[2026-05-24T21:00:28.555683] 处理: EbookFoundation/free-programming-books
+[2026-05-24T21:00:30.424720] 处理: donnemartin/system-design-primer
+[2026-05-24T21:00:32.059631] 处理: vinta/awesome-python
+[2026-05-24T21:00:33.298881]   build.py: 50 基因
+[2026-05-24T21:00:33.299995] 处理: TheAlgorithms/Python
+[2026-05-24T21:00:36.354615] 基因库: 50 个
+[2026-05-24T21:00:36.355051] === 进化完成 ===
+[2026-05-24T22:00:44.557111] === 开始自我进化 ===
+[2026-05-24T22:00:44.557573] Phase 1: 基因觉醒
+[2026-05-24T22:00:46.418366] 处理: public-apis/public-apis
+[2026-05-24T22:00:47.409456] 处理: EbookFoundation/free-programming-books
+[2026-05-24T22:00:50.710427] 处理: donnemartin/system-design-primer
+[2026-05-24T22:00:54.411692] 处理: vinta/awesome-python
+[2026-05-24T22:00:56.375794]   build.py: 50 基因
+[2026-05-24T22:00:56.376365] 处理: TheAlgorithms/Python
+[2026-05-24T22:01:02.932951] 基因库: 50 个
+[2026-05-24T22:01:02.933496] === 进化完成 ===
+[2026-05-24T23:00:04.315005] === 开始自我进化 ===
+[2026-05-24T23:00:04.315524] Phase 1: 基因觉醒
+[2026-05-25T00:00:22.545171] === 开始自我进化 ===
+[2026-05-25T00:00:22.545722] Phase 1: 基因觉醒
+[2026-05-25T00:00:24.314493] 处理: public-apis/public-apis
+[2026-05-25T00:00:26.447709] 处理: EbookFoundation/free-programming-books
+[2026-05-25T00:00:29.485078] 处理: donnemartin/system-design-primer
+[2026-05-25T00:00:33.815124] 处理: vinta/awesome-python
+[2026-05-25T00:00:39.142445]   build.py: 50 基因
+[2026-05-25T00:00:39.143035] 处理: TheAlgorithms/Python
+[2026-05-25T00:00:42.970928] 基因库: 50 个
+[2026-05-25T00:00:42.971286] === 进化完成 ===
+[2026-05-25T01:00:44.179430] === 开始自我进化 ===
+[2026-05-25T01:00:44.179968] Phase 1: 基因觉醒
+[2026-05-25T01:00:45.497893] 处理: public-apis/public-apis
+[2026-05-25T01:00:46.319303] 处理: EbookFoundation/free-programming-books
+[2026-05-25T01:00:49.440735] 处理: donnemartin/system-design-primer
+[2026-05-25T01:00:52.220206] 处理: vinta/awesome-python
+[2026-05-25T01:00:55.417113]   build.py: 50 基因
+[2026-05-25T01:00:55.417694] 处理: TheAlgorithms/Python
+[2026-05-25T01:01:01.497905] 基因库: 50 个
+[2026-05-25T01:01:01.498286] === 进化完成 ===
+[2026-05-25T01:01:52.051119] === 开始自我进化 ===
+[2026-05-25T01:01:52.051611] Phase 1: 基因觉醒
+[2026-05-25T01:01:54.015330] 处理: public-apis/public-apis
+[2026-05-25T01:01:54.757468] 处理: EbookFoundation/free-programming-books
+[2026-05-25T01:01:56.640816] 处理: donnemartin/system-design-primer
+[2026-05-25T01:01:58.229462] 处理: vinta/awesome-python
+[2026-05-25T01:02:03.231945]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-25T01:02:03.232531] 处理: TheAlgorithms/Python
+[2026-05-25T01:02:06.524383] 基因库: 50 个
+[2026-05-25T01:02:06.524998] === 进化完成 ===
+[2026-05-25T02:00:54.402087] === 开始自我进化 ===
+[2026-05-25T02:00:54.402508] Phase 1: 基因觉醒
+[2026-05-25T02:00:55.612343] 处理: public-apis/public-apis
+[2026-05-25T02:00:56.648458] 处理: EbookFoundation/free-programming-books
+[2026-05-25T02:01:02.057692]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-25T02:01:02.058237] 处理: donnemartin/system-design-primer
+[2026-05-25T02:01:03.879470] 处理: vinta/awesome-python
+[2026-05-25T02:01:05.184335]   build.py: 50 基因
+[2026-05-25T02:01:05.184846] 处理: TheAlgorithms/Python
+[2026-05-25T02:01:08.252823] 基因库: 50 个
+[2026-05-25T02:01:08.253204] === 进化完成 ===
+[2026-05-25T03:00:44.286313] === 开始自我进化 ===
+[2026-05-25T03:00:44.286753] Phase 1: 基因觉醒
+[2026-05-25T03:00:45.653458] 处理: public-apis/public-apis
+[2026-05-25T03:00:46.909577] 处理: EbookFoundation/free-programming-books
+[2026-05-25T03:00:49.112292] 处理: donnemartin/system-design-primer
+[2026-05-25T03:00:51.556908] 处理: vinta/awesome-python
+[2026-05-25T03:00:52.948758]   build.py: 50 基因
+[2026-05-25T03:00:52.949275] 处理: TheAlgorithms/Python
+[2026-05-25T03:00:56.360511] 基因库: 50 个
+[2026-05-25T03:00:56.360944] === 进化完成 ===
+[2026-05-25T04:00:24.296197] === 开始自我进化 ===
+[2026-05-25T04:00:24.296643] Phase 1: 基因觉醒
+[2026-05-25T04:00:25.503535] 处理: public-apis/public-apis
+[2026-05-25T04:00:26.814344] 处理: EbookFoundation/free-programming-books
+[2026-05-25T04:00:29.123724] 处理: donnemartin/system-design-primer
+[2026-05-25T04:00:31.546470] 处理: vinta/awesome-python
+[2026-05-25T04:00:33.494741]   build.py: 50 基因
+[2026-05-25T04:00:33.495258] 处理: TheAlgorithms/Python
+[2026-05-25T04:00:37.008092] 基因库: 50 个
+[2026-05-25T04:00:37.008470] === 进化完成 ===
+[2026-05-25T05:00:05.060151] === 开始自我进化 ===
+[2026-05-25T05:00:05.060680] Phase 1: 基因觉醒
+[2026-05-25T05:00:06.442119] 处理: public-apis/public-apis
+[2026-05-25T05:00:07.458921] 处理: EbookFoundation/free-programming-books
+[2026-05-25T05:00:09.756781] 处理: donnemartin/system-design-primer
+[2026-05-25T05:00:12.120868] 处理: vinta/awesome-python
+[2026-05-25T05:00:13.959192]   build.py: 50 基因
+[2026-05-25T05:00:13.959900] 处理: TheAlgorithms/Python
+[2026-05-25T05:00:17.896479] 基因库: 50 个
+[2026-05-25T05:00:17.896838] === 进化完成 ===
+[2026-05-25T06:00:56.962568] === 开始自我进化 ===
+[2026-05-25T06:00:56.963098] Phase 1: 基因觉醒
+[2026-05-25T06:00:58.493269] 处理: public-apis/public-apis
+[2026-05-25T06:00:59.393677] 处理: EbookFoundation/free-programming-books
+[2026-05-25T06:01:01.514873] 处理: donnemartin/system-design-primer
+[2026-05-25T06:01:03.864800] 处理: vinta/awesome-python
+[2026-05-25T06:01:05.909545]   build.py: 50 基因
+[2026-05-25T06:01:05.910084] 处理: TheAlgorithms/Python
+[2026-05-25T06:01:09.898570] 基因库: 50 个
+[2026-05-25T06:01:09.898914] === 进化完成 ===
+[2026-05-25T07:00:19.004420] === 开始自我进化 ===
+[2026-05-25T07:00:19.004869] Phase 1: 基因觉醒
+[2026-05-25T07:00:20.273193] 处理: public-apis/public-apis
+[2026-05-25T07:00:21.209123] 处理: EbookFoundation/free-programming-books
+[2026-05-25T07:00:23.199062] 处理: donnemartin/system-design-primer
+[2026-05-25T07:00:25.184410] 处理: vinta/awesome-python
+[2026-05-25T07:00:27.060259]   build.py: 50 基因
+[2026-05-25T07:00:27.060757] 处理: TheAlgorithms/Python
+[2026-05-25T07:00:30.745094] 基因库: 50 个
+[2026-05-25T07:00:30.745442] === 进化完成 ===
+[2026-05-25T08:00:16.784251] === 开始自我进化 ===
+[2026-05-25T08:00:16.785021] Phase 1: 基因觉醒
+[2026-05-25T08:00:18.196447] 处理: public-apis/public-apis
+[2026-05-25T08:00:19.145035] 处理: EbookFoundation/free-programming-books
+[2026-05-25T08:00:21.686950] 处理: donnemartin/system-design-primer
+[2026-05-25T08:00:23.850321] 处理: vinta/awesome-python
+[2026-05-25T08:00:25.295303]   build.py: 50 基因
+[2026-05-25T08:00:25.295919] 处理: TheAlgorithms/Python
+[2026-05-25T08:00:29.165895] 基因库: 50 个
+[2026-05-25T08:00:29.166372] === 进化完成 ===
+[2026-05-25T09:00:51.340395] === 开始自我进化 ===
+[2026-05-25T09:00:51.340858] Phase 1: 基因觉醒
+[2026-05-25T09:00:52.605639] 处理: public-apis/public-apis
+[2026-05-25T09:00:53.481988] 处理: EbookFoundation/free-programming-books
+[2026-05-25T09:00:55.246510] 处理: donnemartin/system-design-primer
+[2026-05-25T09:00:56.915535] 处理: vinta/awesome-python
+[2026-05-25T09:00:58.676998]   build.py: 50 基因
+[2026-05-25T09:00:58.677826] 处理: TheAlgorithms/Python
+[2026-05-25T09:01:02.374306] 基因库: 50 个
+[2026-05-25T09:01:02.374816] === 进化完成 ===
+[2026-05-25T10:00:58.290616] === 开始自我进化 ===
+[2026-05-25T10:00:58.291220] Phase 1: 基因觉醒
+[2026-05-25T10:01:00.192981] 处理: public-apis/public-apis
+[2026-05-25T10:01:02.728688] 处理: EbookFoundation/free-programming-books
+[2026-05-25T10:01:07.889646] 处理: donnemartin/system-design-primer
+[2026-05-25T10:01:12.936150] 处理: vinta/awesome-python
+[2026-05-25T10:01:16.973748]   build.py: 50 基因
+[2026-05-25T10:01:16.974354] 处理: TheAlgorithms/Python
+[2026-05-25T10:01:23.168563] 基因库: 50 个
+[2026-05-25T10:01:23.169049] === 进化完成 ===
+[2026-05-25T11:00:46.338355] === 开始自我进化 ===
+[2026-05-25T11:00:46.338857] Phase 1: 基因觉醒
+[2026-05-25T11:00:48.409369] 处理: public-apis/public-apis
+[2026-05-25T11:00:51.493485] 处理: EbookFoundation/free-programming-books
+[2026-05-25T11:00:57.455311] 处理: donnemartin/system-design-primer
+[2026-05-25T11:01:04.040713] 处理: vinta/awesome-python
+[2026-05-25T11:01:08.011759]   build.py: 50 基因
+[2026-05-25T11:01:08.012277] 处理: TheAlgorithms/Python
+[2026-05-25T11:01:16.949466] 基因库: 50 个
+[2026-05-25T11:01:16.949935] === 进化完成 ===
+[2026-05-25T12:00:16.846002] === 开始自我进化 ===
+[2026-05-25T12:00:16.846541] Phase 1: 基因觉醒
+[2026-05-25T12:00:18.542919] 处理: public-apis/public-apis
+[2026-05-25T12:00:19.542415] 处理: EbookFoundation/free-programming-books
+[2026-05-25T12:00:22.067363] 处理: donnemartin/system-design-primer
+[2026-05-25T12:00:24.520742] 处理: vinta/awesome-python
+[2026-05-25T12:00:27.026251]   build.py: 50 基因
+[2026-05-25T12:00:27.026773] 处理: TheAlgorithms/Python
+[2026-05-25T12:00:32.016112] 基因库: 50 个
+[2026-05-25T12:00:32.016454] === 进化完成 ===
+[2026-05-25T13:00:13.481972] === 开始自我进化 ===
+[2026-05-25T13:00:13.482501] Phase 1: 基因觉醒
+[2026-05-25T13:00:15.454793] 处理: public-apis/public-apis
+[2026-05-25T13:00:18.435984] 处理: EbookFoundation/free-programming-books
+[2026-05-25T13:00:24.647942] 处理: donnemartin/system-design-primer
+[2026-05-25T13:00:29.524939] 处理: vinta/awesome-python
+[2026-05-25T13:00:32.484826]   build.py: 50 基因
+[2026-05-25T13:00:32.485431] 处理: TheAlgorithms/Python
+[2026-05-25T13:00:38.658477] 基因库: 50 个
+[2026-05-25T13:00:38.658850] === 进化完成 ===
+[2026-05-25T14:00:36.556394] === 开始自我进化 ===
+[2026-05-25T14:00:36.557241] Phase 1: 基因觉醒
+[2026-05-25T14:00:39.632472] 处理: public-apis/public-apis
+[2026-05-25T14:00:44.048301] 处理: EbookFoundation/free-programming-books
+[2026-05-25T14:00:53.635280] 处理: donnemartin/system-design-primer
+[2026-05-25T14:01:00.286768] 处理: vinta/awesome-python
+[2026-05-25T14:01:08.754528]   build.py: 50 基因
+[2026-05-25T14:01:08.755293] 处理: TheAlgorithms/Python
+[2026-05-25T14:01:24.578794] 基因库: 50 个
+[2026-05-25T14:01:24.579455] === 进化完成 ===
+[2026-05-25T15:00:50.184578] === 开始自我进化 ===
+[2026-05-25T15:00:50.185056] Phase 1: 基因觉醒
+[2026-05-25T15:00:54.604800] 处理: public-apis/public-apis
+[2026-05-25T15:00:59.246184] 处理: EbookFoundation/free-programming-books
+[2026-05-25T15:01:11.432071] 处理: donnemartin/system-design-primer
+[2026-05-25T15:01:24.825824] 处理: vinta/awesome-python
+[2026-05-25T15:01:34.156563]   build.py: 50 基因
+[2026-05-25T15:01:34.157135] 处理: TheAlgorithms/Python
+[2026-05-25T15:02:05.062953] 基因库: 50 个
+[2026-05-25T15:02:05.063439] === 进化完成 ===
+[2026-05-25T16:00:11.184662] === 开始自我进化 ===
+[2026-05-25T16:00:11.185172] Phase 1: 基因觉醒
+[2026-05-25T16:00:13.556302] 处理: public-apis/public-apis
+[2026-05-25T16:00:17.832025] 处理: EbookFoundation/free-programming-books
+[2026-05-25T16:00:26.766837] 处理: donnemartin/system-design-primer
+[2026-05-25T16:00:38.968912] 处理: vinta/awesome-python
+[2026-05-25T16:00:44.526919]   build.py: 50 基因
+[2026-05-25T16:00:44.527731] 处理: TheAlgorithms/Python
+[2026-05-25T16:00:59.675506] 基因库: 50 个
+[2026-05-25T16:00:59.675827] === 进化完成 ===
+[2026-05-25T17:00:16.259383] === 开始自我进化 ===
+[2026-05-25T17:00:16.259764] Phase 1: 基因觉醒
+[2026-05-25T17:00:17.721013] 处理: public-apis/public-apis
+[2026-05-25T17:00:18.767492] 处理: EbookFoundation/free-programming-books
+[2026-05-25T17:00:21.048485] 处理: donnemartin/system-design-primer
+[2026-05-25T17:00:22.899775] 处理: vinta/awesome-python
+[2026-05-25T17:00:24.665423]   build.py: 50 基因
+[2026-05-25T17:00:24.665972] 处理: TheAlgorithms/Python
+[2026-05-25T17:00:29.327122] 基因库: 50 个
+[2026-05-25T17:00:29.327440] === 进化完成 ===
+[2026-05-25T18:00:02.694035] === 开始自我进化 ===
+[2026-05-25T18:00:02.694518] Phase 1: 基因觉醒
+[2026-05-25T18:00:04.264655] 处理: public-apis/public-apis
+[2026-05-25T18:00:05.602583] 处理: EbookFoundation/free-programming-books
+[2026-05-25T18:00:09.013700] 处理: donnemartin/system-design-primer
+[2026-05-25T18:00:12.044862] 处理: vinta/awesome-python
+[2026-05-25T18:00:14.678203]   build.py: 50 基因
+[2026-05-25T18:00:14.678716] 处理: TheAlgorithms/Python
+[2026-05-25T18:00:21.493120] 基因库: 50 个
+[2026-05-25T18:00:21.493449] === 进化完成 ===
+[2026-05-25T19:00:44.347139] === 开始自我进化 ===
+[2026-05-25T19:00:44.347556] Phase 1: 基因觉醒
+[2026-05-25T19:00:46.024480] 处理: public-apis/public-apis
+[2026-05-25T19:00:47.740107] 处理: EbookFoundation/free-programming-books
+[2026-05-25T19:00:51.322202] 处理: donnemartin/system-design-primer
+[2026-05-25T19:00:54.399903] 处理: vinta/awesome-python
+[2026-05-25T19:00:56.518690]   build.py: 50 基因
+[2026-05-25T19:00:56.519143] 处理: TheAlgorithms/Python
+[2026-05-25T19:01:01.730880] 基因库: 50 个
+[2026-05-25T19:01:01.731409] === 进化完成 ===
+[2026-05-25T20:00:43.724992] === 开始自我进化 ===
+[2026-05-25T20:00:43.725436] Phase 1: 基因觉醒
+[2026-05-25T20:00:45.815713] 处理: public-apis/public-apis
+[2026-05-25T20:00:49.432271] 处理: EbookFoundation/free-programming-books
+[2026-05-25T20:00:53.779497] 处理: donnemartin/system-design-primer
+[2026-05-25T20:00:59.727793] 处理: vinta/awesome-python
+[2026-05-25T20:01:03.879469]   build.py: 50 基因
+[2026-05-25T20:01:03.879889] 处理: TheAlgorithms/Python
+[2026-05-25T20:01:13.019594] 基因库: 50 个
+[2026-05-25T20:01:13.020127] === 进化完成 ===
+[2026-05-25T21:00:59.996047] === 开始自我进化 ===
+[2026-05-25T21:00:59.996553] Phase 1: 基因觉醒
+[2026-05-25T21:01:01.969289] 处理: public-apis/public-apis
+[2026-05-25T21:01:03.325557] 处理: EbookFoundation/free-programming-books
+[2026-05-25T21:01:07.424139] 处理: donnemartin/system-design-primer
+[2026-05-25T21:01:10.288919] 处理: vinta/awesome-python
+[2026-05-25T21:01:12.459736]   build.py: 50 基因
+[2026-05-25T21:01:12.460501] 处理: TheAlgorithms/Python
+[2026-05-25T21:01:19.065005] 基因库: 50 个
+[2026-05-25T21:01:19.065569] === 进化完成 ===
+[2026-05-25T22:00:16.711501] === 开始自我进化 ===
+[2026-05-25T22:00:16.712013] Phase 1: 基因觉醒
+[2026-05-25T22:00:18.191045] 处理: public-apis/public-apis
+[2026-05-25T22:00:19.367973] 处理: EbookFoundation/free-programming-books
+[2026-05-25T22:00:23.713581] 处理: donnemartin/system-design-primer
+[2026-05-25T22:00:26.595055] 处理: vinta/awesome-python
+[2026-05-25T22:00:28.032694]   build.py: 50 基因
+[2026-05-25T22:00:28.033141] 处理: TheAlgorithms/Python
+[2026-05-25T22:00:35.028043]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-25T22:00:35.032160] 基因库: 50 个
+[2026-05-25T22:00:35.032523] === 进化完成 ===
+[2026-05-25T23:00:01.626226] === 开始自我进化 ===
+[2026-05-25T23:00:01.626734] Phase 1: 基因觉醒
+[2026-05-25T23:00:06.557681] 处理: public-apis/public-apis
+[2026-05-25T23:00:11.453880] 处理: EbookFoundation/free-programming-books
+[2026-05-25T23:00:19.007240] 处理: donnemartin/system-design-primer
+[2026-05-25T23:00:30.140469] 处理: vinta/awesome-python
+[2026-05-25T23:00:36.930447]   build.py: 50 基因
+[2026-05-25T23:00:36.930997] 处理: TheAlgorithms/Python
+[2026-05-25T23:00:56.510292] 基因库: 50 个
+[2026-05-25T23:00:56.510659] === 进化完成 ===
+[2026-05-26T00:00:46.099400] === 开始自我进化 ===
+[2026-05-26T00:00:46.099900] Phase 1: 基因觉醒
+[2026-05-26T00:00:48.237786] 处理: public-apis/public-apis
+[2026-05-26T00:00:49.617853] 处理: EbookFoundation/free-programming-books
+[2026-05-26T00:00:52.404197] 处理: donnemartin/system-design-primer
+[2026-05-26T00:00:55.988453] 处理: vinta/awesome-python
+[2026-05-26T00:00:58.113125]   build.py: 50 基因
+[2026-05-26T00:00:58.113589] 处理: TheAlgorithms/Python
+[2026-05-26T00:01:04.891920] 基因库: 50 个
+[2026-05-26T00:01:04.892229] === 进化完成 ===
+[2026-05-26T01:00:38.935974] === 开始自我进化 ===
+[2026-05-26T01:00:38.936431] Phase 1: 基因觉醒
+[2026-05-26T01:00:40.838730] 处理: public-apis/public-apis
+[2026-05-26T01:00:43.529362] 处理: EbookFoundation/free-programming-books
+[2026-05-26T01:00:46.672000] 处理: donnemartin/system-design-primer
+[2026-05-26T01:00:50.979134] 处理: vinta/awesome-python
+[2026-05-26T01:00:52.954106]   build.py: 50 基因
+[2026-05-26T01:00:52.954566] 处理: TheAlgorithms/Python
+[2026-05-26T01:01:00.988951] 基因库: 50 个
+[2026-05-26T01:01:00.989287] === 进化完成 ===
+[2026-05-26T02:00:50.958543] === 开始自我进化 ===
+[2026-05-26T02:00:50.958996] Phase 1: 基因觉醒
+[2026-05-26T02:00:52.309319] 处理: public-apis/public-apis
+[2026-05-26T02:00:53.690564] 处理: EbookFoundation/free-programming-books
+[2026-05-26T02:00:56.302851] 处理: donnemartin/system-design-primer
+[2026-05-26T02:00:58.629185] 处理: vinta/awesome-python
+[2026-05-26T02:01:00.856972]   build.py: 50 基因
+[2026-05-26T02:01:00.857630] 处理: TheAlgorithms/Python
+[2026-05-26T02:01:07.226782] 基因库: 50 个
+[2026-05-26T02:01:07.227164] === 进化完成 ===
+[2026-05-26T03:00:32.839516] === 开始自我进化 ===
+[2026-05-26T03:00:32.839985] Phase 1: 基因觉醒
+[2026-05-26T03:00:34.409410] 处理: public-apis/public-apis
+[2026-05-26T03:00:35.358654] 处理: EbookFoundation/free-programming-books
+[2026-05-26T03:00:37.464421] 处理: donnemartin/system-design-primer
+[2026-05-26T03:00:39.385972] 处理: vinta/awesome-python
+[2026-05-26T03:00:40.939251]   build.py: 50 基因
+[2026-05-26T03:00:40.940040] 处理: TheAlgorithms/Python
+[2026-05-26T03:00:44.925382] 基因库: 50 个
+[2026-05-26T03:00:44.925689] === 进化完成 ===
+[2026-05-26T04:00:13.807597] === 开始自我进化 ===
+[2026-05-26T04:00:13.808095] Phase 1: 基因觉醒
+[2026-05-26T04:00:15.086119] 处理: public-apis/public-apis
+[2026-05-26T04:00:16.037187] 处理: EbookFoundation/free-programming-books
+[2026-05-26T04:00:18.172938] 处理: donnemartin/system-design-primer
+[2026-05-26T04:00:20.189350] 处理: vinta/awesome-python
+[2026-05-26T04:00:21.806315]   build.py: 50 基因
+[2026-05-26T04:00:21.806963] 处理: TheAlgorithms/Python
+[2026-05-26T04:00:25.742804] 基因库: 50 个
+[2026-05-26T04:00:25.743129] === 进化完成 ===
+[2026-05-26T05:00:50.322285] === 开始自我进化 ===
+[2026-05-26T05:00:50.322852] Phase 1: 基因觉醒
+[2026-05-26T05:00:51.521800] 处理: public-apis/public-apis
+[2026-05-26T05:00:52.739456] 处理: EbookFoundation/free-programming-books
+[2026-05-26T05:00:55.524911] 处理: donnemartin/system-design-primer
+[2026-05-26T05:00:58.218766] 处理: vinta/awesome-python
+[2026-05-26T05:00:59.850208]   build.py: 50 基因
+[2026-05-26T05:00:59.850737] 处理: TheAlgorithms/Python
+[2026-05-26T05:01:03.806045] 基因库: 50 个
+[2026-05-26T05:01:03.806557] === 进化完成 ===
+[2026-05-26T06:00:23.317271] === 开始自我进化 ===
+[2026-05-26T06:00:23.317734] Phase 1: 基因觉醒
+[2026-05-26T06:00:24.977549] 处理: public-apis/public-apis
+[2026-05-26T06:00:25.776074] 处理: EbookFoundation/free-programming-books
+[2026-05-26T06:00:32.774844] 处理: donnemartin/system-design-primer
+[2026-05-26T06:00:34.839320] 处理: vinta/awesome-python
+[2026-05-26T06:00:36.122860]   build.py: 50 基因
+[2026-05-26T06:00:36.123677] 处理: TheAlgorithms/Python
+[2026-05-26T06:00:39.283051] 基因库: 50 个
+[2026-05-26T06:00:39.283409] === 进化完成 ===
+[2026-05-26T07:00:31.403375] === 开始自我进化 ===
+[2026-05-26T07:00:31.403827] Phase 1: 基因觉醒
+[2026-05-26T07:00:32.701980] 处理: public-apis/public-apis
+[2026-05-26T07:00:33.505137] 处理: EbookFoundation/free-programming-books
+[2026-05-26T07:00:35.230551] 处理: donnemartin/system-design-primer
+[2026-05-26T07:00:37.374691] 处理: vinta/awesome-python
+[2026-05-26T07:00:39.076196]   build.py: 50 基因
+[2026-05-26T07:00:39.076630] 处理: TheAlgorithms/Python
+[2026-05-26T07:00:42.236789] 基因库: 50 个
+[2026-05-26T07:00:42.237279] === 进化完成 ===
+[2026-05-26T08:00:34.300049] === 开始自我进化 ===
+[2026-05-26T08:00:34.301023] Phase 1: 基因觉醒
+[2026-05-26T08:00:35.632141] 处理: public-apis/public-apis
+[2026-05-26T08:00:36.478456] 处理: EbookFoundation/free-programming-books
+[2026-05-26T08:00:38.461700] 处理: donnemartin/system-design-primer
+[2026-05-26T08:00:40.273371] 处理: vinta/awesome-python
+[2026-05-26T08:00:41.546753]   build.py: 50 基因
+[2026-05-26T08:00:41.547249] 处理: TheAlgorithms/Python
+[2026-05-26T08:00:44.616374] 基因库: 50 个
+[2026-05-26T08:00:44.616841] === 进化完成 ===
+[2026-05-26T09:00:35.524444] === 开始自我进化 ===
+[2026-05-26T09:00:35.527343] Phase 1: 基因觉醒
+[2026-05-26T09:00:38.533174] 处理: public-apis/public-apis
+[2026-05-26T09:00:39.303382] 处理: EbookFoundation/free-programming-books
+[2026-05-26T09:00:41.268681] 处理: donnemartin/system-design-primer
+[2026-05-26T09:00:42.934521] 处理: vinta/awesome-python
+[2026-05-26T09:00:44.293396]   build.py: 50 基因
+[2026-05-26T09:00:44.297265] 处理: TheAlgorithms/Python
+[2026-05-26T09:00:47.655350] 基因库: 50 个
+[2026-05-26T09:00:47.657463] === 进化完成 ===
+[2026-05-26T10:00:02.921860] === 开始自我进化 ===
+[2026-05-26T10:00:02.924410] Phase 1: 基因觉醒
+[2026-05-26T10:00:12.163438] 处理: public-apis/public-apis
+[2026-05-26T10:00:14.490051] 处理: EbookFoundation/free-programming-books
+[2026-05-26T10:00:18.210605] 处理: donnemartin/system-design-primer
+[2026-05-26T10:00:21.557113] 处理: vinta/awesome-python
+[2026-05-26T10:00:24.192223]   build.py: 50 基因
+[2026-05-26T10:00:24.206754] 处理: TheAlgorithms/Python
+[2026-05-26T10:00:31.583736] 基因库: 50 个
+[2026-05-26T10:00:31.585419] === 进化完成 ===
+[2026-05-26T11:00:59.827814] === 开始自我进化 ===
+[2026-05-26T11:00:59.828576] Phase 1: 基因觉醒
+[2026-05-26T11:01:01.114157] 处理: public-apis/public-apis
+[2026-05-26T11:01:02.458659] 处理: EbookFoundation/free-programming-books
+[2026-05-26T11:01:06.437834] 处理: donnemartin/system-design-primer
+[2026-05-26T11:01:10.481595] 处理: vinta/awesome-python
+[2026-05-26T11:01:12.163141]   build.py: 50 基因
+[2026-05-26T11:01:12.163517] 处理: TheAlgorithms/Python
+[2026-05-26T11:01:16.216313] 基因库: 50 个
+[2026-05-26T11:01:16.216660] === 进化完成 ===
+[2026-05-26T12:00:27.839938] === 开始自我进化 ===
+[2026-05-26T12:00:27.840386] Phase 1: 基因觉醒
+[2026-05-26T12:00:29.616052] 处理: public-apis/public-apis
+[2026-05-26T12:00:31.361184] 处理: EbookFoundation/free-programming-books
+[2026-05-26T12:00:35.183345] 处理: donnemartin/system-design-primer
+[2026-05-26T12:00:38.510063] 处理: vinta/awesome-python
+[2026-05-26T12:00:41.163278]   build.py: 50 基因
+[2026-05-26T12:00:41.163718] 处理: TheAlgorithms/Python
+[2026-05-26T12:00:46.696389] 基因库: 50 个
+[2026-05-26T12:00:46.696940] === 进化完成 ===
+[2026-05-26T13:00:04.869439] === 开始自我进化 ===
+[2026-05-26T13:00:04.869849] Phase 1: 基因觉醒
+[2026-05-26T13:00:06.634273] 处理: public-apis/public-apis
+[2026-05-26T13:00:07.952460] 处理: EbookFoundation/free-programming-books
+[2026-05-26T13:00:14.032263] 处理: donnemartin/system-design-primer
+[2026-05-26T13:00:17.858447] 处理: vinta/awesome-python
+[2026-05-26T13:00:20.744375]   build.py: 50 基因
+[2026-05-26T13:00:20.745011] 处理: TheAlgorithms/Python
+[2026-05-26T13:00:28.334350] 基因库: 50 个
+[2026-05-26T13:00:28.334716] === 进化完成 ===
+[2026-05-26T14:00:16.486264] === 开始自我进化 ===
+[2026-05-26T14:00:16.486736] Phase 1: 基因觉醒
+[2026-05-26T14:00:17.971343] 处理: public-apis/public-apis
+[2026-05-26T14:00:18.837113] 处理: EbookFoundation/free-programming-books
+[2026-05-26T14:00:20.847708] 处理: donnemartin/system-design-primer
+[2026-05-26T14:00:22.711633] 处理: vinta/awesome-python
+[2026-05-26T14:00:24.108281]   build.py: 50 基因
+[2026-05-26T14:00:24.108731] 处理: TheAlgorithms/Python
+[2026-05-26T14:00:27.792674] 基因库: 50 个
+[2026-05-26T14:00:27.792995] === 进化完成 ===
+[2026-05-26T15:00:33.237406] === 开始自我进化 ===
+[2026-05-26T15:00:33.237828] Phase 1: 基因觉醒
+[2026-05-26T15:00:35.426104] 处理: public-apis/public-apis
+[2026-05-26T15:00:38.958758] 处理: EbookFoundation/free-programming-books
+[2026-05-26T15:00:45.224883] 处理: donnemartin/system-design-primer
+[2026-05-26T15:00:51.114237] 处理: vinta/awesome-python
+[2026-05-26T15:00:54.996315]   build.py: 50 基因
+[2026-05-26T15:00:54.996807] 处理: TheAlgorithms/Python
+[2026-05-26T15:01:04.998266] 基因库: 50 个
+[2026-05-26T15:01:04.998657] === 进化完成 ===
+[2026-05-26T16:00:08.713118] === 开始自我进化 ===
+[2026-05-26T16:00:08.713553] Phase 1: 基因觉醒
+[2026-05-26T16:00:10.858918] 处理: public-apis/public-apis
+[2026-05-26T16:00:13.110602] 处理: EbookFoundation/free-programming-books
+[2026-05-26T16:00:16.684770] 处理: donnemartin/system-design-primer
+[2026-05-26T16:00:20.615285] 处理: vinta/awesome-python
+[2026-05-26T16:00:23.074546]   build.py: 50 基因
+[2026-05-26T16:00:23.074948] 处理: TheAlgorithms/Python
+[2026-05-26T16:00:28.301349] 基因库: 50 个
+[2026-05-26T16:00:28.301907] === 进化完成 ===
+[2026-05-26T17:00:09.418776] === 开始自我进化 ===
+[2026-05-26T17:00:09.420521] Phase 1: 基因觉醒
+[2026-05-26T17:00:13.920452] 处理: public-apis/public-apis
+[2026-05-26T17:00:18.466825] 处理: EbookFoundation/free-programming-books
+[2026-05-26T17:00:26.309883] 处理: donnemartin/system-design-primer
+[2026-05-26T17:00:33.491338] 处理: vinta/awesome-python
+[2026-05-26T17:00:39.336663]   build.py: 50 基因
+[2026-05-26T17:00:39.337183] 处理: TheAlgorithms/Python
+[2026-05-26T17:00:49.862022] 基因库: 50 个
+[2026-05-26T17:00:49.862427] === 进化完成 ===
+[2026-05-26T18:00:43.267543] === 开始自我进化 ===
+[2026-05-26T18:00:43.267930] Phase 1: 基因觉醒
+[2026-05-26T18:00:44.973197] 处理: public-apis/public-apis
+[2026-05-26T18:00:46.115684] 处理: EbookFoundation/free-programming-books
+[2026-05-26T18:00:48.898184] 处理: donnemartin/system-design-primer
+[2026-05-26T18:00:51.483239] 处理: vinta/awesome-python
+[2026-05-26T18:00:53.803219]   build.py: 50 基因
+[2026-05-26T18:00:53.803597] 处理: TheAlgorithms/Python
+[2026-05-26T18:00:58.746547] 基因库: 50 个
+[2026-05-26T18:00:58.747178] === 进化完成 ===
+[2026-05-26T20:00:41.282613] === 开始自我进化 ===
+[2026-05-26T20:00:41.283059] Phase 1: 基因觉醒
+[2026-05-26T20:00:42.554011] 处理: public-apis/public-apis
+[2026-05-26T20:00:43.381694] 处理: EbookFoundation/free-programming-books
+[2026-05-26T20:00:45.200270] 处理: donnemartin/system-design-primer
+[2026-05-26T20:00:46.860710] 处理: vinta/awesome-python
+[2026-05-26T20:00:48.183788]   build.py: 50 基因
+[2026-05-26T20:00:48.184767] 处理: TheAlgorithms/Python
+[2026-05-26T20:00:51.291193] 基因库: 50 个
+[2026-05-26T20:00:51.291579] === 进化完成 ===
+[2026-05-26T22:00:26.372193] === 开始自我进化 ===
+[2026-05-26T22:00:26.372594] Phase 1: 基因觉醒
+[2026-05-26T22:00:29.099455] 处理: public-apis/public-apis
+[2026-05-26T22:00:31.912218] 处理: EbookFoundation/free-programming-books
+[2026-05-26T22:00:38.889154] 处理: donnemartin/system-design-primer
+[2026-05-26T22:00:47.629217] 处理: vinta/awesome-python
+[2026-05-26T22:00:54.078231]   build.py: 50 基因
+[2026-05-26T22:00:54.078685] 处理: TheAlgorithms/Python
+[2026-05-26T22:01:07.541271] 基因库: 50 个
+[2026-05-26T22:01:07.541629] === 进化完成 ===
+[2026-05-27T00:00:32.219081] === 开始自我进化 ===
+[2026-05-27T00:00:32.219451] Phase 1: 基因觉醒
+[2026-05-27T00:00:34.420676] 处理: public-apis/public-apis
+[2026-05-27T00:00:39.719459] 处理: EbookFoundation/free-programming-books
+[2026-05-27T00:00:46.911000] 处理: donnemartin/system-design-primer
+[2026-05-27T00:00:56.234143] 处理: vinta/awesome-python
+[2026-05-27T00:01:00.825963]   build.py: 50 基因
+[2026-05-27T00:01:00.826433] 处理: TheAlgorithms/Python
+[2026-05-27T00:01:18.183436] 基因库: 50 个
+[2026-05-27T00:01:18.183729] === 进化完成 ===
+[2026-05-27T01:00:28.960795] === 开始自我进化 ===
+[2026-05-27T01:00:28.961156] Phase 1: 基因觉醒
+[2026-05-27T01:00:31.148824] 处理: public-apis/public-apis
+[2026-05-27T01:00:33.793530] 处理: EbookFoundation/free-programming-books
+[2026-05-27T01:00:39.022634] 处理: donnemartin/system-design-primer
+[2026-05-27T01:00:42.957714] 处理: vinta/awesome-python
+[2026-05-27T01:00:45.449335]   build.py: 50 基因
+[2026-05-27T01:00:45.450076] 处理: TheAlgorithms/Python
+[2026-05-27T01:00:51.059633] 基因库: 50 个
+[2026-05-27T01:00:51.059942] === 进化完成 ===
+[2026-05-27T03:00:48.626878] === 开始自我进化 ===
+[2026-05-27T03:00:48.627348] Phase 1: 基因觉醒
+[2026-05-27T03:00:49.936205] 处理: public-apis/public-apis
+[2026-05-27T03:00:50.767949] 处理: EbookFoundation/free-programming-books
+[2026-05-27T03:00:53.091830] 处理: donnemartin/system-design-primer
+[2026-05-27T03:00:55.025281] 处理: vinta/awesome-python
+[2026-05-27T03:00:56.347691]   build.py: 50 基因
+[2026-05-27T03:00:56.348135] 处理: TheAlgorithms/Python
+[2026-05-27T03:01:00.047188] 基因库: 50 个
+[2026-05-27T03:01:00.047847] === 进化完成 ===
+[2026-05-27T05:00:57.429394] === 开始自我进化 ===
+[2026-05-27T05:00:57.430020] Phase 1: 基因觉醒
+[2026-05-27T05:00:59.140285] 处理: public-apis/public-apis
+[2026-05-27T05:01:00.080166] 处理: EbookFoundation/free-programming-books
+[2026-05-27T05:01:02.627870] 处理: donnemartin/system-design-primer
+[2026-05-27T05:01:04.398576] 处理: vinta/awesome-python
+[2026-05-27T05:01:05.847450]   build.py: 50 基因
+[2026-05-27T05:01:05.847900] 处理: TheAlgorithms/Python
+[2026-05-27T05:01:12.134175]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-27T05:01:12.138057] 基因库: 50 个
+[2026-05-27T05:01:12.138343] === 进化完成 ===
+[2026-05-27T07:00:09.891345] === 开始自我进化 ===
+[2026-05-27T07:00:09.891820] Phase 1: 基因觉醒
+[2026-05-27T07:00:11.184056] 处理: public-apis/public-apis
+[2026-05-27T07:00:12.169011] 处理: EbookFoundation/free-programming-books
+[2026-05-27T07:00:14.151859] 处理: donnemartin/system-design-primer
+[2026-05-27T07:00:19.154439]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-27T07:00:19.154894] 处理: vinta/awesome-python
+[2026-05-27T07:00:20.784029]   build.py: 50 基因
+[2026-05-27T07:00:20.784510] 处理: TheAlgorithms/Python
+[2026-05-27T07:00:24.451922] 基因库: 50 个
+[2026-05-27T07:00:24.452357] === 进化完成 ===
+[2026-05-27T07:41:04.254471] === 开始自我进化 ===
+[2026-05-27T07:41:04.254899] Phase 1: 基因觉醒
+[2026-05-27T07:41:05.891769] 处理: public-apis/public-apis
+[2026-05-27T07:41:06.707235] 处理: EbookFoundation/free-programming-books
+[2026-05-27T07:41:12.508150]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-27T07:41:12.508613] 处理: donnemartin/system-design-primer
+[2026-05-27T07:41:14.305416] 处理: vinta/awesome-python
+[2026-05-27T07:41:15.753783]   build.py: 50 基因
+[2026-05-27T07:41:15.754207] 处理: TheAlgorithms/Python
+[2026-05-27T07:41:18.768665] 基因库: 50 个
+[2026-05-27T07:41:18.769077] === 进化完成 ===
+[2026-05-27T08:00:12.308641] === 开始自我进化 ===
+[2026-05-27T08:00:12.309110] Phase 1: 基因觉醒
+[2026-05-27T08:00:13.523756] 处理: public-apis/public-apis
+[2026-05-27T08:00:18.941714]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-27T08:00:18.942323] 处理: EbookFoundation/free-programming-books
+[2026-05-27T08:00:20.799528] 处理: donnemartin/system-design-primer
+[2026-05-27T08:00:22.492498] 处理: vinta/awesome-python
+[2026-05-27T08:00:23.899953]   build.py: 50 基因
+[2026-05-27T08:00:23.900567] 处理: TheAlgorithms/Python
+[2026-05-27T08:00:27.026539] 基因库: 50 个
+[2026-05-27T08:00:27.026935] === 进化完成 ===
+[2026-05-27T08:43:01.948854] === 开始自我进化 ===
+[2026-05-27T08:43:01.949386] Phase 1: 基因觉醒
+[2026-05-27T08:43:03.158010] 处理: public-apis/public-apis
+[2026-05-27T08:43:04.044497] 处理: EbookFoundation/free-programming-books
+[2026-05-27T08:43:06.000512] 处理: donnemartin/system-design-primer
+[2026-05-27T08:43:07.850153] 处理: vinta/awesome-python
+[2026-05-27T08:43:09.719725]   build.py: 50 基因
+[2026-05-27T08:43:09.720340] 处理: TheAlgorithms/Python
+[2026-05-27T08:43:12.850558] 基因库: 50 个
+[2026-05-27T08:43:12.850919] === 进化完成 ===
+[2026-05-27T09:00:32.069377] === 开始自我进化 ===
+[2026-05-27T09:00:32.069802] Phase 1: 基因觉醒
+[2026-05-27T09:00:33.351971] 处理: public-apis/public-apis
+[2026-05-27T09:00:34.261461] 处理: EbookFoundation/free-programming-books
+[2026-05-27T09:00:36.670070] 处理: donnemartin/system-design-primer
+[2026-05-27T09:00:38.625653] 处理: vinta/awesome-python
+[2026-05-27T09:00:40.098960]   build.py: 50 基因
+[2026-05-27T09:00:40.099396] 处理: TheAlgorithms/Python
+[2026-05-27T09:00:43.615917] 基因库: 50 个
+[2026-05-27T09:00:43.616300] === 进化完成 ===
+[2026-05-27T09:01:56.275225] === 开始自我进化 ===
+[2026-05-27T09:01:56.275594] Phase 1: 基因觉醒
+[2026-05-27T09:01:57.102579] 处理: public-apis/public-apis
+[2026-05-27T09:01:57.984267] 处理: EbookFoundation/free-programming-books
+[2026-05-27T09:01:59.702915] 处理: donnemartin/system-design-primer
+[2026-05-27T09:02:00.849497] 处理: vinta/awesome-python
+[2026-05-27T09:02:02.071768]   build.py: 50 基因
+[2026-05-27T09:02:02.072428] 处理: TheAlgorithms/Python
+[2026-05-27T09:02:04.694849] 基因库: 50 个
+[2026-05-27T09:02:04.695387] === 进化完成 ===
+[2026-05-27T09:08:10.157675] === 开始自我进化 ===
+[2026-05-27T09:08:10.158112] Phase 1: 基因觉醒
+[2026-05-27T09:08:11.388911] 处理: public-apis/public-apis
+[2026-05-27T09:08:12.262738] 处理: EbookFoundation/free-programming-books
+[2026-05-27T09:08:14.248183] 处理: donnemartin/system-design-primer
+[2026-05-27T09:08:16.495439] 处理: vinta/awesome-python
+[2026-05-27T09:08:18.552309]   build.py: 50 基因
+[2026-05-27T09:08:18.552768] 处理: TheAlgorithms/Python
+[2026-05-27T09:08:23.092764] 基因库: 70 个
+[2026-05-27T09:08:23.093133] Harness 审计: 50 条
+[2026-05-27T09:08:23.093521] === 进化完成 ===
+[2026-05-27T09:56:45.721863] === 开始自我进化 ===
+[2026-05-27T09:56:45.722466] Phase 1: 基因觉醒
+[2026-05-27T09:56:47.464058] 处理: public-apis/public-apis
+[2026-05-27T09:56:48.384604] 处理: EbookFoundation/free-programming-books
+[2026-05-27T09:56:50.168066] 处理: donnemartin/system-design-primer
+[2026-05-27T09:56:51.954602] 处理: vinta/awesome-python
+[2026-05-27T09:56:56.956628]   错误: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)>
+[2026-05-27T09:56:56.957165] 处理: TheAlgorithms/Python
+[2026-05-27T09:57:00.278828] 基因库: 70 个
+[2026-05-27T09:57:00.279434] Harness 审计: 0 条
+[2026-05-27T09:57:00.280041] === 进化完成 ===
+[2026-05-27T09:59:15.115573] === 开始自我进化 ===
+[2026-05-27T09:59:15.116081] Phase 1: 基因觉醒
+[2026-05-27T09:59:16.944008] 处理: public-apis/public-apis
+[2026-05-27T09:59:18.870292] 处理: EbookFoundation/free-programming-books
+[2026-05-27T09:59:21.254221] 处理: donnemartin/system-design-primer
+[2026-05-27T09:59:23.189666] 处理: vinta/awesome-python
+[2026-05-27T09:59:24.847262]   build.py: 50 基因
+[2026-05-27T09:59:24.847608] 处理: TheAlgorithms/Python
+[2026-05-27T09:59:28.689758] 基因库: 70 个
+[2026-05-27T09:59:28.690142] Harness 审计: 50 条
+[2026-05-27T09:59:28.690437] === 进化完成 ===

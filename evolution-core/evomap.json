@@ -1,0 +1,12 @@
+{
+  "repositories": [
+    "ggerganov/llama.cpp",
+    "vllm-project/vllm",
+    "meta-llama/llama",
+    "openai/triton",
+    "flashinfer/flashinfer",
+    "deepseek-ai/DeepSeek-V3",
+    "microsoft/BitNet"
+  ],
+  "last_scan": "2026-05-24T03:34:36.787217"
+}

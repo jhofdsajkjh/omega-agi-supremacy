@@ -1,0 +1,1401 @@
+[
+  {
+    "id": "gene_001",
+    "name": "模型导出",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:ggerganov/llama.cpp/convert_hf_to_gguf.py",
+    "algorithms": [],
+    "source": "github:ggerganov/llama.cpp/convert_hf_to_gguf.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    parser.add_argument(\n        \"--mmproj\", action=\"store_true\",\n        help=\"Export multimodal projector (mmproj) for vision models. This will only work on some vision models. An 'mmproj-' prefix w",
+    "extracted_at": "2026-05-20T18:35:27.045785",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546050"
+  },
+  {
+    "id": "gene_002",
+    "name": "投机解码",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:ggerganov/llama.cpp/convert_hf_to_gguf.py",
+    "algorithms": [],
+    "source": "github:ggerganov/llama.cpp/convert_hf_to_gguf.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    parser.add_argument(\n        \"--mtp\", action=\"store_true\",\n        help=\"Export only the multi-token prediction (MTP) head as a separate GGUF, suitable for use as a speculative draft. An 'mtp-' pr",
+    "extracted_at": "2026-05-20T18:35:27.045801",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 0.0,
+          "passed": false
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546093"
+  },
+  {
+    "id": "gene_003",
+    "name": "向量化",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:ggerganov/llama.cpp/convert_hf_to_gguf.py",
+    "algorithms": [],
+    "source": "github:ggerganov/llama.cpp/convert_hf_to_gguf.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    parser.add_argument(\n        \"--no-mtp\", action=\"store_true\",\n        help=\"Exclude the multi-token prediction (MTP) head from the converted GGUF. Pair with --mtp on a second run to publish trunk ",
+    "extracted_at": "2026-05-20T18:35:27.045807",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 0.0,
+          "passed": false
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546111"
+  },
+  {
+    "id": "gene_004",
+    "name": "分布式训练",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:ggerganov/llama.cpp/convert_hf_to_gguf_update.py",
+    "algorithms": [],
+    "source": "github:ggerganov/llama.cpp/convert_hf_to_gguf_update.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    {\"name\": \"olmo\",             \"tokt\": TOKENIZER_TYPE.BPE, \"repo\": \"https://huggingface.co/allenai/OLMo-1.7-7B-hf\", },\n    {\"name\": \"dbrx\",             \"tokt\": TOKENIZER_TYPE.BPE, \"repo\": \"https://h",
+    "extracted_at": "2026-05-20T18:35:27.628336",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 0.0,
+          "passed": false
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546125"
+  },
+  {
+    "id": "gene_005",
+    "name": "模型量化",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:ggerganov/llama.cpp/convert_llama_ggml_to_gguf.py",
+    "algorithms": [],
+    "source": "github:ggerganov/llama.cpp/convert_llama_ggml_to_gguf.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "        if (self.file_format < GGMLFormat.GGJT or self.format_version < 2):\n            if ftype not in (GGMLFType.ALL_F32, GGMLFType.MOSTLY_F16):\n                err = 'Quantizations changed in GGJTv",
+    "extracted_at": "2026-05-20T18:35:28.213196",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546143"
+  },
+  {
+    "id": "gene_006",
+    "name": "RoPE",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:ggerganov/llama.cpp/convert_llama_ggml_to_gguf.py",
+    "algorithms": [],
+    "source": "github:ggerganov/llama.cpp/convert_llama_ggml_to_gguf.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "            gguf_writer.add_block_count         (po.n_layer)\n            gguf_writer.add_feed_forward_length (po.n_ff)\n            gguf_writer.add_rope_dimension_count(po.n_embd // po.n_head)\n        ",
+    "extracted_at": "2026-05-20T18:35:28.213211",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546157"
+  },
+  {
+    "id": "gene_007",
+    "name": "索引",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:ggerganov/llama.cpp/convert_lora_to_gguf.py",
+    "algorithms": [],
+    "source": "github:ggerganov/llama.cpp/convert_lora_to_gguf.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "from math import prod\nfrom pathlib import Path\nfrom typing import TYPE_CHECKING, Any, Callable, Iterable, Iterator, Sequence, SupportsIndex, cast\nfrom transformers import AutoConfig, AutoTokenizer\n",
+    "extracted_at": "2026-05-20T18:35:28.796301",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 0.0,
+          "passed": false
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546172"
+  },
+  {
+    "id": "gene_008",
+    "name": "LoRA微调",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:ggerganov/llama.cpp/convert_lora_to_gguf.py",
+    "algorithms": [],
+    "source": "github:ggerganov/llama.cpp/convert_lora_to_gguf.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "from conversion import LazyTorchTensor, ModelBase, get_model_class\n\nlogger = logging.getLogger(\"lora-to-gguf\")\n\n",
+    "extracted_at": "2026-05-20T18:35:28.796319",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546184"
+  },
+  {
+    "id": "gene_009",
+    "name": "适配器",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:ggerganov/llama.cpp/convert_lora_to_gguf.py",
+    "algorithms": [],
+    "source": "github:ggerganov/llama.cpp/convert_lora_to_gguf.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    base_name = base_name.replace(\".lora_A.weight\", \".weight\")\n    base_name = base_name.replace(\".lora_B.weight\", \".weight\")\n    # models produced by mergekit-extract-lora have token embeddings in th",
+    "extracted_at": "2026-05-20T18:35:28.796324",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 0.0,
+          "passed": false
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546198"
+  },
+  {
+    "id": "gene_010",
+    "name": "采样策略",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/__init__.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/__init__.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    \"TokensPrompt\": \".inputs:TokensPrompt\",\n    \"ModelRegistry\": \".model_executor.models:ModelRegistry\",\n    \"SamplingParams\": \".sampling_params:SamplingParams\",\n    \"PoolingParams\": \".pooling_params:",
+    "extracted_at": "2026-05-20T18:35:40.265039",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 0.0,
+          "passed": false
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546213"
+  },
+  {
+    "id": "gene_011",
+    "name": "编译优化",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "\n\n# `find_spec` is not torch.compile compatible.\n# In cases where aiter availability might have\n# been checked in forward passes that are torch compiled.",
+    "extracted_at": "2026-05-20T18:35:40.963487",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546226"
+  },
+  {
+    "id": "gene_012",
+    "name": "Logits处理",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "def _rocm_aiter_fused_topk_impl(\n    x: torch.Tensor,\n    router_logits: torch.Tensor,\n    top_k: int,\n    gate_up: bool,",
+    "extracted_at": "2026-05-20T18:35:40.963504",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546240"
+  },
+  {
+    "id": "gene_013",
+    "name": "Top-K采样",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    x: torch.Tensor,\n    router_logits: torch.Tensor,\n    top_k: int,\n    gate_up: bool,\n) -> tuple[torch.Tensor, torch.Tensor]:",
+    "extracted_at": "2026-05-20T18:35:40.963509",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546253"
+  },
+  {
+    "id": "gene_014",
+    "name": "RMS归一化",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "\n\ndef _fused_mla_dual_rms_norm_impl(\n    x1: torch.Tensor,\n    x1_weight: torch.Tensor,",
+    "extracted_at": "2026-05-20T18:35:40.963513",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546316"
+  },
+  {
+    "id": "gene_015",
+    "name": "旋转位置编码",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "\n\ndef _triton_rotary_embedding_impl(\n    positions: torch.Tensor,\n    query: torch.Tensor,",
+    "extracted_at": "2026-05-20T18:35:40.963517",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546338"
+  },
+  {
+    "id": "gene_016",
+    "name": "KV Cache管理",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    _MLA_ENABLED = envs.VLLM_ROCM_USE_AITER_MLA\n    _MHA_ENABLED = envs.VLLM_ROCM_USE_AITER_MHA\n    _SHUFFLE_KV_CACHE_ENABLED = envs.VLLM_ROCM_SHUFFLE_KV_CACHE_LAYOUT\n    _TRITON_UNIFIED_ATTN_ENABLED ",
+    "extracted_at": "2026-05-20T18:35:40.963521",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.5,
+          "passed": true
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546361"
+  },
+  {
+    "id": "gene_017",
+    "name": "SwiGLU激活",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "        \"\"\"\n        Given an activation type as a string, returns the corresponding aiter ActivationType enum.\n        Supported activation types: \"no\", \"none\", \"silu\", \"gelu\", \"swiglu\".\n        Retur",
+    "extracted_at": "2026-05-20T18:35:40.963526",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546384"
+  },
+  {
+    "id": "gene_018",
+    "name": "GeLU激活",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "        \"\"\"\n        Given an activation type as a string, returns the corresponding aiter ActivationType enum.\n        Supported activation types: \"no\", \"none\", \"silu\", \"gelu\", \"swiglu\".\n        Retur",
+    "extracted_at": "2026-05-20T18:35:40.963530",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546486"
+  },
+  {
+    "id": "gene_019",
+    "name": "ALiBi",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "        causal: bool = False,\n        window_size: tuple[int, int] | None = None,\n        alibi_slopes: torch.Tensor | None = None,\n        return_lse: bool = False,\n        out: torch.Tensor | None =",
+    "extracted_at": "2026-05-20T18:35:40.963534",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546515"
+  },
+  {
+    "id": "gene_020",
+    "name": "PagedAttention",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_aiter_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "\n    @staticmethod\n    def paged_attention_common(\n        Q: torch.Tensor,\n        K: torch.Tensor,",
+    "extracted_at": "2026-05-20T18:35:40.963538",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546535"
+  },
+  {
+    "id": "gene_021",
+    "name": "并行策略",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_custom_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_custom_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    of 128 (rows) and 4 (cols). Then, the scales (in float8_e4m3fn) are\n    packed into an int32 for every 4 values. More:\n    https://docs.nvidia.com/cuda/parallel-thread-execution/\n    #tcgen05-mma-",
+    "extracted_at": "2026-05-20T18:35:41.847534",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.5,
+          "passed": true
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546558"
+  },
+  {
+    "id": "gene_022",
+    "name": "反量化",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_custom_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_custom_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "# quantization ops\n# awq\ndef awq_dequantize(\n    qweight: torch.Tensor,\n    scales: torch.Tensor,",
+    "extracted_at": "2026-05-20T18:35:41.847586",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546593"
+  },
+  {
+    "id": "gene_023",
+    "name": "量化权重",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_custom_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_custom_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "# awq\ndef awq_dequantize(\n    qweight: torch.Tensor,\n    scales: torch.Tensor,\n    zeros: torch.Tensor,",
+    "extracted_at": "2026-05-20T18:35:41.847604",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546622"
+  },
+  {
+    "id": "gene_024",
+    "name": "结果聚合",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_custom_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_custom_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "\n\ndef gather_and_maybe_dequant_cache(\n    src_cache: torch.Tensor,\n    dst: torch.Tensor,",
+    "extracted_at": "2026-05-20T18:35:41.847608",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.5,
+          "passed": true
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546645"
+  },
+  {
+    "id": "gene_025",
+    "name": "检索增强生成",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/_tilelang_ops.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/_tilelang_ops.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "        ##################################################################\n        # _pre_norm_fn_fwd_norm\n        rms = T.alloc_fragment(1, T.float32)\n        mixes = T.alloc_fragment(hc_mult3, T.flo",
+    "extracted_at": "2026-05-20T18:35:42.621299",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546671"
+  },
+  {
+    "id": "gene_026",
+    "name": "ONNX导出",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:vllm-project/vllm/vllm/collect_env.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/collect_env.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    \"triton\",\n    \"optree\",\n    \"onnx\",\n    \"nccl\",\n    \"transformers\",",
+    "extracted_at": "2026-05-20T18:35:43.999142",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546696"
+  },
+  {
+    "id": "gene_027",
+    "name": "温度采样",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:meta-llama/llama/llama/generation.py",
+    "algorithms": [],
+    "source": "github:meta-llama/llama/llama/generation.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "        prompt_tokens: List[List[int]],\n        max_gen_len: int,\n        temperature: float = 0.6,\n        top_p: float = 0.9,\n        logprobs: bool = False,",
+    "extracted_at": "2026-05-20T18:35:46.878530",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 0.0,
+          "passed": false
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546722"
+  },
+  {
+    "id": "gene_028",
+    "name": "Top-P采样",
+    "category": "code_gene",
+    "function": "代码基因 - 来自 github:meta-llama/llama/llama/generation.py",
+    "algorithms": [],
+    "source": "github:meta-llama/llama/llama/generation.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "        max_gen_len: int,\n        temperature: float = 0.6,\n        top_p: float = 0.9,\n        logprobs: bool = False,\n        echo: bool = False,",
+    "extracted_at": "2026-05-20T18:35:46.878548",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546743"
+  },
+  {
+    "id": "gene_029",
+    "name": "混合专家模型(MoE)",
+    "category": "code_gene",
+    "function": "来自 github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "from vllm.logger import init_logger\nfrom vllm.model_executor.layers.attention import Attention\nfrom vllm.model_executor.layers.fused_moe import (\n    FusedMoE,\n    fused_moe_make_expert_params_mapping",
+    "extracted_at": "2026-05-24T03:34:24.423017",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546768"
+  },
+  {
+    "id": "gene_030",
+    "name": "多头潜在注意力(MLA)",
+    "category": "code_gene",
+    "function": "来自 github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": ")\nfrom vllm.model_executor.layers.logits_processor import LogitsProcessor\nfrom vllm.model_executor.layers.mla import MLAModules, MultiHeadLatentAttentionWrapper\nfrom vllm.model_executor.layers.quantiz",
+    "extracted_at": "2026-05-24T03:34:24.423041",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546793"
+  },
+  {
+    "id": "gene_031",
+    "name": "DeepSeek架构特征",
+    "category": "code_gene",
+    "function": "来自 github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    maybe_remap_kv_scale_name,\n)\nfrom vllm.model_executor.models.deepseek_v2 import (\n    DeepseekAttention,\n    DeepseekV2MLP,",
+    "extracted_at": "2026-05-24T03:34:24.423045",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546818"
+  },
+  {
+    "id": "gene_032",
+    "name": "序列并行(SP)",
+    "category": "code_gene",
+    "function": "来自 github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "    yarn_get_mscale,\n)\nfrom vllm.model_executor.models.utils import sequence_parallel_chunk\nfrom vllm.platforms import current_platform\nfrom vllm.sequence import IntermediateTensors",
+    "extracted_at": "2026-05-24T03:34:24.423048",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.5,
+          "passed": true
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546844"
+  },
+  {
+    "id": "gene_033",
+    "name": "Eagle投机解码",
+    "category": "code_gene",
+    "function": "来自 github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "from vllm.transformers_utils.configs.AXK1 import AXK1Config\n\nfrom .interfaces import MixtureOfExperts, SupportsEagle, SupportsLoRA, SupportsPP\nfrom .utils import (\n    AutoWeightsLoader,",
+    "extracted_at": "2026-05-24T03:34:24.423051",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.5,
+          "passed": true
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546869"
+  },
+  {
+    "id": "gene_034",
+    "name": "路由算法",
+    "category": "code_gene",
+    "function": "来自 github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "            hidden_states = sequence_parallel_chunk(hidden_states)\n\n        if self.experts.is_internal_router:\n            final_hidden_states = self.experts(\n                hidden_states=hidden_sta",
+    "extracted_at": "2026-05-24T03:34:24.423054",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.5,
+          "passed": true
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546894"
+  },
+  {
+    "id": "gene_035",
+    "name": "MoE专家层",
+    "category": "code_gene",
+    "function": "来自 github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "            self.config.n_routed_experts is not None\n            and self.layer_idx >= self.config.first_k_dense_replace\n            and self.layer_idx % self.config.moe_layer_freq == 0\n        )\n",
+    "extracted_at": "2026-05-24T03:34:24.423057",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546919"
+  },
+  {
+    "id": "gene_036",
+    "name": "专家门控投影",
+    "category": "code_gene",
+    "function": "来自 github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "        stacked_params_mapping = [\n            # (param_name, shard_name, shard_id)\n            (\"gate_up_proj\", \"gate_proj\", 0),\n            (\"gate_up_proj\", \"up_proj\", 1),\n        ]",
+    "extracted_at": "2026-05-24T03:34:24.423060",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546946"
+  },
+  {
+    "id": "gene_037",
+    "name": "FP8低精度推理",
+    "category": "code_gene",
+    "function": "来自 github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/model_executor/models/AXK1.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "            stacked_params_mapping.extend(mla_params_mapping)\n\n        # Params for weights, fp8 weight scales, fp8 activation scales\n        # (param_name, weight_name, expert_id, shard_id)\n        e",
+    "extracted_at": "2026-05-24T03:34:24.423063",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546973"
+  },
+  {
+    "id": "gene_038",
+    "name": "滑动窗口注意力",
+    "category": "code_gene",
+    "function": "来自 github:vllm-project/vllm/vllm/model_executor/models/afmoe.py",
+    "algorithms": [],
+    "source": "github:vllm-project/vllm/vllm/model_executor/models/afmoe.py",
+    "priority": "P1",
+    "learned": false,
+    "level": "theory",
+    "context": "        # Check if this is a local attention layer\n        self.is_local_attention = config.layer_types[layer_idx] == \"sliding_attention\"\n        self.sliding_window = config.sliding_window if self.is",
+    "extracted_at": "2026-05-24T03:34:24.423066",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.0,
+          "passed": false
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.546998"
+  },
+  {
+    "id": "gene_039",
+    "name": "张量并行",
+    "category": "code_gene",
+    "source": "github:vllm-project/vllm/benchmarks/benchmark_batch_invariance.py",
+    "context": "            max_model_len=max_model_len,\n            dtype=\"bfloat16\",\n            tensor_parallel_size=tp_size,\n            attention_config={\"backend\": backend},\n            enable_prefix_caching=Fa",
+    "extracted_at": "2026-05-24T03:38:12.240083",
+    "apex_score": 0.0336,
+    "harness_audit": {
+      "passed": true,
+      "layers": {
+        "security": {
+          "score": 1.0,
+          "passed": true
+        },
+        "robustness": {
+          "score": 0.0,
+          "passed": false
+        },
+        "architecture": {
+          "score": 0.0,
+          "passed": false
+        },
+        "performance": {
+          "score": 0.5,
+          "passed": true
+        }
+      }
+    },
+    "enriched_at": "2026-05-27T08:15:58.547022"
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "name": "Hermes Self-Evolution System",
+  "mission": "Self-improvement through GitHub ecosystem",
+  "created": "2026-05-19T21:33:13.096541",
+  "phases": [
+    {
+      "phase": 1,
+      "name": "基因觉醒",
+      "status": "active"
+    },
+    {
+      "phase": 2,
+      "name": "代码进化",
+      "status": "pending"
+    },
+    {
+      "phase": 3,
+      "name": "项目演进",
+      "status": "pending"
+    },
+    {
+      "phase": 4,
+      "name": "数据回流",
+      "status": "pending"
+    }
+  ],
+  "resources": {
+    "github": {
+      "api": "https://api.github.com",
+      "rate_limit": 5000
+    },
+    "local": {
+      "data_dir": "C:\\Users\\Administrator\\ApexSpiral\\self-evolution"
+    }
+  },
+  "stats": {
+    "total_genes": 0,
+    "total_projects": 0
+  }
+}

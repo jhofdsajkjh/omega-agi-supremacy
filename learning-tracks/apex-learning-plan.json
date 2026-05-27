@@ -1,0 +1,20 @@
+{
+  "repositories": [
+    "jhofdsajkjh/ai-groupchat-evolution",
+    "karpathy/llm.c",
+    "geohot/tinygrad",
+    "microsoft/autogen",
+    "openai/whisper",
+    "meta-llama/llama",
+    "pytorch/pytorch",
+    "google/jax",
+    "deepmind/alphafold",
+    "huggingface/transformers"
+  ],
+  "progress_tracker": {
+    "current_repo_idx": 0,
+    "current_round": 0,
+    "total_commits_studied": 0,
+    "last_run": null
+  }
+}
