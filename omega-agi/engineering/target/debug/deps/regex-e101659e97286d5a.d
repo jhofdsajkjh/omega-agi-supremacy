@@ -1,0 +1,15 @@
+/root/omega-agi-supremacy/omega-agi/engineering/target/debug/deps/libregex-e101659e97286d5a.rmeta: /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/lib.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/builders.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/bytes.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/error.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/find_byte.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regex/mod.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regex/bytes.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regex/string.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regexset/mod.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regexset/bytes.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regexset/string.rs
+
+/root/omega-agi-supremacy/omega-agi/engineering/target/debug/deps/regex-e101659e97286d5a.d: /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/lib.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/builders.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/bytes.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/error.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/find_byte.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regex/mod.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regex/bytes.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regex/string.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regexset/mod.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regexset/bytes.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regexset/string.rs
+
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/lib.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/builders.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/bytes.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/error.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/find_byte.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regex/mod.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regex/bytes.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regex/string.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regexset/mod.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regexset/bytes.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/regex-1.12.3/src/regexset/string.rs:

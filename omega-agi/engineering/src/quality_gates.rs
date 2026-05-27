@@ -792,13 +792,6 @@ mod tests {
         };
         let runner = QualityGateRunner::new();
         let result = runner.run_all(&ctx);
-        for (phase, pres) in &result.phases {
-            for r in &pres.results {
-                eprintln!("Phase {} Gate {}: passed={} severity={} details={}",
-                    phase, r.gate_name, r.passed, r.severity, r.details);
-            }
-        }
-        eprintln!("overall_passed={}", result.overall_passed);
         assert!(result.overall_passed);
     }
 }

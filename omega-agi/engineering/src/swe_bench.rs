@@ -333,28 +333,30 @@ pub fn run_swe_bench(instance: &SWEBench) -> Result<SWEBenchResult, SWEError> {
 /// Run evaluation on a batch of instances, returning results in input order.
 /// Individual failures are captured as Failed results rather than propagating.
 pub fn evaluate_instances(instances: &[SWEBench]) -> Vec<SWEBenchResult> {
-    let mut results = Vec::with_capacity(instances.len());
+    let mut results: Vec<SWEBenchResult> = Vec::with_capacity(instances.len());
 
     for instance in instances {
-        let result = run_swe_bench(instance);
-        results.push(result.unwrap_or_else(|e| SWEBenchResult {
-            instance_id: instance.instance_id.clone(),
-            status: InstanceStatus::Failed,
-            resolution: Resolution {
-                patch_applied: false,
-                tests_passed: false,
-                setup_logs: e.to_string(),
-                test_logs: String::new(),
-                patch_error: None,
-            },
-            metrics: InstanceMetrics {
-                resolution_time_ms: 0,
-                memory_peak_mb: 0,
-                cpu_time_ms: 0,
-                max_rss_mb: None,
-            },
-            evaluated_at: Utc::now(),
-        }));
+        let result: SWEBenchResult = run_swe_bench(instance).unwrap_or_else(|err: SWEError| {
+            SWEBenchResult {
+                instance_id: instance.instance_id.clone(),
+                status: InstanceStatus::Failed,
+                resolution: Resolution {
+                    patch_applied: false,
+                    tests_passed: false,
+                    setup_logs: err.to_string(),
+                    test_logs: String::new(),
+                    patch_error: None,
+                },
+                metrics: InstanceMetrics {
+                    resolution_time_ms: 0,
+                    memory_peak_mb: 0,
+                    cpu_time_ms: 0,
+                    max_rss_mb: None,
+                },
+                evaluated_at: Utc::now(),
+            }
+        });
+        results.push(result);
     }
 
     results

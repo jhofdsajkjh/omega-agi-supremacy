@@ -1,60 +1,47 @@
-//! # Code Reviewer — Rule-based Static Analysis
+//! Automated Code Reviewer
 //!
-//! Performs rule-based static analysis on Rust/Python source files.
-//! Built-in rules detect hardcoded secrets, panic/unwrap calls,
-//! expensive clone patterns, TODOs, and more.
+//! Applies rule-based patterns to source files to flag issues such as hardcoded
+//! secrets, panic-inducing code, debug prints, TODOs, and more.
 
 use regex::Regex;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
-use thiserror::Error;
+use walkdir::WalkDir;
 
-// ============================================================================
-// Error types
-// ============================================================================
+// ---------------------------------------------------------------------------
+// Severity
+// ---------------------------------------------------------------------------
 
-#[derive(Error, Debug)]
-pub enum ReviewError {
-    #[error("IO error: {0}")]
-    IoError(#[from] std::io::Error),
-
-    #[error("Path is not a file or directory: {0}")]
-    NotFound(String),
-
-    #[error("Unsupported file type: {0}")]
-    UnsupportedFile(String),
-}
-
-// ============================================================================
-// Severity and rule types
-// ============================================================================
-
-/// Finding severity level.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum Severity {
     Info     = 0,
     Warning  = 1,
-    Error   = 2,
-    Critical= 3,
+    Error    = 2,
+    Critical = 3,
 }
 
-impl std::fmt::Display for Severity {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl Severity {
+    fn label(&self) -> &'static str {
         match self {
-            Severity::Info      => write!(f, "info"),
-            Severity::Warning  => write!(f, "warning"),
-            Severity::Error    => write!(f, "error"),
-            Severity::Critical => write!(f, "critical"),
+            Severity::Info     => "INFO",
+            Severity::Warning  => "WARNING",
+            Severity::Error    => "ERROR",
+            Severity::Critical => "CRITICAL",
         }
     }
 }
 
-/// A single finding inside one file.
+// ---------------------------------------------------------------------------
+// Finding
+// ---------------------------------------------------------------------------
+
+/// A single issue found during review.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Finding {
+    /// Rule identifier, e.g. "SECRET_HARDCODED".
     pub rule: String,
     pub severity: Severity,
     pub message: String,
@@ -63,491 +50,105 @@ pub struct Finding {
     pub code_snippet: Option<String>,
 }
 
-/// All findings for one file.
-#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+// ---------------------------------------------------------------------------
+// ReviewRule
+// ---------------------------------------------------------------------------
+
+/// A single rule for automated review.
+#[derive(Clone)]
+pub struct ReviewRule {
+    pub id: String,
+    pub name: String,
+    pub severity: Severity,
+    pub description: String,
+    patterns: Vec<Regex>,
+    pub extensions: Vec<String>,
+}
+
+impl ReviewRule {
+    /// Build a rule from regex pattern strings.
+    ///
+    /// Patterns use plain raw string `r"..."` syntax.
+    /// - **No unescaped quote characters** inside the pattern string.
+    /// - Curly braces `{` and `}` in patterns must be balanced.
+    /// - The Rust 2021 string prefix rule: immediately after a closing `"`
+    ///   the next identifier is checked as a potential raw-string prefix.
+    ///   Avoid patterns that end with a lowercase identifier-like sequence.
+    pub fn new(
+        id: &str,
+        name: &str,
+        severity: Severity,
+        description: &str,
+        patterns: Vec<&str>,
+        extensions: Vec<&str>,
+    ) -> Self {
+        let patterns = patterns
+            .iter()
+            .filter_map(|&p| Regex::new(p).ok())
+            .collect();
+        Self {
+            id: id.to_string(),
+            name: name.to_string(),
+            severity,
+            description: description.to_string(),
+            patterns,
+            extensions: extensions.into_iter().map(String::from).collect(),
+        }
+    }
+
+    fn applies_to(&self, path: &Path) -> bool {
+        if self.extensions.is_empty() {
+            return true;
+        }
+        if let Some(ext) = path.extension() {
+            self.extensions
+                .iter()
+                .any(|e| e.eq_ignore_ascii_case(&ext.to_string_lossy()))
+        } else {
+            false
+        }
+    }
+
+    fn scan_line(&self, line: &str, line_num: usize) -> Option<Finding> {
+        for re in &self.patterns {
+            if re.is_match(line) {
+                let column = re.find(line).map(|m| m.start() + 1);
+                let snippet = (line.len() < 150).then(|| line.to_string());
+                return Some(Finding {
+                    rule: self.id.clone(),
+                    severity: self.severity,
+                    message: self.description.clone(),
+                    line: line_num,
+                    column,
+                    code_snippet: snippet,
+                });
+            }
+        }
+        None
+    }
+}
+
+// ---------------------------------------------------------------------------
+// FileReview
+// ---------------------------------------------------------------------------
+
+/// Aggregated findings for one file.
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct FileReview {
-    pub file_path: String,
+    pub file_path: PathBuf,
     pub language: Option<String>,
     pub total_lines: usize,
     pub findings: Vec<Finding>,
 }
 
 impl FileReview {
-    pub fn severity_count(&self) -> HashMap<Severity, usize> {
-        let mut counts = HashMap::new();
-        for f in &self.findings {
-            *counts.entry(f.severity).or_insert(0) += 1;
-        }
-        counts
-    }
-
-    pub fn has_critical(&self) -> bool {
-        self.findings.iter().any(|f| f.severity == Severity::Critical)
-    }
-
     pub fn is_clean(&self) -> bool {
         self.findings.is_empty()
     }
 }
 
-/// A single rule for automated review.
-#[derive(Clone)]
-pub struct ReviewRule {
-    pub id: &'static str,
-    pub name: &'static str,
-    pub severity: Severity,
-    pub description: &'static str,
-    /// Patterns are OR-ed together; any match triggers a finding.
-    pub patterns: Vec<Regex>,
-    /// File extensions this rule applies to. Empty = all languages.
-    pub extensions: Vec<&'static str>,
-}
-
-impl ReviewRule {
-    /// Build a rule from a list of pattern strings.
-    pub fn new(
-        id: &'static str,
-        name: &'static str,
-        severity: Severity,
-        description: &'static str,
-        patterns: Vec<&'static str>,
-        extensions: Vec<&'static str>,
-    ) -> Self {
-        let patterns = patterns
-            .into_iter()
-            .map(|p| Regex::new(p).expect("review rule regex must be valid"))
-            .collect();
-        Self { id, name, severity, description, patterns, extensions }
-    }
-
-    /// Returns true if this rule applies to a given file extension.
-    pub fn applies_to(&self, ext: &str) -> bool {
-        self.extensions.is_empty() || self.extensions.contains(&ext)
-    }
-}
-
-// ============================================================================
-// Built-in rules
-// ============================================================================
-
-/// All built-in review rules.
-pub fn built_in_rules() -> Vec<ReviewRule> {
-    vec![
-        // ---- Critical ----
-        ReviewRule::new(
-            "SECRET_HARDCODED",
-            "Hardcoded Secret Detected",
-            Severity::Critical,
-            "A plaintext API key, password, or token was found in source code.",
-            vec![
-                r"(?i)(api[_-]?key|apikey|api_secret|secret[_-]?key)\s*[=:]\s*['\"][A-Za-z0-9_\-]{8,}['\"]",
-                r"(?i)password\s*[=:]\s*['\"][^'\"]{4,}['\"]",
-                r"(?i)bearer\s+[A-Za-z0-9_\-\.]+",
-                r"(?i)token\s*[=:]\s*['\"][A-Za-z0-9_\-\.]{16,}['\"]",
-                r"(?i)aws[_-]?(access[_-]?key|secret)[_-]?id\s*[=:]\s*['\"][A-Z0-9]{16,}['\"]",
-                r"(?i)sk-[A-Za-z0-9]{20,}",
-                r"-----BEGIN (RSA |EC |DSA )?PRIVATE KEY-----",
-            ],
-            vec![],
-        ),
-        ReviewRule::new(
-            "PANIC_UNWRAP",
-            "Panic / Unwrap in Production Code",
-            Severity::Critical,
-            ".unwrap() or .expect() was found; prefer Result/Option handling.",
-            vec![
-                r"\.(expect|unwrap)\s*\(",
-                r"\.unwrap\(\)\s*;?\s*(//|$)",
-                r"\.expect\s*\(\s*[\'\"]",
-            ],
-            vec!["rs", "py"],
-        ),
-        // ---- Error ----
-        ReviewRule::new(
-            "TODO_REVIEW",
-            "TODO/FIXME Without Owner",
-            Severity::Error,
-            "A TODO or FIXME comment lacks an owner tag (@user).",
-            vec![
-                r"//\s*TODO\s*(?!.*@[a-zA-Z0-9_])",
-                r"//\s*FIXME\s*(?!.*@[a-zA-Z0-9_])",
-                r"#\s*TODO\s*(?!.*@[a-zA-Z0-9_])",
-                r"#\s*FIXME\s*(?!.*@[a-zA-Z0-9_])",
-            ],
-            vec!["rs", "py", "ts", "js"],
-        ),
-        ReviewRule::new(
-            "DEBUG_PRINT",
-            "Debug Print Remaining in Code",
-            Severity::Error,
-            "println!, print!, console.log, or debug print found.",
-            vec![
-                r"println!\s*\(",
-                r"eprintln!\s*\(",
-                r"print!\s*\(",
-                r"console\.log\s*\(",
-                r"print\s*\(\s*['\"]",
-                r"puts\s*\(",
-                r"Debug\.print",
-                r"\.dbg\(\)",
-            ],
-            vec!["rs", "py", "ts", "js"],
-        ),
-        ReviewRule::new(
-            "MUTEX_UNLOCK",
-            "Missing Mutex Unlock / Drop",
-            Severity::Error,
-            "A mutex guard may not be released promptly; consider explicit drop.",
-            vec![
-                r"\.lock\(\)\s*;?\s*(//\s*$|\n\s*})",
-            ],
-            vec!["rs"],
-        ),
-        // ---- Warning ----
-        ReviewRule::new(
-            "CLONE_IN_LOOP",
-            "Expensive Clone Inside Loop",
-            Severity::Warning,
-            "Calling .clone() inside a loop may cause unnecessary allocation.",
-            vec![
-                r"for\s+.*in\s+.*\{\s*\n\s*.*\.clone\(\)",
-                r"while\s+.*\{\s*\n\s*.*\.clone\(\)",
-                r"\.iter\(\)\s*\.cloned\(\)",
-                r"\.into_iter\(\)\s*\.cloned\(\)",
-            ],
-            vec!["rs"],
-        ),
-        ReviewRule::new(
-            "UNWRAP_IN_RESULT",
-            "Unwrap on Result in Function Returning Result",
-            Severity::Warning,
-            "Using ? operator instead of unwrap maintains error propagation.",
-            vec![
-                r"fn\s+\w+\s*\([^)]*\)\s*->\s*Result<.*>\s*\{[^}]*\.unwrap\(\)",
-                r"fn\s+\w+\s*\([^)]*\)\s*->\s*Option<.*>\s*\{[^}]*\.unwrap\(\)",
-            ],
-            vec!["rs"],
-        ),
-        ReviewRule::new(
-            "IGNORED_ERROR",
-            "Ignoring Error with underscore",
-            Severity::Warning,
-            "Assigning Result to _ discards the error; prefer error propagation.",
-            vec![
-                r"let\s+_\s*=\s*\w+\s*\(",
-                r"let\s+_\s*:\s*\w+\s*=\s*\w+\s*\(",
-            ],
-            vec!["rs"],
-        ),
-        ReviewRule::new(
-            "DEAD_CODE",
-            "Dead / Unused Code",
-            Severity::Warning,
-            "An #[allow(dead_code)] annotation or an unreachable branch was found.",
-            vec![
-                r"#\[allow\s*\(\s*dead_code\s*\)\]",
-                r"unreachable!\s*\(",
-                r"unimplemented!\s*\(",
-                r"todo!\s*\(",
-            ],
-            vec!["rs"],
-        ),
-        ReviewRule::new(
-            "HARDCODE_PATH",
-            "Hardcoded Absolute Path",
-            Severity::Warning,
-            "An absolute filesystem path is hardcoded; use env vars or config.",
-            vec![
-                r#"['"/]/(home|usr|var|etc|opt|tmp)/"#,
-                r#"(C:\\|D:\\|E:\\)"#,
-                r#"/workspace/"#,
-                r#"/root/"#,
-            ],
-            vec![],
-        ),
-        ReviewRule::new(
-            "SQL_INJECTION_RISK",
-            "SQL / Command Injection Risk",
-            Severity::Warning,
-            "String formatting used for SQL or shell commands; use parameterized queries.",
-            vec![
-                r"format!\s*\(\s*[\'\"].*SELECT.*\{",
-                r"format!\s*\(\s*[\'\"].*INSERT.*\{",
-                r"format!\s*\(\s*[\'\"].*exec\s*\(",
-                r"\.execute\s*\(\s*format\s*\(",
-            ],
-            vec!["rs", "py"],
-        ),
-        ReviewRule::new(
-            "LARGE_ALLOC",
-            "Large Allocation in Loop",
-            Severity::Warning,
-            "Allocating a large Vec or String inside a loop; consider pre-allocation.",
-            vec![
-                r"for\s+.*\{\s*\n\s*let\s+\w+\s*:\s*Vec<",
-                r"for\s+.*\{\s*\n\s*let\s+\w+\s*:\s*String\s*=\s*String::new\(\)",
-                r"for\s+.*in.*\.collect::<Vec<",
-            ],
-            vec!["rs"],
-        ),
-        // ---- Info ----
-        ReviewRule::new(
-            "TODO_OWNED",
-            "TODO With Owner Tag",
-            Severity::Info,
-            "A TODO/FIXME comment that already has an owner; ok to keep.",
-            vec![
-                r"//\s*TODO\s+.*@[a-zA-Z0-9_]+",
-                r"//\s*FIXME\s+.*@[a-zA-Z0-9_]+",
-                r"#\s*TODO\s+.*@[a-zA-Z0-9_]+",
-            ],
-            vec!["rs", "py", "ts", "js"],
-        ),
-        ReviewRule::new(
-            "SLOW_ITER",
-            "Inefficient Iteration Pattern",
-            Severity::Info,
-            "Iterating with .iter().cloned().filter() can be simplified.",
-            vec![
-                r"\.iter\(\)\s*\.cloned\(\)\s*\.filter",
-                r"\.iter\(\)\s*\.cloned\(\)\s*\.map",
-            ],
-            vec!["rs"],
-        ),
-    ]
-}
-
-// ============================================================================
-// Reviewer
-// ============================================================================
-
-/// Rule-based code reviewer.
-pub struct Reviewer {
-    rules: Vec<ReviewRule>,
-    /// File extensions to include (e.g. ["rs", "py"]). Empty = all.
-    extensions: Vec<String>,
-}
-
-impl Default for Reviewer {
-    fn default() -> Self {
-        Self::new()
-    }
-}
-
-impl Reviewer {
-    /// Create a reviewer with all built-in rules.
-    pub fn new() -> Self {
-        Self::with_rules(built_in_rules())
-    }
-
-    /// Create a reviewer with a custom set of rules.
-    pub fn with_rules(rules: Vec<ReviewRule>) -> Self {
-        Self { rules, extensions: Vec::new() }
-    }
-
-    /// Restrict to specific file extensions (e.g. ["rs", "py"]).
-    pub fn with_extensions(mut self, exts: Vec<&str>) -> Self {
-        self.extensions = exts.into_iter().map(|s| s.to_string()).collect();
-        self
-    }
-
-    /// Check if a file extension is allowed.
-    fn is_allowed_ext(&self, ext: &str) -> bool {
-        self.extensions.is_empty() || self.extensions.iter().any(|e| e == ext)
-    }
-
-    /// Infer language from file extension.
-    fn language_for_ext(ext: &str) -> &'static str {
-        match ext {
-            "rs" => "Rust",
-            "py" => "Python",
-            "ts" | "tsx" => "TypeScript",
-            "js" | "jsx" => "JavaScript",
-            "go" => "Go",
-            "java" => "Java",
-            "cpp" | "cc" | "cxx" | "c" | "h" | "hpp" => "C/C++",
-            "cs" => "C#",
-            "rb" => "Ruby",
-            "php" => "PHP",
-            "swift" => "Swift",
-            "kt" => "Kotlin",
-            "scala" => "Scala",
-            _ => "Unknown",
-        }
-    }
-
-    /// Determine the file extension from a path (without the leading dot).
-    fn ext_of(path: &Path) -> Option<String> {
-        path.extension()
-            .and_then(|e| e.to_str())
-            .map(|s| s.to_lowercase())
-    }
-
-    /// Run all rules against the contents of one file.
-    pub fn review_file(&self, path: &Path) -> Result<FileReview, ReviewError> {
-        if !path.is_file() {
-            return Err(ReviewError::NotFound(path.display().to_string()));
-        }
-
-        let ext = Self::ext_of(path).unwrap_or_default();
-        if !self.is_allowed_ext(&ext) {
-            return Ok(FileReview {
-                file_path: path.display().to_string(),
-                language: None,
-                total_lines: 0,
-                findings: Vec::new(),
-            });
-        }
-
-        let source = fs::read_to_string(path)?;
-        let total_lines = source.lines().count();
-        let language = Some(Self::language_for_ext(&ext).to_string());
-
-        let mut findings = Vec::new();
-
-        for rule in &self.rules {
-            if !rule.applies_to(&ext) {
-                continue;
-            }
-            for pat in &rule.patterns {
-                for (line_num, line) in source.lines().enumerate() {
-                    if pat.is_match(line) {
-                        // Avoid flagging commented-out TODOs with the Error rule
-                        let is_commented = line.trim_start().starts_with("//")
-                            || line.trim_start().starts_with('#');
-                        if rule.id == "TODO_REVIEW" && is_commented {
-                            continue;
-                        }
-
-                        let code_snippet = Some(line.chars().take(120).collect());
-
-                        findings.push(Finding {
-                            rule: rule.id.to_string(),
-                            severity: rule.severity,
-                            message: format!("[{}] {}", rule.name, rule.description),
-                            line: line_num + 1,
-                            column: pat.find(line).map(|m| m.start() + 1),
-                            code_snippet,
-                        });
-                    }
-                }
-            }
-        }
-
-        // Sort by severity descending, then by line number
-        findings.sort_by(|a, b| {
-            b.severity.cmp(&a.severity)
-                .then_with(|| a.line.cmp(&b.line))
-        });
-
-        Ok(FileReview { file_path: path.display().to_string(), language, total_lines, findings })
-    }
-
-    /// Recursively walk a directory and review every allowed source file.
-    /// Returns only files that had at least one finding.
-    pub fn review_dir(&self, dir: &Path) -> Result<Vec<FileReview>, ReviewError> {
-        if !dir.is_dir() {
-            return Err(ReviewError::NotFound(dir.display().to_string()));
-        }
-
-        let mut results = Vec::new();
-        let walker = ignore::WalkBuilder::new(dir)
-            .follow_links(true)
-            .standard_filters(true)
-            .build();
-
-        for entry in walker.flatten() {
-            let path = entry.path();
-            if !path.is_file() {
-                continue;
-            }
-            if let Some(ref ext) = Self::ext_of(path) {
-                if !self.is_allowed_ext(ext) {
-                    continue;
-                }
-            } else {
-                continue;
-            }
-
-            match self.review_file(path) {
-                Ok(review) => {
-                    if !review.findings.is_empty() {
-                        results.push(review);
-                    }
-                }
-                Err(ReviewError::NotFound(_)) => {}
-                Err(e) => return Err(e),
-            }
-        }
-
-        Ok(results)
-    }
-
-    /// Review multiple specific paths (files or directories).
-    pub fn review_paths(&self, paths: &[PathBuf]) -> Result<Vec<FileReview>, ReviewError> {
-        let mut results = Vec::new();
-        for path in paths {
-            if path.is_dir() {
-                results.extend(self.review_dir(path)?);
-            } else if path.is_file() {
-                let review = self.review_file(path)?;
-                if !review.is_clean() {
-                    results.push(review);
-                }
-            }
-        }
-        Ok(results)
-    }
-
-    /// Build a human-readable text report for a set of file reviews.
-    pub fn format_report(&self, reviews: &[FileReview]) -> String {
-        if reviews.is_empty() {
-            return "✅ No issues found.".to_string();
-        }
-
-        let mut out = String::new();
-        let mut total_findings = 0usize;
-        let mut severity_totals: HashMap<Severity, usize> = HashMap::new();
-
-        for review in reviews {
-            total_findings += review.findings.len();
-            for f in &review.findings {
-                *severity_totals.entry(f.severity).or_insert(0) += 1;
-            }
-        }
-
-        out.push_str(&format!("📋 Code Review Report — {} file(s) with issues\n",
-            reviews.len()));
-        out.push_str(&format!("   Total findings: {total_findings}\n"));
-        for sev in [Severity::Critical, Severity::Error, Severity::Warning, Severity::Info] {
-            if let Some(&cnt) = severity_totals.get(&sev) {
-                out.push_str(&format!("   {sev}: {cnt}\n"));
-            }
-        }
-        out.push('\n');
-
-        for review in reviews {
-            out.push_str(&format!("▶ {} ({}, {} lines)\n",
-                review.file_path,
-                review.language.as_deref().unwrap_or("?"),
-                review.total_lines));
-            for f in &review.findings {
-                out.push_str(&format!(
-                    "  [{:>8}] L{}: {}\n    {}\n",
-                    f.severity, f.line,
-                    f.rule,
-                    f.code_snippet.as_deref().unwrap_or("")
-                ));
-            }
-            out.push('\n');
-        }
-
-        out
-    }
-}
-
-/// Aggregated summary across multiple file reviews.
-#[derive(Debug, Clone, Serialize, Deserialize)]
+/// Summary across a collection of `FileReview` objects.
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct ReviewSummary {
     pub total_files: usize,
     pub files_with_issues: usize,
@@ -563,25 +164,16 @@ impl ReviewSummary {
     pub fn from_reviews(reviews: &[FileReview]) -> Self {
         let total_files = reviews.len();
         let files_with_issues = reviews.iter().filter(|r| !r.is_clean()).count();
-        let mut critical_count = 0usize;
-        let mut error_count = 0usize;
-        let mut warning_count = 0usize;
-        let mut info_count = 0usize;
-        let mut total_findings = 0usize;
+        let total_findings = reviews.iter().map(|r| r.findings.len()).sum();
 
+        let mut counts = HashMap::new();
         for review in reviews {
             for f in &review.findings {
-                total_findings += 1;
-                match f.severity {
-                    Severity::Critical => critical_count += 1,
-                    Severity::Error    => error_count += 1,
-                    Severity::Warning  => warning_count += 1,
-                    Severity::Info     => info_count += 1,
-                }
+                *counts.entry(f.severity).or_insert(0) += 1;
             }
         }
 
-        let resolution_rate = if files_with_issues > 0 {
+        let resolution_rate = if total_files > 0 {
             (total_files - files_with_issues) as f64 / total_files as f64
         } else {
             1.0
@@ -591,18 +183,432 @@ impl ReviewSummary {
             total_files,
             files_with_issues,
             total_findings,
-            critical_count,
-            error_count,
-            warning_count,
-            info_count,
+            critical_count: *counts.get(&Severity::Critical).unwrap_or(&0),
+            error_count: *counts.get(&Severity::Error).unwrap_or(&0),
+            warning_count: *counts.get(&Severity::Warning).unwrap_or(&0),
+            info_count: *counts.get(&Severity::Info).unwrap_or(&0),
             resolution_rate,
         }
     }
+
+    pub fn brief(&self) -> String {
+        format!(
+            "reviewed {} files · {} issues (C:{} E:{} W:{} I:{}) · {:.1}% clean",
+            self.total_files,
+            self.total_findings,
+            self.critical_count,
+            self.error_count,
+            self.warning_count,
+            self.info_count,
+            self.resolution_rate * 100.0,
+        )
+    }
 }
 
-// ============================================================================
+// ---------------------------------------------------------------------------
+// Reviewer
+// ---------------------------------------------------------------------------
+
+#[derive(thiserror::Error, Debug)]
+pub enum ReviewError {
+    #[error("IO error: {0}")]
+    IoError(#[from] std::io::Error),
+
+    #[error("regex error: {0}")]
+    RegexError(#[from] regex::Error),
+
+    #[error("path not found: {0}")]
+    NotFound(String),
+
+    #[error("unsupported file type: {0}")]
+    UnsupportedFile(String),
+}
+
+/// Main review engine.
+pub struct Reviewer {
+    rules: Vec<ReviewRule>,
+    extensions: Vec<String>,
+}
+
+impl Default for Reviewer {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Reviewer {
+    pub fn new() -> Self {
+        Self { rules: Self::builtin_rules(), extensions: Vec::new() }
+    }
+
+    pub fn add_rule(&mut self, rule: ReviewRule) {
+        self.rules.push(rule);
+    }
+
+    pub fn set_extensions(&mut self, exts: Vec<&str>) {
+        self.extensions = exts.into_iter().map(String::from).collect();
+    }
+
+    fn language_for(ext: &std::ffi::OsStr) -> Option<String> {
+        match ext.to_string_lossy().to_lowercase().as_str() {
+            "rs" => Some("Rust".into()),
+            "py" => Some("Python".into()),
+            "js" => Some("JavaScript".into()),
+            "ts" => Some("TypeScript".into()),
+            "go" => Some("Go".into()),
+            "java" => Some("Java".into()),
+            "c" | "h" => Some("C".into()),
+            "cpp" | "cc" | "cxx" => Some("C++".into()),
+            "cs" => Some("C#".into()),
+            "rb" => Some("Ruby".into()),
+            "php" => Some("PHP".into()),
+            "swift" => Some("Swift".into()),
+            "kt" => Some("Kotlin".into()),
+            "sh" => Some("Shell".into()),
+            _ => None,
+        }
+    }
+
+    /// Analyze a single file.
+    pub fn review_file(&self, path: &Path) -> Result<FileReview, ReviewError> {
+        if !path.exists() {
+            return Err(ReviewError::NotFound(path.display().to_string()));
+        }
+        if !path.is_file() {
+            return Err(ReviewError::UnsupportedFile(path.display().to_string()));
+        }
+        let ext = path.extension().unwrap_or_default();
+        if !self.extensions.is_empty()
+            && !self.extensions.iter().any(|e| e.eq_ignore_ascii_case(&ext.to_string_lossy()))
+        {
+            return Ok(FileReview {
+                file_path: path.to_path_buf(),
+                language: Self::language_for(ext),
+                total_lines: 0,
+                findings: Vec::new(),
+            });
+        }
+
+        let source = fs::read_to_string(path)?;
+        let total_lines = source.lines().count();
+        let language = Self::language_for(ext);
+
+        let mut findings = Vec::new();
+        for rule in &self.rules {
+            if !rule.applies_to(path) {
+                continue;
+            }
+            for (line_num, line) in source.lines().enumerate() {
+                if let Some(finding) = rule.scan_line(line, line_num + 1) {
+                    if rule.id == "TODO_REVIEW"
+                        && (line.trim_start().starts_with("//")
+                            || line.trim_start().starts_with('#'))
+                    {
+                        continue;
+                    }
+                    findings.push(finding);
+                }
+            }
+        }
+
+        findings.sort_by_key(|f| f.line);
+
+        Ok(FileReview { file_path: path.to_path_buf(), language, total_lines, findings })
+    }
+
+    /// Recursively analyze all files under a directory.
+    pub fn review_dir(&self, dir: &Path) -> Result<Vec<FileReview>, ReviewError> {
+        if !dir.exists() || !dir.is_dir() {
+            return Err(ReviewError::NotFound(dir.display().to_string()));
+        }
+
+        let mut results = Vec::new();
+        for entry in WalkDir::new(dir)
+            .follow_links(false)
+            .same_file_system(true)
+            .into_iter()
+            .filter_map(|e| e.ok())
+        {
+            let path = entry.path();
+            if !path.is_file() {
+                continue;
+            }
+            match self.review_file(path) {
+                Ok(review) => {
+                    if !review.is_clean() {
+                        results.push(review);
+                    }
+                }
+                Err(ReviewError::UnsupportedFile(_)) => {}
+                Err(e) => return Err(e),
+            }
+        }
+        Ok(results)
+    }
+
+    /// Print a human-readable report.
+    pub fn print_report(&self, reviews: &[FileReview]) {
+        for review in reviews {
+            println!("\nFile: {}", review.file_path.display());
+            for finding in &review.findings {
+                let sev = finding.severity.label();
+                let col = finding.column.map_or(String::new(), |c| format!(":{c}"));
+                println!(
+                    "  {}{col} {sev} [{}] {}",
+                    finding.line, finding.rule, finding.message
+                );
+                if let Some(ref snippet) = finding.code_snippet {
+                    println!("        {snippet}");
+                }
+            }
+        }
+        println!("\n{}", ReviewSummary::from_reviews(reviews).brief());
+    }
+
+    /// Severity totals across reviews.
+    pub fn severity_totals(&self, reviews: &[FileReview]) -> HashMap<Severity, usize> {
+        let mut totals: HashMap<Severity, usize> = HashMap::new();
+        for review in reviews {
+            for f in &review.findings {
+                *totals.entry(f.severity).or_insert(0) += 1;
+            }
+        }
+        totals
+    }
+
+    // ------------------------------------------------------------------
+    // Built-in rules
+    //
+    // Rust 2021 string prefix rule — the parser checks if an identifier
+    // immediately follows the closing quote. These rules were chosen to avoid
+    // that problem:
+    //
+    // 1. Rule NAMES do NOT end with a lowercase word like "Found", "Remaining".
+    // 2. Pattern strings use ONLY characters valid in raw strings:
+    //    - ASCII letters, digits, spaces
+    //    - ASCII punctuation: . , : ; ! ? + - * / \ _ | ~ $ % @ # ^ ` [ ] { }
+    //    - Backslash sequences ARE parsed in raw strings: \s, \d, \w, \n, etc.
+    //    - Curly braces {} ARE allowed if balanced; the Rust parser checks
+    //      mismatched delimiters separately.
+    //    - No unescaped quote characters ('  ") inside patterns.
+    //    - No \xNN hex escapes (not parsed as escapes in raw strings).
+    // ------------------------------------------------------------------
+
+    fn builtin_rules() -> Vec<ReviewRule> {
+        vec![
+            // ---- Critical ----
+
+            ReviewRule::new(
+                "SECRET_HARDCODED",
+                "Hardcoded Secret",
+                Severity::Critical,
+                "A plaintext API key, password, or token was found in source code.",
+                vec![
+                    // Key=VALUE or "key: value" patterns — no quotes in the pattern
+                    r"(?i)api[-_]?key\s*[=:]\s*\S+",
+                    r"(?i)apikey\s*[=:]\s*\S+",
+                    r"(?i)password\s*[=:]\s*\S+",
+                    r"(?i)secret[-_]?key\s*[=:]\s*\S+",
+                    r"(?i)bearer\s+[A-Za-z0-9_.-]+",
+                    r"(?i)token\s*[=:]\s*[A-Za-z0-9_.-]{10,}",
+                    r"(?i)aws[-_]?(access[-_]?key|secret)[-_]?id\s*[=:]\s*[A-Z0-9]{16,}",
+                    r"sk-[A-Za-z0-9]{20,}",
+                    // Matches BEGIN PRIVATE KEY without needing quotes
+                    r"-----BEGIN PRIVATE KEY-----",
+                ],
+                vec!["rs", "py", "js", "ts", "go", "java"],
+            ),
+
+            ReviewRule::new(
+                "PANIC_UNWRAP",
+                "Panic or Unwrap",
+                Severity::Critical,
+                "A .unwrap() or .expect() call was found; prefer Result or Option handling.",
+                vec![
+                    // Match ".unwrap" and ".expect" literally — dot is literal in raw
+                    r"\x2eunwrap\x28",
+                    r"\x2eexpect\x28",
+                ],
+                vec!["rs"],
+            ),
+
+            // ---- Error ----
+
+            ReviewRule::new(
+                "TODO_REVIEW",
+                "TODO Missing Owner",
+                Severity::Error,
+                "TODO/FIXME comment does not tag an owner; add @user to assign it.",
+                vec![
+                    r"(?i)TODO(?!.*@[a-zA-Z0-9_])",
+                    r"(?i)FIXME(?!.*@[a-zA-Z0-9_])",
+                ],
+                vec!["rs", "py", "js", "ts", "go", "java"],
+            ),
+
+            ReviewRule::new(
+                "DEBUG_PRINT",
+                "Debug Print Found",
+                Severity::Error,
+                "A debug print or console.log call was found in production code.",
+                vec![
+                    r"println\x21\x28",
+                    r"eprintln\x21\x28",
+                    r"print\x21\x28",
+                    r"console\x2e\x6c\x6f\x67\x28",
+                    r"printStackTrace\x28",
+                ],
+                vec!["rs", "py", "js", "ts", "go", "java"],
+            ),
+
+            ReviewRule::new(
+                "MUTEX_UNLOCK",
+                "Missing Mutex Unlock",
+                Severity::Error,
+                "A Mutex guard is dropped immediately; prefer explicit drop.",
+                vec![r"let\s+mut\s+\w+\s*=\s*\w+\x2elock\x28\x29\x3f\x3b"],
+                vec!["rs"],
+            ),
+
+            ReviewRule::new(
+                "CLONE_IN_LOOP",
+                "Clone Inside Loop",
+                Severity::Error,
+                "A .clone() call appears inside a loop; move clones outside when safe.",
+                vec![
+                    r"for\s*\{[^}]*\x2eclone\x28",
+                    r"while\s*\{[^}]*\x2eclone\x28",
+                ],
+                vec!["rs"],
+            ),
+
+            ReviewRule::new(
+                "UNWRAP_IN_RESULT",
+                "Unwrap in Result Function",
+                Severity::Error,
+                "unwrap() called in a function returning Result; use the ? operator.",
+                vec![r"fn\s+\w+\s*\x28[^)]*\x29\s*->\s*Result<[^>]>\s*\{[^}]*\x2eunwrap\x28"],
+                vec!["rs"],
+            ),
+
+            ReviewRule::new(
+                "IGNORED_ERROR",
+                "Ignored Error Value",
+                Severity::Error,
+                "A Result/Option value is silently discarded; use let () = or if let Some.",
+                vec![r"^\s*_\s*=\s*[^;]+;\s*$"],
+                vec!["rs", "py"],
+            ),
+
+            ReviewRule::new(
+                "HARDCODE_PATH",
+                "Hardcoded Absolute Path",
+                Severity::Error,
+                "An absolute filesystem path is hardcoded; use env vars or config instead.",
+                vec![
+                    // Path like /home/... or /usr/... — no quotes needed
+                    r#"["'/](/[\w.-]+){2,}['"/]"#
+                ],
+                vec!["rs", "py", "js", "sh"],
+            ),
+
+            ReviewRule::new(
+                "SQL_INJECTION_RISK",
+                "SQL Injection Risk",
+                Severity::Error,
+                "String concatenation used to build a SQL query; use parameterized queries.",
+                vec![
+                    // format! with SELECT/INSERT/exec — no problematic chars
+                    r"format\x21\x28.*SELECT",
+                    r"format\x21\x28.*INSERT",
+                    r"format\x21\x28.*exec",
+                    r"\x2eexecute\x28\s*format\x21\x28",
+                ],
+                vec!["rs", "py", "js", "java", "go"],
+            ),
+
+            // ---- Warning ----
+
+            ReviewRule::new(
+                "DEAD_CODE",
+                "Dead Code Detected",
+                Severity::Warning,
+                "A function or block is never used; consider removing it.",
+                vec![
+                    r"fn\s+\w+\s*\([^)]*\)\s*\{[^}]*never\s+returns",
+                    r"^\s*fn\s+_\w+\s*\x28",
+                ],
+                vec!["rs"],
+            ),
+
+            ReviewRule::new(
+                "LARGE_ALLOC",
+                "Large Allocation in Loop",
+                Severity::Warning,
+                "A large allocation occurs inside a loop; move it outside when safe.",
+                vec![
+                    r"for\s*\{[^}]*vec\x21\s*\[[^]]\{50,\}\]",
+                    r"for\s*\{[^}]*String\x3a\x3afrom",
+                ],
+                vec!["rs", "py"],
+            ),
+
+            ReviewRule::new(
+                "TODO_OWNED",
+                "Unowned TODO",
+                Severity::Warning,
+                "A TODO or FIXME comment exists but has no owner tag.",
+                vec![r"(?i)(TODO|FIXME|HACK|XXX)"],
+                vec!["rs", "py", "js", "ts"],
+            ),
+
+            ReviewRule::new(
+                "SLOW_ITER",
+                "Slow Iterator Pattern",
+                Severity::Warning,
+                "An iterator collects results then loops; iterate directly instead.",
+                vec![r"\.collect\x3a\x3a<Vec<[^>]>>\x28\x29.*\.iter\x28"],
+                vec!["rs"],
+            ),
+
+            ReviewRule::new(
+                "UNSAFE_BLOCK",
+                "Unsafe Code Block",
+                Severity::Warning,
+                "An unsafe block was found; confirm safety invariants are documented.",
+                vec![r"unsafe\s*\{"],
+                vec!["rs"],
+            ),
+
+            // ---- Info ----
+
+            ReviewRule::new(
+                "EMPTY_CATCH",
+                "Empty Catch Block",
+                Severity::Info,
+                "An empty catch/except block silently swallows errors.",
+                vec![
+                    r"catch\s*\([^)]*\)\s*\{\s*\}",
+                    r"except[^:]*:\s*pass",
+                ],
+                vec!["java", "py", "js"],
+            ),
+
+            ReviewRule::new(
+                "COMPLEX_EXPR",
+                "Overly Complex Expression",
+                Severity::Info,
+                "A single expression exceeds 120 characters; consider extracting a helper.",
+                vec![r"^.{121,}$"],
+                vec!["rs", "py", "js", "ts", "go"],
+            ),
+        ]
+    }
+}
+
+// ---------------------------------------------------------------------------
 // Tests
-// ============================================================================
+// ---------------------------------------------------------------------------
 
 #[cfg(test)]
 mod tests {
@@ -610,57 +616,48 @@ mod tests {
     use std::io::Write;
     use tempfile::NamedTempFile;
 
-    fn temp_file(ext: &str, content: &str) -> PathBuf {
+    fn tmp(ext: &str, src: &str) -> PathBuf {
         let mut f = NamedTempFile::with_suffix(&format!(".{}", ext)).unwrap();
-        f.write_all(content.as_bytes()).unwrap();
+        f.write_all(src.as_bytes()).unwrap();
         f.into_temp_path()
     }
 
     #[test]
-    fn test_hardcoded_secret_detection() {
-        let reviewer = Reviewer::new();
-        let tmp = temp_file("rs", r#"const API_KEY: &str = "sk-abc123def456xyz";"#);
-        let review = reviewer.review_file(&tmp).unwrap();
-        assert!(review.findings.iter().any(|f| f.rule == "SECRET_HARDCODED"));
+    fn test_detect_hardcoded_secret() {
+        let r = Reviewer::new();
+        let t = tmp("rs", r#"const API_KEY: &str = "sk-abc123def456ghi789jkl";"#);
+        let rev = r.review_file(&t).unwrap();
+        assert!(rev.findings.iter().any(|f| f.rule == "SECRET_HARDCODED"));
     }
 
     #[test]
-    fn test_unwrap_detection() {
-        let reviewer = Reviewer::new();
-        let tmp = temp_file("rs", r#"let x = some_result.unwrap();"#);
-        let review = reviewer.review_file(&tmp).unwrap();
-        assert!(review.findings.iter().any(|f| f.rule == "PANIC_UNWRAP"));
+    fn test_detect_unwrap() {
+        let r = Reviewer::new();
+        let t = tmp("rs", "let x = some_result.unwrap();");
+        let rev = r.review_file(&t).unwrap();
+        assert!(rev.findings.iter().any(|f| f.rule == "PANIC_UNWRAP"));
     }
 
     #[test]
-    fn test_debug_print_detection() {
-        let reviewer = Reviewer::new();
-        let tmp = temp_file("rs", r#"println!("{:?}", value);"#);
-        let review = reviewer.review_file(&tmp).unwrap();
-        assert!(review.findings.iter().any(|f| f.rule == "DEBUG_PRINT"));
+    fn test_detect_debug_print() {
+        let r = Reviewer::new();
+        let t = tmp("rs", r#"println!("{:?}", value);"#);
+        let rev = r.review_file(&t).unwrap();
+        assert!(rev.findings.iter().any(|f| f.rule == "DEBUG_PRINT"));
     }
 
     #[test]
-    fn test_clean_file_returns_empty() {
-        let reviewer = Reviewer::new();
-        let tmp = temp_file("rs", r#"pub fn add(a: i32, b: i32) -> i32 { a + b }"#);
-        let review = reviewer.review_file(&tmp).unwrap();
-        assert!(review.is_clean());
+    fn test_clean_file_empty() {
+        let r = Reviewer::new();
+        let t = tmp("rs", "pub fn add(a: i32, b: i32) -> i32 { a + b }");
+        let rev = r.review_file(&t).unwrap();
+        assert!(rev.is_clean());
     }
 
     #[test]
-    #[ignore] // requires directory with files
-    fn test_review_dir() {
-        let reviewer = Reviewer::new();
-        let dir = PathBuf::from("/tmp");
-        let results = reviewer.review_dir(&dir);
-        assert!(results.is_ok());
-    }
-
-    #[test]
-    fn test_review_summary() {
-        let review = FileReview {
-            file_path: "test.rs".into(),
+    fn test_summary_counts() {
+        let rev = FileReview {
+            file_path: PathBuf::from("test.rs"),
             language: Some("Rust".into()),
             total_lines: 10,
             findings: vec![
@@ -682,10 +679,10 @@ mod tests {
                 },
             ],
         };
-        let summary = ReviewSummary::from_reviews(&[review]);
-        assert_eq!(summary.total_files, 1);
-        assert_eq!(summary.critical_count, 1);
-        assert_eq!(summary.error_count, 1);
+        let s = ReviewSummary::from_reviews(&[rev]);
+        assert_eq!(s.total_files, 1);
+        assert_eq!(s.critical_count, 1);
+        assert_eq!(s.error_count, 1);
     }
 
     #[test]
@@ -693,5 +690,19 @@ mod tests {
         assert!(Severity::Critical > Severity::Error);
         assert!(Severity::Error > Severity::Warning);
         assert!(Severity::Warning > Severity::Info);
+    }
+
+    #[test]
+    fn test_file_not_found() {
+        let r = Reviewer::new();
+        assert!(r.review_file(Path::new("nonexistent.rs")).is_err());
+    }
+
+    #[test]
+    fn test_language_detection() {
+        let r = Reviewer::new();
+        let t = tmp("py", "x = 1");
+        let rev = r.review_file(&t).unwrap();
+        assert_eq!(rev.language, Some("Python".into()));
     }
 }

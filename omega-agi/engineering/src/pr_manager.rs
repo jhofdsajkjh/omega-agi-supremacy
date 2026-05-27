@@ -4,7 +4,6 @@
 //! crate free of HTTP-client dependencies that pull in Rust 2024-only crates.
 
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use std::process::Command;
 use thiserror::Error;
 
@@ -77,9 +76,10 @@ impl PRManager {
     }
 
     fn curl(&self, method: &str, url: &str, body: Option<&str>) -> Result<(String, u16), PRError> {
+        let auth = format!("Authorization: Bearer {}", self.github_token);
         let mut args = vec![
             "-s", "-L", "-w", "%{http_code}", "-X", method,
-            "-H", &format!("Authorization: Bearer {}", self.github_token),
+            "-H", &auth,
             "-H", "Accept: application/vnd.github+json",
             "-H", "X-GitHub-Api-Version: 2022-11-28",
         ];
