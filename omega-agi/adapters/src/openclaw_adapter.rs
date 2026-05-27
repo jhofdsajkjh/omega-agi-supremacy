@@ -5,11 +5,17 @@
 //! and agent communication standards.
 
 use anyhow::Result;
-use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::sync::Arc;
 use tokio::sync::RwLock;
+
+/// Generate a simple UUID-like ID
+fn generate_id() -> String {
+    use std::time::{SystemTime, UNIX_EPOCH};
+    let duration = SystemTime::now().duration_since(UNIX_EPOCH).unwrap();
+    format!("id_{}_{}", duration.as_nanos(), std::process::id())
+}
 
 /// OpenClaw message types
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -183,16 +189,15 @@ impl Default for OpenClawSkillLoader {
 }
 
 /// OpenClaw message adapter trait
-#[async_trait]
 pub trait OpenClawAdapterTrait: Send + Sync {
     /// Process incoming OpenClaw message
-    async fn process_message(&self, message: OpenClawAgentMessage) -> Result<OpenClawMessage>;
+    fn process_message(&self, message: OpenClawAgentMessage) -> impl std::future::Future<Output = Result<OpenClawMessage>> + Send;
     
     /// Send message through OpenClaw
-    async fn send_message(&self, message: OpenClawMessage, chat_id: &str) -> Result<String>;
+    fn send_message(&self, message: OpenClawMessage, chat_id: &str) -> impl std::future::Future<Output = Result<String>> + Send;
     
     /// Load skills from OpenClaw skill directory
-    async fn load_skills(&self, skill_dir: &str) -> Result<Vec<OpenClawSkill>>;
+    fn load_skills(&self, skill_dir: &str) -> impl std::future::Future<Output = Result<Vec<OpenClawSkill>>> + Send;
     
     /// Get adapter info
     fn adapter_info(&self) -> AdapterInfo;
@@ -276,7 +281,6 @@ impl Default for OpenClawAdapter {
     }
 }
 
-#[async_trait]
 impl OpenClawAdapterTrait for OpenClawAdapter {
     async fn process_message(&self, message: OpenClawAgentMessage) -> Result<OpenClawMessage> {
         tracing::info!("Processing OpenClaw message: {}", message.message_id);
@@ -298,7 +302,7 @@ impl OpenClawAdapterTrait for OpenClawAdapter {
 
     async fn send_message(&self, _message: OpenClawMessage, _chat_id: &str) -> Result<String> {
         // In real implementation, this would call OpenClaw API
-        Ok(format!("msg_{}", uuid::Uuid::new_v4()))
+        Ok(generate_id())
     }
 
     async fn load_skills(&self, _skill_dir: &str) -> Result<Vec<OpenClawSkill>> {

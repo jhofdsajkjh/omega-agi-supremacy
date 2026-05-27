@@ -4,11 +4,17 @@
 //! Provides OpenHuman API compatibility and workflow support.
 
 use anyhow::Result;
-use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::sync::Arc;
 use tokio::sync::RwLock;
+
+/// Generate a simple unique ID
+fn generate_id() -> String {
+    use std::time::{SystemTime, UNIX_EPOCH};
+    let duration = SystemTime::now().duration_since(UNIX_EPOCH).unwrap();
+    format!("req_{}_{}", duration.as_nanos(), std::process::id())
+}
 
 /// OpenHuman API message types
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -139,7 +145,7 @@ impl OpenHumanApiClient {
         prompt: &str,
     ) -> OpenHumanMessage {
         OpenHumanMessage::AgentRequest {
-            request_id: format!("req_{}", uuid::Uuid::new_v4()),
+            request_id: generate_id(),
             agent_id: agent_id.to_string(),
             prompt: prompt.to_string(),
             context: None,
@@ -210,13 +216,12 @@ impl Default for OpenHumanWorkflowExecutor {
 }
 
 /// OpenHuman adapter trait
-#[async_trait]
 pub trait OpenHumanAdapterTrait: Send + Sync {
     /// Send request to OpenHuman agent
-    async fn send_agent_request(&self, message: OpenHumanMessage) -> Result<OpenHumanMessage>;
+    fn send_agent_request(&self, message: OpenHumanMessage) -> impl std::future::Future<Output = Result<OpenHumanMessage>> + Send;
     
     /// Execute workflow
-    async fn execute_workflow(&self, workflow: OpenHumanWorkflow) -> Result<HashMap<String, String>>;
+    fn execute_workflow(&self, workflow: OpenHumanWorkflow) -> impl std::future::Future<Output = Result<HashMap<String, String>>> + Send;
     
     /// Get adapter info
     fn adapter_info(&self) -> OpenHumanAdapterInfo;
@@ -272,11 +277,10 @@ impl Default for OpenHumanAdapter {
     }
 }
 
-#[async_trait]
 impl OpenHumanAdapterTrait for OpenHumanAdapter {
     async fn send_agent_request(&self, message: OpenHumanMessage) -> Result<OpenHumanMessage> {
         match message {
-            OpenHumanMessage::AgentRequest { request_id, agent_id, prompt, context } => {
+            OpenHumanMessage::AgentRequest { request_id, agent_id, prompt, context: _ } => {
                 tracing::info!("OpenHuman agent request: {} - {}", request_id, agent_id);
                 
                 Ok(OpenHumanMessage::AgentResponse {
@@ -322,7 +326,7 @@ mod tests {
         let request = client.create_agent_request("agent_001", "Hello");
         
         match request {
-            OpenHumanMessage::AgentRequest { request_id, agent_id, prompt, context } => {
+            OpenHumanMessage::AgentRequest { request_id, agent_id, prompt, context: _ } => {
                 assert_eq!(agent_id, "agent_001");
                 assert_eq!(prompt, "Hello");
                 assert!(request_id.starts_with("req_"));

@@ -5,11 +5,17 @@
 //! and API adaptation.
 
 use anyhow::Result;
-use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::sync::Arc;
 use tokio::sync::RwLock;
+
+/// Generate a simple unique ID
+fn generate_id() -> String {
+    use std::time::{SystemTime, UNIX_EPOCH};
+    let duration = SystemTime::now().duration_since(UNIX_EPOCH).unwrap();
+    format!("{}_{}", duration.as_nanos(), std::process::id())
+}
 
 /// Hermes message types
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -40,12 +46,13 @@ pub enum HermesMessage {
 /// Hermes request parameters
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct HermesParams {
-    pub [key: String]: serde_json::Value,
+    #[serde(flatten)]
+    pub data: std::collections::HashMap<String, serde_json::Value>,
 }
 
 impl Default for HermesParams {
     fn default() -> Self {
-        HermesParams { ..serde_json::from_value(serde_json::json!({})).unwrap() }
+        HermesParams { data: std::collections::HashMap::new() }
     }
 }
 
@@ -121,6 +128,17 @@ pub struct HermesWorkflowMetadata {
     pub tags: Vec<String>,
 }
 
+impl Default for HermesWorkflowMetadata {
+    fn default() -> Self {
+        Self {
+            version: "1.0".to_string(),
+            author: None,
+            description: None,
+            tags: Vec::new(),
+        }
+    }
+}
+
 /// Hermes task definition
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct HermesTask {
@@ -179,13 +197,14 @@ impl HermesWorkflowEngine {
         let workflow = self.get_workflow(workflow_id).await
             .ok_or_else(|| anyhow::anyhow!("Workflow not found: {}", workflow_id))?;
         
+        let now = chrono::Utc::now().to_rfc3339();
         let task = HermesTask {
-            task_id: format!("task_{}", uuid::Uuid::new_v4()),
+            task_id: generate_id(),
             workflow_id: workflow_id.to_string(),
             status: HermesTaskStatus::Pending,
             result: None,
-            created_at: chrono::Utc::now().to_rfc3339(),
-            updated_at: chrono::Utc::now().to_rfc3339(),
+            created_at: now.clone(),
+            updated_at: now,
         };
         
         let mut tasks = self.tasks.write().await;
@@ -242,7 +261,7 @@ impl HermesApiClient {
     /// Build API request
     pub fn build_request(&self, action: &str, params: HermesParams) -> Result<HermesMessage> {
         Ok(HermesMessage::Request {
-            id: uuid::Uuid::new_v4().to_string(),
+            id: generate_id(),
             action: action.to_string(),
             params,
             context: None,
@@ -257,13 +276,12 @@ impl HermesApiClient {
 }
 
 /// Hermes adapter trait
-#[async_trait]
 pub trait HermesAdapterTrait: Send + Sync {
     /// Send request to Hermes
-    async fn send_request(&self, message: HermesMessage) -> Result<HermesMessage>;
+    fn send_request(&self, message: HermesMessage) -> impl std::future::Future<Output = Result<HermesMessage>> + Send;
     
     /// Execute workflow
-    async fn execute_workflow(&self, workflow: HermesWorkflow) -> Result<HermesTask>;
+    fn execute_workflow(&self, workflow: HermesWorkflow) -> impl std::future::Future<Output = Result<HermesTask>> + Send;
     
     /// Get adapter info
     fn adapter_info(&self) -> HermesAdapterInfo;
@@ -319,11 +337,10 @@ impl Default for HermesAdapter {
     }
 }
 
-#[async_trait]
 impl HermesAdapterTrait for HermesAdapter {
     async fn send_request(&self, message: HermesMessage) -> Result<HermesMessage> {
         match message {
-            HermesMessage::Request { id, action, params, context } => {
+            HermesMessage::Request { id, action, params, context: _ } => {
                 tracing::info!("Hermes request: {} - {}", id, action);
                 
                 // Build response

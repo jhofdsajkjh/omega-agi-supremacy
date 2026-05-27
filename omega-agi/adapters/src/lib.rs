@@ -69,27 +69,19 @@ impl AdapterManager {
     pub fn get_active_info(&self) -> AdapterInfo {
         match self.active_adapter.as_str() {
             "hermes" => {
-                if let Some(ref h) = self.hermes {
-                    AdapterInfo {
-                        name: "Hermes Adapter".to_string(),
-                        version: env!("CARGO_PKG_VERSION").to_string(),
-                        protocol_version: "1.0".to_string(),
-                        capabilities: vec!["workflow_execution".to_string()],
-                    }
-                } else {
-                    AdapterInfo::default()
+                AdapterInfo {
+                    name: "Hermes Adapter".to_string(),
+                    version: env!("CARGO_PKG_VERSION").to_string(),
+                    protocol_version: "1.0".to_string(),
+                    capabilities: vec!["workflow_execution".to_string()],
                 }
             }
             "openhuman" => {
-                if let Some(ref o) = self.openhuman {
-                    AdapterInfo {
-                        name: "OpenHuman Adapter".to_string(),
-                        version: env!("CARGO_PKG_VERSION").to_string(),
-                        protocol_version: "1.0".to_string(),
-                        capabilities: vec!["agent_communication".to_string()],
-                    }
-                } else {
-                    AdapterInfo::default()
+                AdapterInfo {
+                    name: "OpenHuman Adapter".to_string(),
+                    version: env!("CARGO_PKG_VERSION").to_string(),
+                    protocol_version: "1.0".to_string(),
+                    capabilities: vec!["agent_communication".to_string()],
                 }
             }
             _ => {
