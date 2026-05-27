@@ -1,0 +1,12 @@
+/root/omega-agi-supremacy/omega-agi/adapters/target/debug/deps/libasync_trait-b15eab650875d1a4.so: /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/lib.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/args.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/bound.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/expand.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/lifetime.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/parse.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/receiver.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/verbatim.rs
+
+/root/omega-agi-supremacy/omega-agi/adapters/target/debug/deps/async_trait-b15eab650875d1a4.d: /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/lib.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/args.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/bound.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/expand.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/lifetime.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/parse.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/receiver.rs /root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/verbatim.rs
+
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/lib.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/args.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/bound.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/expand.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/lifetime.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/parse.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/receiver.rs:
+/root/.cargo/registry/src/index.crates.io-6f17d22bba15001f/async-trait-0.1.89/src/verbatim.rs:

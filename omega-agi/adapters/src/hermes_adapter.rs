@@ -45,19 +45,17 @@ pub enum HermesMessage {
 
 /// Hermes request parameters
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Default)]
 pub struct HermesParams {
     #[serde(flatten)]
     pub data: std::collections::HashMap<String, serde_json::Value>,
 }
 
-impl Default for HermesParams {
-    fn default() -> Self {
-        HermesParams { data: std::collections::HashMap::new() }
-    }
-}
+
 
 /// Hermes execution context
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Default)]
 pub struct HermesContext {
     pub session_id: Option<String>,
     pub user_id: Option<String>,
@@ -65,16 +63,7 @@ pub struct HermesContext {
     pub metadata: HashMap<String, String>,
 }
 
-impl Default for HermesContext {
-    fn default() -> Self {
-        Self {
-            session_id: None,
-            user_id: None,
-            workspace: None,
-            metadata: HashMap::new(),
-        }
-    }
-}
+
 
 /// Hermes status codes
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -194,7 +183,7 @@ impl HermesWorkflowEngine {
 
     /// Create a new task from workflow
     pub async fn create_task(&self, workflow_id: &str) -> Result<HermesTask> {
-        let workflow = self.get_workflow(workflow_id).await
+        let _workflow = self.get_workflow(workflow_id).await
             .ok_or_else(|| anyhow::anyhow!("Workflow not found: {}", workflow_id))?;
         
         let now = chrono::Utc::now().to_rfc3339();
@@ -241,7 +230,7 @@ impl Default for HermesWorkflowEngine {
 
 /// Hermes API client
 pub struct HermesApiClient {
-    base_url: String,
+    #[allow(unused)] base_url: String,
     api_key: Option<String>,
 }
 

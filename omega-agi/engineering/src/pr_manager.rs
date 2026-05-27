@@ -98,7 +98,7 @@ impl PRManager {
             .map_err(|e| PRError::ApiError(e.to_string()))?;
 
         let stderr = String::from_utf8_lossy(&output.stderr);
-        if !stderr.is_empty() && !stderr.contains("curl:") == false {
+        if !stderr.is_empty() && !stderr.contains("curl:") {
             // non-fatal, log if needed
         }
 

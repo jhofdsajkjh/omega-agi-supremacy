@@ -386,7 +386,7 @@ impl TestHarness {
         // Rust测试用例
         for (i, test) in self.rust_tests.iter().enumerate() {
             let result = self.results.get(i);
-            self.write_junit_test_case(&mut xml, &test.name, &format!("rust.{}", test.file_path.replace("/", ".")), result);
+            self.write_junit_test_case(&mut xml, &test.name, &format!("rust.{}", test.file_path.replace('/', ".")), result);
         }
 
         // Python测试用例

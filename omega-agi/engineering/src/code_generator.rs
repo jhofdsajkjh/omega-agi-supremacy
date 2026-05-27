@@ -65,17 +65,12 @@ pub struct CodeContext {
 }
 
 /// 语言枚举
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub enum Language {
+    #[default]
     Rust,
     Python,
     Both,
-}
-
-impl Default for Language {
-    fn default() -> Self {
-        Language::Rust
-    }
 }
 
 impl std::fmt::Display for Language {
@@ -140,9 +135,10 @@ impl GeneratedCode {
 
     /// 计算代码质量评分
     pub fn compute_quality_score(&self) -> CodeQuality {
-        let mut quality = CodeQuality::default();
-        
-        quality.overall_score = self.confidence;
+        let mut quality = CodeQuality {
+            overall_score: self.confidence,
+            ..Default::default()
+        };
         
         let lines: Vec<&str> = self.code.lines().collect();
         let non_empty_lines = lines.iter().filter(|l| !l.trim().is_empty()).count();

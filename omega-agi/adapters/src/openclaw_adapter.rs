@@ -115,6 +115,7 @@ pub struct OpenClawSenderId {
 
 /// OpenClaw skill definition
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Default)]
 pub struct OpenClawSkill {
     pub name: String,
     pub description: String,
@@ -122,16 +123,7 @@ pub struct OpenClawSkill {
     pub trigger: Vec<String>,
 }
 
-impl Default for OpenClawSkill {
-    fn default() -> Self {
-        Self {
-            name: String::new(),
-            description: String::new(),
-            location: String::new(),
-            trigger: Vec::new(),
-        }
-    }
-}
+
 
 /// OpenClaw agent protocol message
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -230,7 +222,7 @@ impl Default for AdapterInfo {
 
 /// OpenClaw adapter implementation
 pub struct OpenClawAdapter {
-    skill_loader: OpenClawSkillLoader,
+    #[allow(unused)] skill_loader: OpenClawSkillLoader,
     info: AdapterInfo,
 }
 

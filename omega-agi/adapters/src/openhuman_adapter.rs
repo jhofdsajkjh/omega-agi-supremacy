@@ -44,6 +44,7 @@ pub enum OpenHumanMessage {
 
 /// OpenHuman execution context
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Default)]
 pub struct OpenHumanContext {
     pub session_id: Option<String>,
     pub variables: HashMap<String, String>,
@@ -57,15 +58,7 @@ pub struct OpenHumanFile {
     pub mime_type: Option<String>,
 }
 
-impl Default for OpenHumanContext {
-    fn default() -> Self {
-        Self {
-            session_id: None,
-            variables: HashMap::new(),
-            files: Vec::new(),
-        }
-    }
-}
+
 
 /// OpenHuman agent definition
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -114,7 +107,7 @@ pub struct OpenHumanEdge {
 
 /// OpenHuman API client
 pub struct OpenHumanApiClient {
-    base_url: String,
+    #[allow(unused)] base_url: String,
     api_key: Option<String>,
     timeout_ms: u64,
 }
