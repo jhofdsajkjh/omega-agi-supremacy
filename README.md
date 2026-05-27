@@ -65,6 +65,49 @@ python3 omega_pipeline/super_agi_predictor.py scan .
 - **安全**: Capability-based + 零信任
 - **协作**: CRDT + Raft 共识
 
+## 适配器层 (Adapters)
+
+OMEGA AGI 提供与多个 Agent 系统的兼容性适配层：
+
+| 适配器 | 消息发送 | Skill加载 | 工作流执行 | Agent协议 |
+|--------|----------|-----------|------------|------------|
+| OpenClaw | ✅ | ✅ | ❌ | ✅ |
+| Hermes | ✅ | ❌ | ✅ | ✅ |
+| OpenHuman | ✅ | ❌ | ✅ | ✅ |
+
+
+### OpenClaw 适配器
+- 飞书消息协议兼容
+- Skill 动态加载
+- Interactive Card 支持
+
+### Hermes 适配器
+- Hermes 工作流定义支持
+- 任务状态跟踪
+- 重试配置
+
+### OpenHuman 适配器
+- Agent 请求/响应模式
+- 工作流图执行
+- 上下文变量传递
+
+### 使用示例
+
+```rust
+use omega_adapters::{AdapterManager, OpenClawAdapter, HermesAdapter};
+
+
+// 创建适配器管理器
+let manager = AdapterManager::new();
+
+
+// 切换活动适配器
+manager.set_active("hermes").unwrap();
+
+// 获取适配器信息
+let info = manager.get_active_info();
+```
+
 ## License
 
 MIT

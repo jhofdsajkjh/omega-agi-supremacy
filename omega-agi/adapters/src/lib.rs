@@ -46,12 +46,22 @@ pub use openhuman_adapter::{
 use serde::{Deserialize, Serialize};
 
 /// Unified adapter manager for all supported protocols
-#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AdapterManager {
     pub openclaw: Option<OpenClawAdapter>,
     pub hermes: Option<HermesAdapter>,
     pub openhuman: Option<OpenHumanAdapter>,
     pub active_adapter: String,
+}
+
+impl std::fmt::Debug for AdapterManager {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("AdapterManager")
+            .field("openclaw", &self.openclaw.is_some())
+            .field("hermes", &self.hermes.is_some())
+            .field("openhuman", &self.openhuman.is_some())
+            .field("active_adapter", &self.active_adapter)
+            .finish()
+    }
 }
 
 impl AdapterManager {
