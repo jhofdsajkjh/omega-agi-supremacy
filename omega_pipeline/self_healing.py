@@ -14,6 +14,7 @@ Layer 4 Evolution - Self Healing System
 
 from __future__ import annotations
 
+import logging
 import sqlite3
 import subprocess
 import re
@@ -26,6 +27,8 @@ from pathlib import Path
 from typing import Callable, Dict, List, Optional, Any
 from dataclasses import dataclass, field
 import json
+
+logger = logging.getLogger(__name__)
 
 # ============== 类型定义 ==============
 
@@ -725,8 +728,9 @@ class SelfHealer:
                 conn.close()
                 return True
             except Exception as e:
-                print(f"Rollback failed: {e}")
                 return False
+            logger.error(f"Rollback failed: {e}")
+            return False
         
         return False
     
@@ -988,10 +992,13 @@ def run_python_checker(file_path: str) -> tuple[bool, str]:
 # ============== 主入口（用于测试） ==============
 
 if __name__ == "__main__":
-    # 测试自愈系统
-    healer = SelfHealer()
+    logging.basicConfig(level=logging.INFO, format='%(message)s')
     
-    # 创建测试错误上下文
+    # Test self-healing system
+    healer = SelfHealer()
+    config = getattr(healer, 'config', HealingConfig())
+    debug_mode = getattr(config, 'debug', False)
+    
     test_error = ErrorContext(
         error_type=ErrorType.PANIC_ERROR,
         error_message="thread 'main' panicked at 'called Result::unwrap() on an Err value: ParseIntError { kind: InvalidDigit }', src/main.rs:12",
@@ -999,34 +1006,38 @@ if __name__ == "__main__":
         line_number=12,
         language=Language.RUST,
         original_code="""fn main() {
-    let result: Result<i32, _> = "42".parse();
-    println!("{}", result.unwrap());
+    let result: Result<i32, _> = \"42\".parse();
+    println!(\"{}\", result.unwrap());
 }"""
     )
     
-    print(f"Available strategies: {len(healer.healing_strategies)}")
-    print("Strategy names:")
-    for name in healer.healing_strategies:
-        print(f"  - {name}")
+    if debug_mode:
+        print(f"Available strategies: {len(healer.healing_strategies)}")
+        print("Strategy names:")
+        for name in healer.healing_strategies:
+            print(f"  - {name}")
     
-    # 诊断
+    # Diagnose
     diagnosis = healer.diagnose(test_error)
-    print(f"\nDiagnosis:")
-    print(f"  Type: {diagnosis.error_type}")
-    print(f"  Root cause: {diagnosis.root_cause}")
-    print(f"  Confidence: {diagnosis.confidence}")
+    if debug_mode:
+        print(f"\nDiagnosis:")
+        print(f"  Type: {diagnosis.error_type}")
+        print(f"  Root cause: {diagnosis.root_cause}")
+        print(f"  Confidence: {diagnosis.confidence}")
     
-    # 选择策略
+    # Select strategy
     strategy = healer.select_strategy(diagnosis)
-    print(f"\nSelected strategy: {strategy.name}")
+    if debug_mode:
+        print(f"\nSelected strategy: {strategy.name}")
     
-    # 执行修复
+    # Execute healing
     result = healer.heal(test_error)
-    print(f"\nHealing result:")
-    print(f"  ID: {result.healing_id}")
-    print(f"  Success: {result.success}")
-    print(f"  Strategy: {result.strategy_used}")
-    print(f"\nFixed code:\n{result.fixed_code}")
+    if debug_mode:
+        print(f"\nHealing result:")
+        print(f"  ID: {result.healing_id}")
+        print(f"  Success: {result.success}")
+        print(f"  Strategy: {result.strategy_used}")
+        print(f"\nFixed code:\n{result.fixed_code}")
     
     print(f"\n" + "="*50)
     print(f"Implementation Status: COMPLETE")

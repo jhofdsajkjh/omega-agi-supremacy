@@ -4,11 +4,14 @@ Cross-Project Learning System for OMEGA AGI Supremacy
 Author: OMEGA AGI Version: 0.1.0
 """
 from __future__ import annotations
+import logging
 import os, re, hashlib, sqlite3, json
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 from datetime import datetime
 from enum import Enum
+
+logger = logging.getLogger(__name__)
 
 class PatternType(Enum):
     CODE = "code"
@@ -209,10 +212,20 @@ class CrossProjectLearner:
         if hasattr(self, "db"): self.db.close()
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format='%(message)s')
+    
     config = LearningConfig(embedding_model="hash", similarity_threshold=0.75)
     learner = CrossProjectLearner(config)
+    debug_mode = getattr(config, 'debug', False)
+    
     pp = "/root/omega-agi-supremacy/omega_pipeline"
     if os.path.exists(pp):
-        idx = learner.index_project(pp); print(f"Indexed {idx.file_count} files, {idx.total_lines} lines")
-        pats = learner.extract_patterns(idx.project_id); print(f"Extracted {len(pats)} patterns")
-    stats = learner.get_stats(); print(f"Stats: {stats}")
+        idx = learner.index_project(pp)
+        if debug_mode:
+            print(f"Indexed {idx.file_count} files, {idx.total_lines} lines")
+        pats = learner.extract_patterns(idx.project_id)
+        if debug_mode:
+            print(f"Extracted {len(pats)} patterns")
+    stats = learner.get_stats()
+    if debug_mode:
+        print(f"Stats: {stats}")
