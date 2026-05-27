@@ -70,9 +70,31 @@ build_health_monitor() {
             log_warn "Health monitor compilation skipped (manual compile if needed)"
     fi
 
-    # Python self-diagnosis (always available)
+    # Python self-diagnosis (V2.0 with fault diagnosis)
     if [ -f scripts/self_diagnosis.py ]; then
-        log_info "Self-diagnosis script ready: scripts/self_diagnosis.py"
+        log_info "Self-diagnosis V2.0 ready: scripts/self_diagnosis.py"
+    fi
+
+    # Fault diagnosis expert system
+    if [ -f scripts/fault_diagnosis.py ]; then
+        chmod +x scripts/fault_diagnosis.py
+        log_info "Fault diagnosis expert system: scripts/fault_diagnosis.py"
+    fi
+
+    # Auto repair executor
+    if [ -f scripts/auto_repair.py ]; then
+        chmod +x scripts/auto_repair.py
+        log_info "Auto repair executor: scripts/auto_repair.py"
+    fi
+
+    # Fault patterns library
+    if [ -f scripts/fault_patterns.yaml ]; then
+        log_info "Fault patterns library: scripts/fault_patterns.yaml"
+    fi
+
+    # Health monitoring config
+    if [ -f scripts/health_monitor.yaml ]; then
+        log_info "Health monitor config: scripts/health_monitor.yaml"
     fi
 
     # Auto-recovery script
@@ -111,6 +133,29 @@ start_services() {
     else
         log_warn "Some services may not be fully healthy yet. Check logs with: docker compose logs"
     fi
+
+    # Run enhanced self-diagnosis (V2.0)
+    log_info "Running enhanced self-diagnosis..."
+    if [ -f scripts/self_diagnosis.py ]; then
+        python3 scripts/self_diagnosis.py --once --json 2>/dev/null | python3 -c "
+import sys, json
+try:
+    d = json.load(sys.stdin)
+    score = d.get('health_score', {}).get('score', 0)
+    level = d.get('health_score', {}).get('level', 'UNKNOWN')
+    faults = len(d.get('fault_classifications', []))
+    print(f'  Health Score: {score:.1}/100 [{level}]')
+    if faults > 0:
+        print(f'  Detected Faults: {faults}')
+        for fc in d.get('fault_classifications', [])[:3]:
+            print(f'    - [{fc[\"severity\"]}] {fc[\"fault_type\"]}')
+    else:
+        print('  No faults detected.')
+except: pass
+" 2>/dev/null || log_warn "Self-diagnosis run skipped (python3 or dependencies not available)"
+    fi
+
+    log_info "Enhanced self-diagnosis complete."
 }
 
 # Main deployment

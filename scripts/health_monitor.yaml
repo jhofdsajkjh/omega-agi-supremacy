@@ -1,0 +1,466 @@
+# ============================================================
+#  OMEGA AGI 健康监控规则配置
+#  定义监控指标、阈值、触发动作
+# ============================================================
+#
+#  监控类别:
+#  - resource: 系统资源 (CPU/内存/磁盘/网络)
+#  - service: 服务状态 (容器/进程/健康检查)
+#  - application: 应用指标 (延迟/错误率/QPS)
+#  - security: 安全指标 (认证/权限/证书)
+#  - custom: 自定义指标
+#
+#  动作类型:
+#  - alert: 仅发送告警
+#  - restart: 重启服务
+#  - isolate: 隔离故障节点
+#  - scale: 扩容服务
+#  - cleanup: 执行清理
+
+monitoring_config:
+  version: "2.0"
+  global_interval_seconds: 30
+  alert_cooldown_seconds: 300
+  max_alerts_per_hour: 20
+
+# ============================================================
+# 系统资源监控
+# ============================================================
+
+resource_rules:
+
+  - name: "CPU高负载"
+    check: "cpu_usage_percent"
+    description: "CPU使用率持续过高"
+    threshold: 80
+    comparison: "greater"
+    duration_seconds: 60
+    severity: HIGH
+    action: "alert"
+    message: "CPU使用率超过80%，当前值 {{ value }}%"
+    escalation:
+      after_minutes: 5
+      action: "restart"
+
+  - name: "CPU严重过载"
+    check: "cpu_usage_percent"
+    description: "CPU使用率危险水平"
+    threshold: 95
+    comparison: "greater"
+    duration_seconds: 30
+    severity: CRITICAL
+    action: "alert"
+    message: "CPU使用率超过95%，系统即将无响应！当前值 {{ value }}%"
+    escalation:
+      after_minutes: 2
+      action: "restart"
+
+  - name: "内存使用率高"
+    check: "memory_usage_percent"
+    description: "系统内存使用率过高"
+    threshold: 85
+    comparison: "greater"
+    duration_seconds: 60
+    severity: HIGH
+    action: "alert"
+    message: "内存使用率超过85%，当前值 {{ value }}%"
+    escalation:
+      after_minutes: 5
+      action: "restart"
+
+  - name: "内存严重不足"
+    check: "memory_usage_percent"
+    description: "内存即将耗尽"
+    threshold: 95
+    comparison: "greater"
+    duration_seconds: 30
+    severity: CRITICAL
+    action: "restart"
+    message: "内存使用率超过95%，即将OOM！当前值 {{ value }}%"
+
+  - name: "磁盘空间不足"
+    check: "disk_usage_percent"
+    description: "磁盘空间不足"
+    threshold: 85
+    comparison: "greater"
+    duration_seconds: 0
+    severity: CRITICAL
+    action: "cleanup"
+    message: "磁盘使用率超过85%，当前值 {{ value }}%"
+    cleanup_command: "docker system prune -af --volumes && rm -f /tmp/omega_*.log /tmp/omega_*.json"
+    escalation:
+      after_minutes: 3
+      action: "alert"
+
+  - name: "磁盘即将满"
+    check: "disk_usage_percent"
+    description: "磁盘即将耗尽"
+    threshold: 95
+    comparison: "greater"
+    duration_seconds: 0
+    severity: CRITICAL
+    action: "alert"
+    message: "磁盘使用率超过95%，当前值 {{ value }}%，立即清理！"
+
+  - name: "Load Average过高"
+    check: "load_average_1m"
+    description: "系统负载过高"
+    threshold: 8
+    comparison: "greater"
+    duration_seconds: 120
+    severity: HIGH
+    action: "alert"
+    message: "Load Average超过8，当前值 {{ value }}"
+    note: "应结合CPU核心数判断"
+
+  - name: "可用内存不足"
+    check: "memory_available_mb"
+    description: "系统可用内存过低"
+    threshold: 500
+    comparison: "less"
+    duration_seconds: 60
+    severity: HIGH
+    action: "alert"
+    message: "可用内存低于500MB，当前值 {{ value }}MB"
+
+  - name: "进程数过多"
+    check: "process_count"
+    description: "运行进程数异常"
+    threshold: 500
+    comparison: "greater"
+    duration_seconds: 60
+    severity: MEDIUM
+    action: "alert"
+    message: "进程数超过500，当前值 {{ value }}"
+
+# ============================================================
+# 服务状态监控
+# ============================================================
+
+service_rules:
+
+  - name: "容器未运行"
+    check: "container_status"
+    description: "关键容器未运行"
+    target: "omega_agi_core"
+    expected_status: "running"
+    duration_seconds: 0
+    severity: CRITICAL
+    action: "restart"
+    message: "容器 {{ target }} 未运行，状态={{ value }}"
+    max_restart_attempts: 5
+    restart_cooldown_seconds: 60
+
+  - name: "容器健康检查失败"
+    check: "container_health"
+    description: "容器健康检查持续失败"
+    target: "omega_agi_core"
+    expected_status: "healthy"
+    duration_seconds: 120
+    severity: HIGH
+    action: "restart"
+    message: "容器 {{ target }} 健康检查失败"
+    max_restart_attempts: 3
+    restart_cooldown_seconds: 120
+
+  - name: "容器高频重启"
+    check: "container_restart_count"
+    description: "容器重启次数异常"
+    target: "omega_agi_core"
+    threshold: 3
+    comparison: "greater"
+    duration_seconds: 0
+    severity: CRITICAL
+    action: "alert"
+    message: "容器 {{ target }} 高频重启，重启次数={{ value }}"
+    note: "超过5次建议人工介入"
+    escalation:
+      after_minutes: 10
+      action: "isolate"
+
+  - name: "容器CPU异常高"
+    check: "container_cpu_percent"
+    description: "单个容器CPU使用率过高"
+    threshold: 90
+    comparison: "greater"
+    duration_seconds: 60
+    severity: HIGH
+    action: "alert"
+    message: "容器 {{ target }} CPU={{ value }}%"
+    escalation:
+      after_minutes: 5
+      action: "restart"
+
+  - name: "容器内存异常高"
+    check: "container_memory_percent"
+    description: "单个容器内存使用率过高"
+    threshold: 90
+    comparison: "greater"
+    duration_seconds: 60
+    severity: HIGH
+    action: "alert"
+    message: "容器 {{ target }} 内存={{ value }}%"
+    escalation:
+      after_minutes: 5
+      action: "restart"
+
+  - name: "容器启动超时"
+    check: "container_uptime"
+    description: "容器启动后健康检查超时"
+    target: "omega_agi_core"
+    threshold: 300
+    comparison: "less"
+    duration_seconds: 0
+    severity: HIGH
+    action: "restart"
+    message: "容器 {{ target }} 启动超时"
+    note: "容器运行超过300秒但健康检查仍未通过"
+
+  - name: "进程消失"
+    check: "process_exists"
+    description: "关键进程消失"
+    target: "python"
+    duration_seconds: 0
+    severity: CRITICAL
+    action: "restart"
+    message: "关键进程 {{ target }} 消失"
+    restart_command: "cd /root/omega-agi-supremacy && docker-compose restart omega_agi_core"
+
+  - name: "进程内存泄漏"
+    check: "container_memory_growth_rate"
+    description: "容器内存持续增长"
+    target: "omega_agi_core"
+    threshold: 10
+    comparison: "greater"
+    duration_seconds: 300
+    severity: HIGH
+    action: "alert"
+    message: "容器 {{ target }} 内存增长异常 ({{ value }}MB/5min)"
+    note: "每5分钟增长超过10MB视为泄漏"
+    escalation:
+      after_minutes: 15
+      action: "restart"
+
+# ============================================================
+# 网络监控
+# ============================================================
+
+network_rules:
+
+  - name: "DNS解析失败"
+    check: "dns_resolution"
+    description: "DNS解析不可用"
+    target: "google.com"
+    duration_seconds: 0
+    severity: HIGH
+    action: "alert"
+    message: "DNS解析失败: {{ target }}"
+    fix_command: "echo 'nameserver 8.8.8.8' > /etc/resolv.conf"
+    escalation:
+      after_minutes: 5
+      action: "alert"
+
+  - name: "外网访问失败"
+    check: "http_connectivity"
+    description: "HTTP外网连接失败"
+    target: "https://www.google.com"
+    duration_seconds: 0
+    severity: HIGH
+    action: "alert"
+    message: "外网HTTP连接失败: {{ target }}"
+    fix_command: "systemctl restart docker"
+    escalation:
+      after_minutes: 10
+      action: "restart"
+
+  - name: "API超时"
+    check: "api_response_time_ms"
+    description: "API响应时间过长"
+    target: "https://open.feishu.cn"
+    threshold: 10000
+    comparison: "greater"
+    duration_seconds: 60
+    severity: MEDIUM
+    action: "alert"
+    message: "API {{ target }} 响应时间 {{ value }}ms > 10000ms"
+    fix_command: "sleep 30 && curl -sf --max-time 10 {{ target }}"
+    escalation:
+      after_minutes: 5
+      action: "alert"
+
+  - name: "API限流"
+    check: "http_status_code"
+    description: "API返回限流错误"
+    target: "feishu_api"
+    threshold: 429
+    comparison: "equals"
+    duration_seconds: 0
+    severity: MEDIUM
+    action: "alert"
+    message: "API {{ target }} 返回429限流错误"
+    fix_command: "echo 'Implement rate limiting backoff'"
+    cooldown_seconds: 300
+
+  - name: "端口不可用"
+    check: "port_listening"
+    description: "关键端口未监听"
+    target: "8080"
+    duration_seconds: 0
+    severity: HIGH
+    action: "alert"
+    message: "端口 {{ target }} 未监听"
+    fix_command: "docker ps | grep <service> && docker restart <service>"
+    escalation:
+      after_minutes: 2
+      action: "restart"
+
+# ============================================================
+# 应用指标监控
+# ============================================================
+
+application_rules:
+
+  - name: "错误率过高"
+    check: "error_rate_percent"
+    description: "应用错误率异常"
+    threshold: 5
+    comparison: "greater"
+    duration_seconds: 60
+    severity: HIGH
+    action: "alert"
+    message: "错误率超过5%，当前值 {{ value }}%"
+
+  - name: "响应延迟高"
+    check: "response_latency_ms"
+    description: "API响应延迟过高"
+    threshold: 5000
+    comparison: "greater"
+    duration_seconds: 60
+    severity: MEDIUM
+    action: "alert"
+    message: "响应延迟超过5秒，当前值 {{ value }}ms"
+
+  - name: "QPS异常"
+    check: "queries_per_second"
+    description: "每秒查询数异常"
+    threshold: 1000
+    comparison: "greater"
+    duration_seconds: 60
+    severity: MEDIUM
+    action: "alert"
+    message: "QPS过高 ({{ value }}/s)，可能遭受攻击"
+
+  - name: "日志文件过大"
+    check: "log_file_size_mb"
+    description: "日志文件超过限制"
+    threshold: 500
+    comparison: "greater"
+    duration_seconds: 0
+    severity: MEDIUM
+    action: "cleanup"
+    message: "日志文件超过500MB，当前值 {{ value }}MB"
+    cleanup_command: "truncate -s 0 /var/lib/docker/containers/*/*-json.log"
+
+  - name: "文件描述符耗尽"
+    check: "open_fd_count"
+    description: "进程打开文件描述符过多"
+    threshold: 800
+    comparison: "greater"
+    duration_seconds: 60
+    severity: HIGH
+    action: "alert"
+    message: "文件描述符超过800，当前值 {{ value }}"
+    fix_command: "docker restart <container>"
+
+# ============================================================
+# 安全监控
+# ============================================================
+
+security_rules:
+
+  - name: "认证失败"
+    check: "auth_failure_count"
+    description: "认证失败次数过多"
+    threshold: 10
+    comparison: "greater"
+    duration_seconds: 300
+    severity: HIGH
+    action: "alert"
+    message: "5分钟内认证失败{{ value }}次，可能遭受暴力攻击"
+
+  - name: "证书即将过期"
+    check: "certificate_expiry_days"
+    description: "SSL证书即将过期"
+    threshold: 30
+    comparison: "less"
+    duration_seconds: 0
+    severity: HIGH
+    action: "alert"
+    message: "SSL证书将在{{ value }}天后过期"
+    fix_command: "echo 'Renew SSL certificate'"
+
+  - name: "异常进程"
+    check: "suspicious_process"
+    description: "发现可疑进程"
+    threshold: 0
+    comparison: "greater"
+    duration_seconds: 0
+    severity: CRITICAL
+    action: "isolate"
+    message: "发现可疑进程: {{ value }}"
+    fix_command: "ps aux | grep -E 'crypto|xmrig|nicehash' && kill -9 <pid>"
+
+# ============================================================
+# 综合告警配置
+# ============================================================
+
+alert_channels:
+  - name: "log"
+    enabled: true
+    log_file: "/tmp/omega_alerts.log"
+    
+  - name: "feishu"
+    enabled: true
+    webhook_url: "${FEISHU_WEBHOOK_URL}"
+    mention_on_critical: true
+
+  - name: "evomap"
+    enabled: true
+    api_url: "http://localhost:9000/api/alerts"
+    api_key: "${EVOMAP_API_KEY}"
+
+# ============================================================
+# 自动化恢复配置
+# ============================================================
+
+auto_recovery:
+  enabled: true
+  max_restart_attempts: 5
+  restart_cooldown_seconds: 60
+  verify_after_restart: true
+  verify_timeout_seconds: 30
+  rollback_on_failure: true
+  rollback_timeout_seconds: 60
+
+# ============================================================
+# 监控目标列表
+# ============================================================
+
+monitor_targets:
+  containers:
+    - "omega_agi_core"
+    - "omega_self_healing"
+    - "omega_pipeline"
+
+  processes:
+    - "python"
+    - "java"
+    - "node"
+
+  ports:
+    - 8080
+    - 9000
+
+  endpoints:
+    - "http://localhost:9000/api/health"
+    - "http://localhost:8080/health"

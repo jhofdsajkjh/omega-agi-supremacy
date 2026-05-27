@@ -1,0 +1,588 @@
+# ============================================================
+#  OMEGA AGI 故障模式库
+#  常见故障的症状、原因、修复步骤
+# ============================================================
+#
+#  分类层级：
+#  - category: 故障大类 (SYSTEM, NETWORK, SERVICE, RESOURCE, SECURITY)
+#  - fault_type: 故障类型
+#  - severity: 严重程度 (CRITICAL, HIGH, MEDIUM, LOW)
+#  - symptoms: 观察到的症状
+#  - cause: 根因分析
+#  - fix_steps: 修复步骤
+#  - verify: 验证方式
+
+fault_patterns:
+
+  # ============================================================
+  # 系统资源类
+  # ============================================================
+
+  - name: "内存溢出 (OOM)"
+    category: RESOURCE
+    fault_type: OOM
+    severity: CRITICAL
+    symptoms:
+      - "dmesg中出现 'Out of memory' 或 'oom-killer'"
+      - "容器内存使用率达到100%"
+      - "进程被强制终止"
+      - "Docker stats 显示内存 100%"
+      - "应用日志出现 'Cannot allocate memory'"
+    cause: |
+      根本原因通常是：
+      1. 内存泄漏 - 代码未释放已分配的内存
+      2. 突发流量 - 同时请求数超出预期
+      3. 配置不当 - 内存限制设置过低
+      4. 大数据分析 - 处理大型数据集时超出内存
+    fix_steps:
+      - action: "获取当前内存状态"
+        command: "free -m && docker stats --no-stream"
+      - action: "查看OOM killer日志"
+        command: "dmesg -T | grep -i oom | tail -20"
+      - action: "找出内存消耗最大的容器"
+        command: "docker stats --no-stream --format '{{.Name}}\\t{{.MemUsage}}' | sort -k2 -hr | head -5"
+      - action: "重启高内存容器"
+        command: "docker restart <high_mem_container>"
+      - action: "如果是持续泄漏，查看容器日志"
+        command: "docker logs --tail 100 <container>"
+      - action: "调整容器内存限制"
+        command: "docker update --memory <limit>m <container>"
+    verify:
+      - "free -m 显示可用内存 > 500MB"
+      - "docker stats 无内存100%容器"
+      - "dmesg 无新OOM记录"
+
+  - name: "CPU过载"
+    category: RESOURCE
+    fault_type: CPU_OVERLOAD
+    severity: HIGH
+    symptoms:
+      - "load average > CPU核心数 × 2"
+      - "CPU使用率持续 > 90%"
+      - "容器CPU 100%"
+      - "响应延迟增加"
+      - "进程队列积压"
+    cause: |
+      根因通常是：
+      1. 死循环或计算密集任务
+      2. 恶意/失控的进程
+      3. 大量并发请求
+      4. 定时任务集中执行
+    fix_steps:
+      - action: "查看CPU占用最高的进程"
+        command: "top -bn1 | head -20 && docker stats --no-stream"
+      - action: "查看特定容器CPU"
+        command: "docker stats --no-stream --format '{{.Name}}\\t{{.CPUPerc}}' | sort -k2 -hr"
+      - action: "如果是单容器问题，重启该容器"
+        command: "docker restart <high_cpu_container>"
+      - action: "如果是外部攻击，查看连接数"
+        command: "ss -s && netstat -an | grep ESTABLISHED | wc -l"
+      - action: "限流或扩容"
+        command: "docker update --cpus <limit> <container>"
+    verify:
+      - "load average < CPU核心数 × 1.5"
+      - "top 显示无CPU 100%进程"
+
+  - name: "磁盘空间不足"
+    category: RESOURCE
+    fault_type: DISK_FULL
+    severity: HIGH
+    symptoms:
+      - "df -h 显示某分区 > 90%"
+      - "写入文件失败: 'No space left on device'"
+      - "Docker日志报错"
+      - "容器无法启动"
+      - "数据库写入失败"
+    cause: |
+      根因通常是：
+      1. 日志文件无限增长
+      2. Docker镜像/容器积累
+      3. 临时文件未清理
+      4. 大数据文件积累
+    fix_steps:
+      - action: "查看各分区使用情况"
+        command: "df -h"
+      - action: "查看大目录/文件"
+        command: "du -sh /* 2>/dev/null | sort -hr | head -10"
+      - action: "清理Docker日志 (如果日志在主机)"
+        command: "truncate -s 0 /var/lib/docker/containers/*/*-json.log"
+      - action: "清理临时文件"
+        command: "rm -rf /tmp/omega* /tmp/*.log /tmp/*.tmp 2>/dev/null; true"
+      - action: "清理旧Docker资源"
+        command: "docker system prune -af --volumes"
+      - action: "清理旧报告文件"
+        command: "find /tmp -name 'omega_*' -mtime +3 -delete 2>/dev/null; true"
+    verify:
+      - "df -h 所有分区 < 85%"
+      - "写入测试文件成功"
+
+  - name: "内存泄漏"
+    category: RESOURCE
+    fault_type: MEMORY_LEAK
+    severity: HIGH
+    symptoms:
+      - "进程内存使用持续增长"
+      - "容器内存缓慢增加直至OOM"
+      - "重启后内存正常，但随时间再次上升"
+      - "top显示RSS不断增长"
+    cause: |
+      根因通常是：
+      1. Python: 未关闭文件描述符、大对象未释放
+      2. Java: 对象引用未清理
+      3. 缓存无限增长
+      4. C/C++: malloc未free
+    fix_steps:
+      - action: "查看进程内存历史"
+        command: "ps aux --sort=-rss | head -10"
+      - action: "每10秒采样容器内存，观察趋势"
+        command: "for i in {1..6}; do docker stats --no-stream --format '{{.Name}}\\t{{.MemUsage}}' | grep <container>; sleep 10; done"
+      - action: "如果是泄漏容器，临时重启"
+        command: "docker restart <leaking_container>"
+      - action: "查看容器内泄漏进程"
+        command: "docker exec <container> ps aux --sort=-rss | head -5"
+      - action: "重启策略改为 'always' 确保自动恢复"
+        command: "docker update --restart always <container>"
+    verify:
+      - "内存使用稳定，不持续增长"
+      - "24小时后内存增幅 < 5%"
+
+  # ============================================================
+  # 网络类
+  # ============================================================
+
+  - name: "网络超时"
+    category: NETWORK
+    fault_type: NETWORK_TIMEOUT
+    severity: HIGH
+    symptoms:
+      - "curl 超时: 'Connection timed out'"
+      - "HTTP响应时间 > 30秒"
+      - "API调用失败日志"
+      - "飞书消息发送超时"
+      - "DNS解析超时"
+    cause: |
+      根因通常是：
+      1. 外部API服务不可用
+      2. 网络路由问题
+      3. 防火墙/安全组阻断
+      4. 服务端限流
+      5. DNS服务器问题
+    fix_steps:
+      - action: "测试网络连通性"
+        command: "curl -sf --max-time 5 https://www.google.com && echo '外网OK'"
+      - action: "测试DNS解析"
+        command: "nslookup google.com || host google.com"
+      - action: "查看具体API超时日志"
+        command: "grep -r 'timeout\\|Timed out' /tmp/omega*.log | tail -20"
+      - action: "如果API问题，等待并重试"
+        command: "sleep 30 && curl -sf --max-time 10 <failed_url>"
+      - action: "检查防火墙规则"
+        command: "iptables -L -n | head -30"
+      - action: "重置网络栈 (谨慎)"
+        command: "systemctl restart docker"
+    verify:
+      - "curl --max-time 5 https://www.google.com 成功"
+      - "目标API响应时间 < 10秒"
+
+  - name: "API限流 (429)"
+    category: NETWORK
+    fault_type: API_RATE_LIMIT
+    severity: MEDIUM
+    symptoms:
+      - "HTTP 429 Too Many Requests"
+      - "API返回 'rate limit exceeded'"
+      - "特定API调用全部失败"
+      - "日志中出现 '429' 错误"
+    cause: |
+      根因通常是：
+      1. 请求频率超出API限制
+      2. 未使用指数退避重试
+      3. 多实例同时请求
+      4. 批量操作过于频繁
+    fix_steps:
+      - action: "识别限流API"
+        command: "grep -r '429\\|rate.limit' /tmp/omega*.log | tail -20"
+      - action: "检查限流配置"
+        command: "grep -r 'rate_limit\\|RATE_LIMIT' /root/omega-agi-supremacy/ --include='*.py' 2>/dev/null"
+      - action: "实现指数退避"
+        command: "echo 'Review and implement exponential backoff in API calls'"
+      - action: "增加请求间隔"
+        command: "echo 'Add delay between requests'"
+      - action: "切换备用API"
+        command: "echo 'Use fallback API endpoint'"
+    verify:
+      - "不再出现 429 错误"
+      - "API成功率 > 95%"
+
+  - name: "DNS解析失败"
+    category: NETWORK
+    fault_type: DNS_FAILURE
+    severity: HIGH
+    symptoms:
+      - "ping: unknown host"
+      - "curl: Could not resolve host"
+      - "域名解析全部失败"
+      - "内网连接正常但外网失败"
+    cause: |
+      根因通常是：
+      1. DNS服务器不可用
+      2. /etc/resolv.conf 配置错误
+      3. 网络隔离导致DNS无法访问
+      4. 缓存服务器故障
+    fix_steps:
+      - action: "测试DNS配置"
+        command: "cat /etc/resolv.conf"
+      - action: "测试DNS解析"
+        command: "nslookup google.com 8.8.8.8 || dig google.com @8.8.8.8"
+      - action: "使用Google DNS"
+        command: "echo 'nameserver 8.8.8.8' > /etc/resolv.conf"
+      - action: "测试本地 hosts"
+        command: "ping -c 1 $(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')"
+    verify:
+      - "nslookup 任意域名成功"
+      - "curl https://google.com 成功"
+
+  # ============================================================
+  # 服务类
+  # ============================================================
+
+  - name: "容器崩溃 (exit 1)"
+    category: SERVICE
+    fault_type: CONTAINER_CRASH
+    severity: CRITICAL
+    symptoms:
+      - "docker ps -a 显示容器 Exited (1)"
+      - "重启次数持续增加"
+      - "健康检查持续失败"
+      - "日志最后一行是异常/段错误"
+    cause: |
+      根因通常是：
+      1. 应用代码异常未捕获
+      2. 依赖服务不可用导致启动失败
+      3. 配置文件错误
+      4. 端口被占用
+      5. 权限问题
+    fix_steps:
+      - action: "查看容器退出日志"
+        command: "docker logs --tail 50 <container> 2>&1"
+      - action: "查看完整启动日志"
+        command: "docker logs --tail 200 --details <container> 2>&1 | tail -50"
+      - action: "检查容器配置"
+        command: "docker inspect <container>"
+      - action: "修复后手动启动"
+        command: "docker start <container>"
+      - action: "检查端口占用"
+        command: "netstat -tlnp | grep <port>"
+      - action: "如果代码问题，修复并重建"
+        command: "cd /root/omega-agi-supremacy && docker-compose build <service>"
+    verify:
+      - "docker ps 显示容器 Up"
+      - "健康检查通过"
+      - "无异常退出日志"
+
+  - name: "进程崩溃 (段错误)"
+    category: SERVICE
+    fault_type: PROCESS_CRASH
+    severity: CRITICAL
+    symptoms:
+      - "dmesg 显示 'segfault' 或 '段错误'"
+      - "进程突然消失"
+      - "core dump 文件"
+      - "日志中有 SIGSEGV"
+    cause: |
+      根因通常是：
+      1. C/C++ 内存错误 (越界、释放后使用)
+      2. Rust panic
+      3. 系统库版本不匹配
+      4. 硬件故障 (内存/RAM)
+    fix_steps:
+      - action: "查看dmesg错误"
+        command: "dmesg -T | grep -i 'segfault\\|fault' | tail -10"
+      - action: "查看core dump"
+        command: "ls -la /tmp/core* /core* 2>/dev/null || find / -name 'core.*' -mmin -30 2>/dev/null"
+      - action: "分析core文件"
+        command: "file /tmp/core.* 2>/dev/null; gdb --batch -ex 'bt' -ex 'quit' $(which python3) /tmp/core.* 2>/dev/null"
+      - action: "重启服务"
+        command: "docker restart <affected_container>"
+      - action: "如果是硬件问题，运行内存检测"
+        command: "memtester 1024 1 2>/dev/null || echo 'memtester not available'"
+    verify:
+      - "dmesg 无新segfault"
+      - "进程运行稳定"
+
+  - name: "服务无响应 (Hang)"
+    category: SERVICE
+    fault_type: SERVICE_HANG
+    severity: HIGH
+    symptoms:
+      - "HTTP请求无响应 (不超时)"
+      - "进程存在但不处理请求"
+      - "telnet/ssh连接建立但无输出"
+      - "日志停止更新"
+    cause: |
+      根因通常是：
+      1. 死锁 (所有线程等待资源)
+      2. 无限循环
+      3. 外部依赖阻塞
+      4. 文件描述符耗尽
+      5. 数据库连接池耗尽
+    fix_steps:
+      - action: "检查进程状态"
+        command: "docker exec <container> ps aux | head -20"
+      - action: "查看线程/goroutine"
+        command: "docker exec <container> cat /proc/self/status | grep Thread"
+      - action: "检查文件描述符"
+        command: "docker exec <container> ls /proc/self/fd | wc -l"
+      - action: "发送SIGUSR1查看堆栈 (如果支持)"
+        command: "docker exec <container> kill -USR1 1 2>/dev/null; sleep 2; docker logs --tail 30 <container>"
+      - action: "重启容器"
+        command: "docker restart <container>"
+    verify:
+      - "HTTP请求正常响应"
+      - "日志持续更新"
+      - "ps 显示进程正常"
+
+  - name: "健康检查持续失败"
+    category: SERVICE
+    fault_type: HEALTH_CHECK_FAIL
+    severity: HIGH
+    symptoms:
+      - "docker inspect 显示 Health Status: unhealthy"
+      - "健康检查日志报错"
+      - "负载均衡移除该实例"
+      - "重启次数增加"
+    cause: |
+      根因通常是：
+      1. 应用内部错误但进程存活
+      2. 数据库/缓存连接失败
+      3. 磁盘/内存资源不足
+      4. 健康检查端点配置错误
+    fix_steps:
+      - action: "查看健康检查失败日志"
+        command: "docker inspect --format='{{json .State.Health}}' <container> | python3 -m json.tool"
+      - action: "手动访问健康检查端点"
+        command: "docker exec <container> curl -sf http://localhost:<health_port>/health"
+      - action: "检查依赖服务"
+        command: "docker ps | grep -v omega | grep -E 'postgres|redis|mysql|mongo'"
+      - action: "查看应用日志"
+        command: "docker logs --tail 100 <container> 2>&1 | grep -i 'error\\|fail\\|health'"
+      - action: "修复后重启"
+        command: "docker restart <container>"
+    verify:
+      - "docker inspect Health Status: healthy"
+      - "健康端点HTTP 200"
+
+  - name: "飞书消息发送失败"
+    category: SERVICE
+    fault_type: FEISHU_MESSAGE_FAIL
+    severity: MEDIUM
+    symptoms:
+      - "飞书API返回错误"
+      - "消息发送超时"
+      - "401 Unauthorized"
+      - "rate limit exceeded"
+    cause: |
+      根因通常是：
+      1. 飞书Access Token过期
+      2. 网络问题
+      3. 机器人被禁用
+      4. 权限不足
+    fix_steps:
+      - action: "检查飞书配置"
+        command: "grep -r 'FEISHU\\|feishu\\|LARK' /root/omega-agi-supremacy/ --include='*.py' --include='*.env' -l 2>/dev/null"
+      - action: "测试飞书API连通性"
+        command: "curl -sf https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal -X POST -H 'Content-Type: application/json' -d '{\"app_id\":\"test\",\"app_secret\":\"test\"}' 2>&1 | head -5"
+      - action: "查看飞书错误日志"
+        command: "grep -r 'feishu\\|lark' /tmp/omega*.log -i | tail -10"
+      - action: "检查token有效期"
+        command: "echo 'Check token expiration and refresh if needed'"
+    verify:
+      - "飞书消息发送成功"
+      - "API返回正常"
+
+  # ============================================================
+  # 安全类
+  # ============================================================
+
+  - name: "认证失败"
+    category: SECURITY
+    fault_type: AUTH_FAILURE
+    severity: HIGH
+    symptoms:
+      - "API返回 401 Unauthorized"
+      - "登录失败日志"
+      - "JWT token无效"
+      - "Session过期"
+    cause: |
+      根因通常是：
+      1. Token/密钥过期
+      2. 配置了错误的密钥
+      3. 权限不足
+      4. 时间不同步
+    fix_steps:
+      - action: "检查认证配置"
+        command: "grep -r 'token\\|key\\|secret\\|auth' /root/omega-agi-supremacy/ --include='*.env' --include='*.yaml' 2>/dev/null | head -10"
+      - action: "检查系统时间"
+        command: "date && timedatectl"
+      - action: "测试API认证"
+        command: "curl -sf -H 'Authorization: Bearer <token>' https://api.example.com/health"
+      - action: "刷新/更新token"
+        command: "echo 'Update authentication token in config'"
+    verify:
+      - "API认证成功"
+      - "无401错误"
+
+  - name: "证书错误"
+    category: SECURITY
+    fault_type: CERTIFICATE_ERROR
+    severity: MEDIUM
+    symptoms:
+      - "curl: (60) SSL certificate problem"
+      - "HTTPS连接被拒绝"
+      - "证书过期警告"
+      - "TLS握手失败"
+    cause: |
+      根因通常是：
+      1. 自签名证书不受信任
+      2. 证书过期
+      3. 证书链不完整
+      4. 系统CA证书过期
+    fix_steps:
+      - action: "测试SSL连接"
+        command: "curl -sv https://<host> 2>&1 | grep -E 'SSL| TLS| certificate'"
+      - action: "检查证书有效期"
+        command: "openssl s_client -connect <host>:443 -servername <servername> 2>/dev/null | openssl x509 -noout -dates"
+      - action: "如果是自签名，添加信任"
+        command: "echo 'Add CA cert to system trust store'"
+      - action: "更新系统CA证书"
+        command: "apt-get update && apt-get install -y ca-certificates 2>/dev/null || yum update ca-certificates 2>/dev/null"
+    verify:
+      - "curl -sf https://<host> 成功"
+      - "openssl连接成功"
+
+  # ============================================================
+  # 数据库类
+  # ============================================================
+
+  - name: "数据库连接失败"
+    category: DATABASE
+    fault_type: DB_CONNECTION_FAIL
+    severity: CRITICAL
+    symptoms:
+      - "应用日志: 'Connection refused' / 'Connection timeout'"
+      - "数据库容器 not running"
+      - "端口 5432/3306/27017 无响应"
+      - "所有依赖DB的服务失败"
+    cause: |
+      根因通常是：
+      1. 数据库容器崩溃
+      2. 连接数超限
+      3. 防火墙阻断
+      4. 内存不足导致OOM
+    fix_steps:
+      - action: "检查数据库容器状态"
+        command: "docker ps -a | grep -E 'postgres|mysql|mongo|redis'"
+      - action: "检查数据库端口"
+        command: "netstat -tlnp | grep -E '5432\\|3306\\|27017\\|6379'"
+      - action: "重启数据库容器"
+        command: "docker restart <db_container>"
+      - action: "检查数据库日志"
+        command: "docker logs --tail 50 <db_container>"
+      - action: "检查连接数限制"
+        command: "docker exec <db_container> psql -c 'show max_connections;' 2>/dev/null || echo 'DB not postgres'"
+    verify:
+      - "数据库端口可连接"
+      - "应用能正常连接DB"
+      - "查询执行成功"
+
+  - name: "数据库查询慢"
+    category: DATABASE
+    fault_type: DB_SLOW_QUERY
+    severity: MEDIUM
+    symptoms:
+      - "查询响应时间 > 10秒"
+      - "数据库CPU 100%"
+      - "慢查询日志大量记录"
+      - "连接池耗尽"
+    cause: |
+      根因通常是：
+      1. 缺少索引
+      2. 查询语句低效
+      3. 数据量超出预期
+      4. 数据库资源不足
+    fix_steps:
+      - action: "查看慢查询"
+        command: "docker exec <db> psql -c \"SELECT * FROM pg_stat_activity WHERE state = 'active' AND query_start < now() - interval '5 seconds';\" 2>/dev/null || echo 'not postgres'"
+      - action: "查看数据库连接"
+        command: "docker exec <db> psql -c 'SELECT count(*) FROM pg_stat_activity;' 2>/dev/null || echo 'not postgres'"
+      - action: "查看表大小"
+        command: "docker exec <db> psql -c \"SELECT schemaname, tablename, pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) FROM pg_tables WHERE schemaname = 'public' ORDER BY pg_total_relation_size(schemaname||'.'||tablename) DESC LIMIT 10;\" 2>/dev/null"
+      - action: "优化查询或增加索引"
+        command: "echo 'Review and optimize slow queries'"
+    verify:
+      - "查询响应时间 < 2秒"
+      - "无慢查询日志"
+
+  # ============================================================
+  # 综合类
+  # ============================================================
+
+  - name: "日志风暴"
+    category: SYSTEM
+    fault_type: LOG_STORM
+    severity: MEDIUM
+    symptoms:
+      - "磁盘空间快速增长"
+      - "日志文件超大 (>1GB)"
+      - "写入速度异常"
+      - "docker logs 输出一大堆"
+    cause: |
+      根因通常是：
+      1. DEBUG级别日志被大量输出
+      2. 异常重试循环打印日志
+      3. 健康检查日志过多
+      4. 第三方库调试日志
+    fix_steps:
+      - action: "查找大日志文件"
+        command: "du -sh /var/lib/docker/containers/*/*-json.log 2>/dev/null | sort -hr | head -5"
+      - action: "统计各容器日志大小"
+        command: "docker ps --format '{{.Names}}' | xargs -I{} sh -c 'echo -n \"{}: \"; du -sh /var/lib/docker/containers/*/{}-*.log 2>/dev/null | awk \"{print \\$1}\" || echo \"0\"'"
+      - action: "清空所有容器日志"
+        command: "truncate -s 0 /var/lib/docker/containers/*/*-json.log 2>/dev/null"
+      - action: "设置日志轮转"
+        command: "cat > /etc/docker/daemon.json <<'EOF' {\"log-driver\":\"json-file\",\"log-opts\":{\"max-size\":\"100m\",\"max-file\":\"3\"}} EOF && systemctl restart docker"
+      - action: "调整应用日志级别"
+        command: "grep -r 'logging\\|level\\|DEBUG' /root/omega-agi-supremacy/*.py 2>/dev/null | head -5"
+    verify:
+      - "日志文件大小受限"
+      - "磁盘空间稳定"
+
+  - name: "配置文件错误"
+    category: SYSTEM
+    fault_type: CONFIG_ERROR
+    severity: HIGH
+    symptoms:
+      - "服务启动失败"
+      - "配置解析错误"
+      - "环境变量缺失"
+      - "YAML/JSON格式错误"
+    cause: |
+      根因通常是：
+      1. 语法错误 (缺少引号/括号)
+      2. 环境变量未设置
+      3. 版本不兼容配置
+      4. 路径错误
+    fix_steps:
+      - action: "查看服务启动错误"
+        command: "docker logs --tail 30 <container> 2>&1"
+      - action: "验证YAML语法"
+        command: "python3 -c 'import yaml; yaml.safe_load(open(\"/path/to/config.yaml\"))'"
+      - action: "检查环境变量"
+        command: "docker exec <container> env | grep -E '^[A-Z_]+=' | sort"
+      - action: "对比默认配置"
+        command: "diff /path/to/config.yaml /path/to/config.yaml.default"
+      - action: "恢复默认配置"
+        command: "cp /path/to/config.yaml.default /path/to/config.yaml"
+    verify:
+      - "服务启动成功"
+      - "配置解析无错误"
